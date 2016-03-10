@@ -18,7 +18,6 @@
 #import "DebugViewController.h"
 #import "EditNicknameViewController.h"
 #import "UserProfileEditViewController.h"
-//#import "BackupViewController.h"
 
 @interface SettingsViewController ()
 
@@ -145,13 +144,7 @@
         {
             cell.textLabel.text = NSLocalizedString(@"title.debug", @"Debug");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }/*
-        else if (indexPath.row == 4){
-            cell.textLabel.text = NSLocalizedString(@"setting.useIp", @"Use IP");
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            self.ipSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.ipSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.ipSwitch.frame.size.height) / 2, self.ipSwitch.frame.size.width, self.ipSwitch.frame.size.height);
-            [cell.contentView addSubview:self.ipSwitch];
-        }*/
+        }
         else if (indexPath.row == 4){
             cell.textLabel.text = NSLocalizedString(@"setting.deleteConWhenLeave", @"Delete conversation when leave a group");
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -180,10 +173,6 @@
                 [child removeFromSuperview];
             }
         }
-//        else if (indexPath.row == 8){
-//            cell.textLabel.text = @"聊天记录备份和恢复";
-//            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-//        }
     }
     
     return cell;
@@ -224,10 +213,6 @@
         [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
         [alert show];
     }
-//    else if(indexPath.row == 8){
-//        BackupViewController *backupController = [[BackupViewController alloc] initWithNibName:nil bundle:nil];
-//        [self.navigationController pushViewController:backupController animated:YES];
-//    }
 }
 
 //弹出提示的代理方法
@@ -307,7 +292,6 @@
 - (void)refreshConfig
 {
     [self.autoLoginSwitch setOn:[[EMClient sharedClient].options isAutoLogin] animated:YES];
-//    [self.ipSwitch setOn:[[EMClient sharedClient].options performSelector:@selector(enableDnsConfig)] animated:YES];
     
     [self.tableView reloadData];
 }

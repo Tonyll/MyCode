@@ -185,7 +185,7 @@
 {
     // Return the number of rows in the section.
     if (section == 0) {
-        return 2;
+        return 1;
     }
     return [self.dataSource count];
 }
@@ -203,10 +203,6 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                cell.textLabel.text = NSLocalizedString(@"group.create.group",@"Create a group");
-                cell.imageView.image = [UIImage imageNamed:@"group_creategroup"];
-                break;
-            case 1:
                 cell.textLabel.text = NSLocalizedString(@"group.create.join",@"Join public group");
                 cell.imageView.image = [UIImage imageNamed:@"group_joinpublicgroup"];
                 break;
@@ -216,7 +212,6 @@
     } else {
         EMGroup *group = [self.dataSource objectAtIndex:indexPath.row];
         NSString *imageName = @"group_header";
-//        NSString *imageName = group.isPublic ? @"groupPublicHeader" : @"groupPrivateHeader";
         cell.imageView.image = [UIImage imageNamed:imageName];
         if (group.subject && group.subject.length > 0) {
             cell.textLabel.text = group.subject;
@@ -248,9 +243,6 @@
     if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
-                [self createGroup];
-                break;
-            case 1:
                 [self showPublicGroupList];
                 break;
             default:

@@ -79,6 +79,8 @@ static NSString *kGroupName = @"GroupName";
     [self setupUnreadMessageCount];
     [self setupUntreatedApplyCount];
     
+    
+    //what's up
     [ChatDemoHelper shareHelper].contactViewVC = _contactsVC;
     [ChatDemoHelper shareHelper].conversationListVC = _chatListVC;
 }
@@ -106,7 +108,6 @@ static NSString *kGroupName = @"GroupName";
     }else if (item.tag == 2){
         self.title = NSLocalizedString(@"title.setting", @"Setting");
         self.navigationItem.rightBarButtonItem = nil;
-        [_settingsVC refreshConfig];
     }
 }
 
@@ -289,7 +290,7 @@ static NSString *kGroupName = @"GroupName";
     }
     
 //#warning 去掉注释会显示[本地]开头, 方便在开发中区分是否为本地推送
-    //notification.alertBody = [[NSString alloc] initWithFormat:@"[本地]%@", notification.alertBody];
+    notification.alertBody = [[NSString alloc] initWithFormat:@"[本地]%@", notification.alertBody];
     
     notification.alertAction = NSLocalizedString(@"open", @"Open");
     notification.timeZone = [NSTimeZone defaultTimeZone];

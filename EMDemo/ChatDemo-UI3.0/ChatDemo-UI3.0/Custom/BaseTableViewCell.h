@@ -24,9 +24,3 @@
 @property (strong, nonatomic) NSString *username;
 
 @end
-
-@protocol BaseTableCellDelegate <NSObject>
-
-- (void)cellImageViewLongPressAtIndexPath:(NSIndexPath *)indexPath;
-
-@end

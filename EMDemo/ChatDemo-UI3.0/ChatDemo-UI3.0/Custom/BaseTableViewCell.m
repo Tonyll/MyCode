@@ -26,9 +26,6 @@
         [self.contentView addSubview:_bottomLineView];
         
         self.textLabel.backgroundColor = [UIColor clearColor];
-        
-        _headerLongPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(headerLongPress:)];
-        [self addGestureRecognizer:_headerLongPress];
     }
     return self;
 }
@@ -56,16 +53,6 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
-- (void)headerLongPress:(UILongPressGestureRecognizer *)longPress
-{
-    if (longPress.state == UIGestureRecognizerStateBegan) {
-        if(_delegate && _indexPath && [_delegate respondsToSelector:@selector(cellImageViewLongPressAtIndexPath:)])
-        {
-            [_delegate cellImageViewLongPressAtIndexPath:self.indexPath];
-        }
-    }
 }
 
 - (void)setUsername:(NSString *)username
