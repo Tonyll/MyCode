@@ -158,12 +158,15 @@
     return YES;
 }
 
-//- (void)messageViewController:(EaseMessageViewController *)viewController
-//   didSelectAvatarMessageModel:(id<IMessageModel>)messageModel
-//{
+- (void)messageViewController:(EaseMessageViewController *)viewController
+   didSelectAvatarMessageModel:(id<IMessageModel>)messageModel
+{
+    
+    NSLog(@"点击用户头像");
+    
 //    UserProfileViewController *userprofile = [[UserProfileViewController alloc] initWithUsername:messageModel.message.from];
 //    [self.navigationController pushViewController:userprofile animated:YES];
-//}
+}
 
 #pragma mark - EaseMessageViewControllerDataSource
 

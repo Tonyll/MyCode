@@ -173,18 +173,6 @@ static ChatDemoHelper *helper = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
 }
 
-//- (void)didServersChanged
-//{
-//    [self _clearHelper];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
-//}
-//
-//- (void)didAppkeyChanged
-//{
-//    [self _clearHelper];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
-//}
-
 #pragma mark - EMChatManagerDelegate
 
 - (void)didUpdateConversationList:(NSArray *)aConversationList
