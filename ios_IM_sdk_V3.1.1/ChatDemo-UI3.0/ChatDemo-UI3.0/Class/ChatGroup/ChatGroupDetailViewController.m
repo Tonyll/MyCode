@@ -12,7 +12,6 @@
 
 #import "ChatGroupDetailViewController.h"
 
-#import "ContactSelectionViewController.h"
 #import "GroupSettingViewController.h"
 #import "EMGroup.h"
 #import "ContactView.h"
@@ -24,7 +23,7 @@
 #define kColOfRow 5
 #define kContactSize 60
 
-@interface ChatGroupDetailViewController ()<EMGroupManagerDelegate, EMChooseViewDelegate, UIActionSheetDelegate>
+@interface ChatGroupDetailViewController ()<EMGroupManagerDelegate, UIActionSheetDelegate>
 
 - (void)unregisterNotifications;
 - (void)registerNotifications;
@@ -34,10 +33,8 @@
 
 @property (strong, nonatomic) NSMutableArray *dataSource;
 @property (strong, nonatomic) UIScrollView *scrollView;
-@property (strong, nonatomic) UIButton *addButton;
 
 @property (strong, nonatomic) UIView *footerView;
-@property (strong, nonatomic) UIButton *clearButton;
 @property (strong, nonatomic) UIButton *exitButton;
 @property (strong, nonatomic) UIButton *dissolveButton;
 @property (strong, nonatomic) UIButton *configureButton;
@@ -143,29 +140,11 @@
         _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, kContactSize)];
         _scrollView.tag = 0;
         
-        _addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kContactSize - 10, kContactSize - 10)];
-        [_addButton setImage:[UIImage imageNamed:@"group_participant_add"] forState:UIControlStateNormal];
-        [_addButton setImage:[UIImage imageNamed:@"group_participant_addHL"] forState:UIControlStateHighlighted];
-        [_addButton addTarget:self action:@selector(addContact:) forControlEvents:UIControlEventTouchUpInside];
-        
         _longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(deleteContactBegin:)];
         _longPress.minimumPressDuration = 0.5;
     }
     
     return _scrollView;
-}
-
-- (UIButton *)clearButton
-{
-    if (_clearButton == nil) {
-        _clearButton = [[UIButton alloc] init];
-        [_clearButton setTitle:NSLocalizedString(@"group.removeAllMessages", @"remove all messages") forState:UIControlStateNormal];
-        [_clearButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_clearButton addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
-        [_clearButton setBackgroundColor:[UIColor colorWithRed:87 / 255.0 green:186 / 255.0 blue:205 / 255.0 alpha:1.0]];
-    }
-    
-    return _clearButton;
 }
 
 - (UIButton *)dissolveButton
@@ -200,12 +179,9 @@
         _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.frame.size.width, 160)];
         _footerView.backgroundColor = [UIColor clearColor];
         
-        self.clearButton.frame = CGRectMake(20, 40, _footerView.frame.size.width - 40, 35);
-        [_footerView addSubview:self.clearButton];
+        self.dissolveButton.frame = CGRectMake(20, 30, _footerView.frame.size.width - 40, 35);
         
-        self.dissolveButton.frame = CGRectMake(20, CGRectGetMaxY(self.clearButton.frame) + 30, _footerView.frame.size.width - 40, 35);
-        
-        self.exitButton.frame = CGRectMake(20, CGRectGetMaxY(self.clearButton.frame) + 30, _footerView.frame.size.width - 40, 35);
+        self.exitButton.frame = CGRectMake(20, 30, _footerView.frame.size.width - 40, 35);
     }
     
     return _footerView;
@@ -221,15 +197,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    if (self.occupantType == GroupOccupantTypeOwner)
-    {
-        return 6;
-    }
-    else
-    {
-        return 5;
-    }
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -247,29 +215,12 @@
     }
     else if (indexPath.row == 1)
     {
-        cell.textLabel.text = NSLocalizedString(@"group.id", @"group ID");
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.detailTextLabel.text = _chatGroup.groupId;
-    }
-    else if (indexPath.row == 2)
-    {
-        cell.textLabel.text = NSLocalizedString(@"group.occupantCount", @"members count");
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%i / %i", (int)[_chatGroup.occupants count], (int)_chatGroup.setting.maxUsersCount];
-    }
-    else if (indexPath.row == 3)
-    {
         cell.textLabel.text = NSLocalizedString(@"title.groupSetting", @"Group Setting");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    else if (indexPath.row == 4)
+    else if (indexPath.row == 2)
     {
-        cell.textLabel.text = NSLocalizedString(@"title.groupSubjectChanging", @"Change group name");
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-    else if (indexPath.row == 5)
-    {
-        cell.textLabel.text = NSLocalizedString(@"title.groupBlackList", @"Group black list");
+        cell.textLabel.text = NSLocalizedString(@"group.removeAllMessages", @"remove all messages");
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -293,61 +244,15 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.row == 3) {
+    if (indexPath.row == 1) {
         GroupSettingViewController *settingController = [[GroupSettingViewController alloc] initWithGroup:_chatGroup];
         [self.navigationController pushViewController:settingController animated:YES];
-    }
-    else if (indexPath.row == 4)
-    {
-        GroupSubjectChangingViewController *changingController = [[GroupSubjectChangingViewController alloc] initWithGroup:_chatGroup];
-        [self.navigationController pushViewController:changingController animated:YES];
-    }
-    else if (indexPath.row == 5) {
-        GroupBansViewController *bansController = [[GroupBansViewController alloc] initWithGroup:_chatGroup];
-        [self.navigationController pushViewController:bansController animated:YES];
+    } else if(indexPath.row == 2){
+        [self clearAction];
     }
 }
 
 #pragma mark - EMChooseViewDelegate
-- (BOOL)viewController:(EMChooseViewController *)viewController didFinishSelectedSources:(NSArray *)selectedSources
-{
-    NSInteger maxUsersCount = _chatGroup.setting.maxUsersCount;
-    if (([selectedSources count] + _chatGroup.occupantsCount) > maxUsersCount) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"group.maxUserCount", nil) message:nil delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
-        [alertView show];
-        
-        return NO;
-    }
-    
-    [self showHudInView:self.view hint:NSLocalizedString(@"group.addingOccupant", @"add a group member...")];
-    
-    __weak typeof(self) weakSelf = self;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableArray *source = [NSMutableArray array];
-        for (NSString *username in selectedSources) {
-            [source addObject:username];
-        }
-        
-        NSString *username = [[EMClient sharedClient] currentUsername];
-        NSString *messageStr = [NSString stringWithFormat:NSLocalizedString(@"group.somebodyInvite", @"%@ invite you to join group \'%@\'"), username, weakSelf.chatGroup.subject];
-        EMError *error = nil;
-        weakSelf.chatGroup = [[EMClient sharedClient].groupManager addOccupants:source toGroup:weakSelf.chatGroup.groupId welcomeMessage:messageStr error:&error];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (!error) {
-                [weakSelf reloadDataSource];
-            }
-            else
-            {
-                [weakSelf hideHud];
-                [weakSelf showHint:error.errorDescription];
-            }
-        
-        });
-    });
-    
-    return YES;
-}
-
 - (void)groupBansChanged
 {
     [self.dataSource removeAllObjects];
@@ -430,18 +335,8 @@
 {
     [self.scrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     [self.scrollView removeGestureRecognizer:_longPress];
-    [self.addButton removeFromSuperview];
     
     BOOL showAddButton = NO;
-    if (self.occupantType == GroupOccupantTypeOwner) {
-        [self.scrollView addGestureRecognizer:_longPress];
-        [self.scrollView addSubview:self.addButton];
-        showAddButton = YES;
-    }
-    else if (self.chatGroup.setting.style == EMGroupStylePrivateMemberCanInvite && self.occupantType == GroupOccupantTypeMember) {
-        [self.scrollView addSubview:self.addButton];
-        showAddButton = YES;
-    }
     
     int tmp = ([self.dataSource count] + 1) % kColOfRow;
     int row = (int)([self.dataSource count] + 1) / kColOfRow;
@@ -454,7 +349,8 @@
     
     int i = 0;
     int j = 0;
-    BOOL isEditing = self.addButton.hidden ? YES : NO;
+    //!!!:
+    BOOL isEditing = NO;
     BOOL isEnd = NO;
     for (i = 0; i < row; i++) {
         for (j = 0; j < kColOfRow; j++) {
@@ -493,11 +389,6 @@
                 [self.scrollView addSubview:contactView];
             }
             else{
-                if(showAddButton && index == self.dataSource.count)
-                {
-                    self.addButton.frame = CGRectMake(j * kContactSize + 5, i * kContactSize + 10, kContactSize - 10, kContactSize - 10);
-                }
-                
                 isEnd = YES;
                 break;
             }
@@ -529,9 +420,9 @@
 {
     if (tap.state == UIGestureRecognizerStateEnded)
     {
-        if (self.addButton.hidden) {
+//        if (self.addButton.hidden) {
             [self setScrollViewEditing:NO];
-        }
+//        }
     }
 }
 
@@ -572,15 +463,6 @@
             [contactView setEditing:isEditing];
         }
     }
-    
-    self.addButton.hidden = isEditing;
-}
-
-- (void)addContact:(id)sender
-{
-    ContactSelectionViewController *selectionController = [[ContactSelectionViewController alloc] initWithBlockSelectedUsernames:_chatGroup.occupants];
-    selectionController.delegate = self;
-    [self.navigationController pushViewController:selectionController animated:YES];
 }
 
 //清空聊天记录

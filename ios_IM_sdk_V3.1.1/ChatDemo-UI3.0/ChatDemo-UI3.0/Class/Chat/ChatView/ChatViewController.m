@@ -279,11 +279,6 @@
         ChatGroupDetailViewController *detailController = [[ChatGroupDetailViewController alloc] initWithGroupId:self.conversation.conversationId];
         [self.navigationController pushViewController:detailController animated:YES];
     }
-    else if (self.conversation.type == EMConversationTypeChatRoom)
-    {
-        ChatroomDetailViewController *detailController = [[ChatroomDetailViewController alloc] initWithChatroomId:self.conversation.conversationId];
-        [self.navigationController pushViewController:detailController animated:YES];
-    }
 }
 
 - (void)deleteAllMessages:(id)sender

@@ -14,7 +14,6 @@
 
 #import "BaseTableViewCell.h"
 #import "ChatViewController.h"
-#import "CreateGroupViewController.h"
 #import "PublicGroupListViewController.h"
 #import "RealtimeSearchUtil.h"
 
@@ -214,12 +213,6 @@
 {
     PublicGroupListViewController *publicController = [[PublicGroupListViewController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:publicController animated:YES];
-}
-
-- (void)createGroup
-{
-    CreateGroupViewController *createChatroom = [[CreateGroupViewController alloc] init];
-    [self.navigationController pushViewController:createChatroom animated:YES];
 }
 
 #pragma mark - data
