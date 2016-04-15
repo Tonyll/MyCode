@@ -148,7 +148,6 @@
 		EA1BF0191CB6089D00F086BF /* EaseEmotionEscape.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BEF7C1CB6089D00F086BF /* EaseEmotionEscape.m */; };
 		EA1BF01A1CB6089D00F086BF /* EaseEmotionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BEF7E1CB6089D00F086BF /* EaseEmotionManager.m */; };
 		EA1BF01B1CB6089D00F086BF /* FixFopen.c in Sources */ = {isa = PBXBuildFile; fileRef = EA1BEF7F1CB6089D00F086BF /* FixFopen.c */; };
-		EA1BF01C1CB6089D00F086BF /* EaseConversationListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BEF821CB6089D00F086BF /* EaseConversationListViewController.m */; };
 		EA1BF01D1CB6089D00F086BF /* EaseLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BEF841CB6089D00F086BF /* EaseLocationViewController.m */; };
 		EA1BF01E1CB6089D00F086BF /* EaseMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BEF861CB6089D00F086BF /* EaseMessageViewController.m */; };
 		EA1BF01F1CB6089D00F086BF /* EaseRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BEF881CB6089D00F086BF /* EaseRefreshTableViewController.m */; };
@@ -604,8 +603,6 @@
 		EA1BEF7D1CB6089D00F086BF /* EaseEmotionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseEmotionManager.h; sourceTree = "<group>"; };
 		EA1BEF7E1CB6089D00F086BF /* EaseEmotionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseEmotionManager.m; sourceTree = "<group>"; };
 		EA1BEF7F1CB6089D00F086BF /* FixFopen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FixFopen.c; sourceTree = "<group>"; };
-		EA1BEF811CB6089D00F086BF /* EaseConversationListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseConversationListViewController.h; sourceTree = "<group>"; };
-		EA1BEF821CB6089D00F086BF /* EaseConversationListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseConversationListViewController.m; sourceTree = "<group>"; };
 		EA1BEF831CB6089D00F086BF /* EaseLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseLocationViewController.h; sourceTree = "<group>"; };
 		EA1BEF841CB6089D00F086BF /* EaseLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EaseLocationViewController.m; sourceTree = "<group>"; };
 		EA1BEF851CB6089D00F086BF /* EaseMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EaseMessageViewController.h; sourceTree = "<group>"; };
@@ -1536,8 +1533,6 @@
 		EA1BEF801CB6089D00F086BF /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				EA1BEF811CB6089D00F086BF /* EaseConversationListViewController.h */,
-				EA1BEF821CB6089D00F086BF /* EaseConversationListViewController.m */,
 				EA1BEF831CB6089D00F086BF /* EaseLocationViewController.h */,
 				EA1BEF841CB6089D00F086BF /* EaseLocationViewController.m */,
 				EA1BEF851CB6089D00F086BF /* EaseMessageViewController.h */,
@@ -2325,7 +2320,6 @@
 				283403091A9EBB8200B7DE9B /* GroupSubjectChangingViewController.m in Sources */,
 				D29A6BA91B7208DF002324BB /* UIImageView+HeadImage.m in Sources */,
 				EA1BF02B1CB6089D00F086BF /* EaseBubbleView+Text.m in Sources */,
-				EA1BF01C1CB6089D00F086BF /* EaseConversationListViewController.m in Sources */,
 				EA5BDCEC1CB630C400DDF9D3 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				EA5BDCD71CB630C400DDF9D3 /* MWPhotoBrowser.m in Sources */,
 				EA5BDCD01CB630C400DDF9D3 /* UIScrollView+MJExtension.m in Sources */,

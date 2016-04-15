@@ -37,8 +37,8 @@
          [NSDictionary dictionaryWithObjectsAndKeys:RGBACOLOR(245, 245, 245, 1), NSForegroundColorAttributeName, [UIFont fontWithName:@ "HelveticaNeue-CondensedBlack" size:21.0], NSFontAttributeName, nil]];
     }
     
-#warning 初始化环信SDK，详细内容在AppDelegate+EaseMob.m 文件中
-#warning SDK注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
+#pragma 初始化环信SDK，详细内容在AppDelegate+EaseMob.m 文件中
+#pragma SDK注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
     NSString *apnsCertName = nil;
 #if DEBUG
     apnsCertName = @"EaseMobDevPushNew";

@@ -16,6 +16,10 @@
 #import "EMSearchDisplayController.h"
 #import "RealtimeSearchUtil.h"
 
+#import "IConversationModel.h"
+#import "EaseConversationCell.h"
+#import "EaseConversationModel.h"
+
 @interface ConversationListController ()
 {
     dispatch_queue_t refreshQueue;

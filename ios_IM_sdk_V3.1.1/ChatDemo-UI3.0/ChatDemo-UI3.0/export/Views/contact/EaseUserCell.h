@@ -41,6 +41,7 @@ static CGFloat EaseUserCellMinHeight = 50;
 
 @protocol EaseUserCellDelegate <NSObject>
 
+@optional
 - (void)cellLongPressAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
