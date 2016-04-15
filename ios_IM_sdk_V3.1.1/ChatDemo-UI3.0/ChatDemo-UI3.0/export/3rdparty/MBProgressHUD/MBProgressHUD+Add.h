@@ -13,4 +13,7 @@
 + (void)showSuccess:(NSString *)success toView:(UIView *)view;
 
 + (MBProgressHUD *)showMessag:(NSString *)message toView:(UIView *)view;
+
++ (MBProgressHUD *)showMessag:(NSString *)message toView:(UIView *)view AfterDelay:(CGFloat)delay;
++ (MBProgressHUD *)showLoading:(NSString *)message AfterDelay:(CGFloat)delay;
 @end

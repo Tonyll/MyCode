@@ -14,14 +14,12 @@
 
 #import "ChatGroupDetailViewController.h"
 #import "ChatroomDetailViewController.h"
-#import "ContactListSelectViewController.h"
 #import "ChatDemoHelper.h"
 
 @interface ChatViewController ()<UIAlertViewDelegate, EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource,EMClientDelegate>
 {
     UIMenuItem *_copyMenuItem;
     UIMenuItem *_deleteMenuItem;
-    UIMenuItem *_transpondMenuItem;
 }
 
 @property (nonatomic) BOOL isPlayingAudio;
@@ -314,18 +312,6 @@
     }
 }
 
-- (void)transpondMenuAction:(id)sender
-{
-    if (self.menuIndexPath && self.menuIndexPath.row > 0) {
-        id<IMessageModel> model = [self.dataArray objectAtIndex:self.menuIndexPath.row];
-        ContactListSelectViewController *listViewController = [[ContactListSelectViewController alloc] initWithNibName:nil bundle:nil];
-        listViewController.messageModel = model;
-        [listViewController tableViewDidTriggerHeaderRefresh];
-        [self.navigationController pushViewController:listViewController animated:YES];
-    }
-    self.menuIndexPath = nil;
-}
-
 - (void)copyMenuAction:(id)sender
 {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
@@ -419,14 +405,10 @@
         _copyMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"copy", @"Copy") action:@selector(copyMenuAction:)];
     }
     
-    if (_transpondMenuItem == nil) {
-        _transpondMenuItem = [[UIMenuItem alloc] initWithTitle:NSLocalizedString(@"transpond", @"Transpond") action:@selector(transpondMenuAction:)];
-    }
-    
     if (messageType == EMMessageBodyTypeText) {
-        [self.menuController setMenuItems:@[_copyMenuItem, _deleteMenuItem,_transpondMenuItem]];
+        [self.menuController setMenuItems:@[_copyMenuItem, _deleteMenuItem]];
     } else if (messageType == EMMessageBodyTypeImage){
-        [self.menuController setMenuItems:@[_deleteMenuItem,_transpondMenuItem]];
+        [self.menuController setMenuItems:@[_deleteMenuItem]];
     } else {
         [self.menuController setMenuItems:@[_deleteMenuItem]];
     }
