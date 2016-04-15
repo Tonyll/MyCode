@@ -80,8 +80,6 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     BOOL loginSuccess = [notification.object boolValue];
     UINavigationController *navigationController = nil;
     if (loginSuccess) {//登陆成功加载主窗口控制器
-        //加载申请通知的数据
-        [[ApplyViewController shareController] loadDataSourceFromLocalDB];
         if (self.mainController == nil) {
             self.mainController = [[MainViewController alloc] init];
             navigationController = [[UINavigationController alloc] initWithRootViewController:self.mainController];

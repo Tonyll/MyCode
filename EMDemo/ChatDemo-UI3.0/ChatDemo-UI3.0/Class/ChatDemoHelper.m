@@ -52,7 +52,6 @@ static ChatDemoHelper *helper = nil;
     [[EMClient sharedClient] addDelegate:self delegateQueue:nil];
     [[EMClient sharedClient].groupManager addDelegate:self delegateQueue:nil];
     [[EMClient sharedClient].contactManager addDelegate:self delegateQueue:nil];
-    [[EMClient sharedClient].roomManager addDelegate:self delegateQueue:nil];
     [[EMClient sharedClient].chatManager addDelegate:self delegateQueue:nil];
     
 #if DEMO_CALL == 1
@@ -109,12 +108,6 @@ static ChatDemoHelper *helper = nil;
 
 #pragma mark - EMClientDelegate
 
-// 网络状态变化回调
-- (void)didConnectionStateChanged:(EMConnectionState)connectionState
-{
-    [self.mainVC networkChanged:connectionState];
-}
-
 - (void)didAutoLoginWithError:(EMError *)error
 {
     if (error) {
@@ -152,18 +145,6 @@ static ChatDemoHelper *helper = nil;
     [alertView show];
     [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
 }
-
-//- (void)didServersChanged
-//{
-//    [self _clearHelper];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
-//}
-//
-//- (void)didAppkeyChanged
-//{
-//    [self _clearHelper];
-//    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
-//}
 
 #pragma mark - EMChatManagerDelegate
 

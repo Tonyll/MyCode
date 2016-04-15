@@ -43,13 +43,6 @@
 {
     if (_showSearchBar != showSearchBar) {
         _showSearchBar = showSearchBar;
-        
-//        if (_showSearchBar) {
-//            <#statements#>
-//        }
-//        else{
-//            
-//        }
     }
 }
 

@@ -16,6 +16,10 @@
 #import "RealtimeSearchUtil.h"
 #import "UserProfileManager.h"
 
+#import "UIViewController+HUD.h"
+
+#import "MJRefresh.h"
+
 @implementation NSString (search)
 
 //根据用户昵称进行搜索
@@ -27,18 +31,31 @@
 @end
 
 @interface ContactListViewController ()<UISearchBarDelegate, UISearchDisplayDelegate,UIActionSheetDelegate,EaseUserCellDelegate>
-{
-    NSIndexPath *_currentLongPressIndex;
-}
 
 @property (strong, nonatomic) NSMutableArray *sectionTitles;
 @property (strong, nonatomic) NSMutableArray *contactsSource;
 
 @property (nonatomic) NSInteger unapplyCount;
 
+@property (strong, nonatomic) UISearchBar *searchBar;
+
+@property (nonatomic, readonly) UITableViewStyle style;
+
 @end
 
 @implementation ContactListViewController
+
+@synthesize rightItems = _rightItems;
+
+- (instancetype)initWithStyle:(UITableViewStyle)style
+{
+    self = [super init];
+    if (self) {
+        _style = style;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -50,7 +67,22 @@
     
     [self tableViewDidTriggerHeaderRefresh];
     
-    self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    // Uncomment the following line to preserve selection between presentations.
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
+        self.edgesForExtendedLayout =  UIRectEdgeNone;
+    }
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:self.style];
+    _tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.tableFooterView = self.defaultFooterView;
+    [self.view addSubview:_tableView];
+    
+    _page = 0;
+    _showRefreshHeader = NO;
+    _showRefreshFooter = NO;
+    _showTableBlankView = NO;
     
     // 环信UIdemo中有用到Parse, 加载用户好友个人信息
     [[UserProfileManager sharedInstance] loadUserProfileInBackgroundWithBuddy:self.contactsSource saveToLoacal:YES completion:NULL];
@@ -70,8 +102,7 @@
 
 #pragma mark - getter
 
-- (NSArray *)rightItems
-{
+- (NSArray *)rightItems {
     if (_rightItems == nil) {
         UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
         [addButton setImage:[UIImage imageNamed:@"addContact.png"] forState:UIControlStateNormal];
@@ -81,6 +112,84 @@
     }
     
     return _rightItems;
+}
+
+- (NSMutableArray *)dataArray
+{
+    if (_dataArray == nil) {
+        _dataArray = [NSMutableArray array];
+    }
+    
+    return _dataArray;
+}
+
+- (NSMutableDictionary *)dataDictionary
+{
+    if (_dataDictionary == nil) {
+        _dataDictionary = [NSMutableDictionary dictionary];
+    }
+    
+    return _dataDictionary;
+}
+
+- (UIView *)defaultFooterView
+{
+    if (_defaultFooterView == nil) {
+        _defaultFooterView = [[UIView alloc] init];
+    }
+    
+    return _defaultFooterView;
+}
+
+#pragma mark - setter
+
+- (void)setShowSearchBar:(BOOL)showSearchBar
+{
+    if (_showSearchBar != showSearchBar) {
+        _showSearchBar = showSearchBar;
+    }
+}
+
+- (void)setShowRefreshHeader:(BOOL)showRefreshHeader
+{
+    if (_showRefreshHeader != showRefreshHeader) {
+        _showRefreshHeader = showRefreshHeader;
+        if (_showRefreshHeader) {
+            __weak typeof(self) weakSelf = self;
+            self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+                [weakSelf tableViewDidTriggerHeaderRefresh];
+                [weakSelf.tableView.mj_header beginRefreshing];
+            }];
+            //            header.updatedTimeHidden = YES;
+        }
+        else{
+            //            [self.tableView removeHeader];
+        }
+    }
+}
+
+- (void)setShowRefreshFooter:(BOOL)showRefreshFooter
+{
+    if (_showRefreshFooter != showRefreshFooter) {
+        _showRefreshFooter = showRefreshFooter;
+        if (_showRefreshFooter) {
+            __weak typeof(self) weakSelf = self;
+            self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+                [weakSelf tableViewDidTriggerFooterRefresh];
+                [weakSelf.tableView.mj_footer beginRefreshing];
+            }];
+        }
+        else{
+            //            [self.tableView removeFooter];
+        }
+    }
+}
+
+- (void)setShowTableBlankView:(BOOL)showTableBlankView
+{
+    if (_showTableBlankView != showTableBlankView) {
+        _showTableBlankView = showTableBlankView;
+    }
 }
 
 #pragma mark - Table view data source
@@ -134,6 +243,18 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return KCELLDEFAULTHEIGHT;
+}
+
+- (void)autoTriggerHeaderRefresh
+{
+    if (self.showRefreshHeader) {
+        [self tableViewDidTriggerHeaderRefresh];
+    }
+}
+
 #pragma mark - Table view delegate
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -168,11 +289,6 @@
     return contentView;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return UITableViewCellEditingStyleDelete;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -205,44 +321,6 @@
         ChatViewController *chatController = [[ChatViewController alloc] initWithConversationChatter:model.buddy conversationType:EMConversationTypeChat];
         chatController.title = model.nickname.length > 0 ? model.nickname : model.buddy;
         [self.navigationController pushViewController:chatController animated:YES];
-    }
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    if (indexPath.section == 0) {
-        return NO;
-    }
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSString *loginUsername = [[EMClient sharedClient] currentUsername];
-        EaseUserModel *model = [[self.dataArray objectAtIndex:(indexPath.section - 1)] objectAtIndex:indexPath.row];
-        if ([model.buddy isEqualToString:loginUsername]) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:NSLocalizedString(@"friend.notDeleteSelf", @"can't delete self") delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
-            [alertView show];
-            
-            return;
-        }
-        
-        EMError *error = [[EMClient sharedClient].contactManager deleteContact:model.buddy];
-        if (!error) {
-            [[EMClient sharedClient].chatManager deleteConversation:model.buddy deleteMessages:YES];
-            
-            [tableView beginUpdates];
-            [[self.dataArray objectAtIndex:(indexPath.section - 1)] removeObjectAtIndex:indexPath.row];
-            [self.contactsSource removeObject:model.buddy];
-            [tableView  deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView endUpdates];
-        }
-        else{
-            [self showHint:[NSString stringWithFormat:NSLocalizedString(@"deleteFailed", @"Delete failed:%@"), error.errorDescription]];
-            [tableView reloadData];
-        }
     }
 }
 
@@ -287,15 +365,9 @@
 {
     [self.dataArray removeAllObjects];
     [self.sectionTitles removeAllObjects];
-    NSMutableArray *contactsSource = [NSMutableArray array];
     
-    //从获取的数据中剔除黑名单中的好友
-    NSArray *blockList = [[EMClient sharedClient].contactManager getBlackListFromDB];
-    for (NSString *buddy in buddyList) {
-        if (![blockList containsObject:buddy]) {
-            [contactsSource addObject:buddy];
-        }
-    }
+    //不需要删除黑名单中的好友
+    NSMutableArray *contactsSource = [NSMutableArray arrayWithArray:buddyList];
     
     //建立索引的核心, 返回27，是a－z和＃
     UILocalizedIndexedCollation *indexCollation = [UILocalizedIndexedCollation currentCollation];
@@ -355,7 +427,6 @@
 
 - (void)tableViewDidTriggerHeaderRefresh
 {
-//    [self showHudInView:self.view hint:NSLocalizedString(@"loadData", @"Load data...")];
     __weak typeof(self) weakself = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         EMError *error = nil;
@@ -370,10 +441,6 @@
                     [weakself.contactsSource addObject:username];
                 }
                 
-                NSString *loginUsername = [[EMClient sharedClient] currentUsername];
-                if (loginUsername && loginUsername.length > 0) {
-                    [weakself.contactsSource addObject:loginUsername];
-                }
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [weakself _sortDataArray:self.contactsSource];
                 });
@@ -432,6 +499,23 @@
 {
     AddFriendViewController *addController = [[AddFriendViewController alloc] initWithStyle:UITableViewStylePlain];
     [self.navigationController pushViewController:addController animated:YES];
+}
+
+- (void)tableViewDidFinishTriggerHeader:(BOOL)isHeader reload:(BOOL)reload
+{
+    __weak typeof(self) weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (reload) {
+            [weakSelf.tableView reloadData];
+        }
+        
+        if (isHeader) {
+            [weakSelf.tableView.mj_header endRefreshing];
+        }
+        else{
+            [weakSelf.tableView.mj_footer endRefreshing];
+        }
+    });
 }
 
 @end

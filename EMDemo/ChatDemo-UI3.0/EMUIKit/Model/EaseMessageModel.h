@@ -92,6 +92,12 @@
 //消息：压缩附件下载地址
 @property (strong, nonatomic) NSString *thumbnailFileURLPath;
 
+//#pragma mark - 追加
+@property (nonatomic,copy)NSString * vcId;
+
 - (instancetype)initWithMessage:(EMMessage *)message;
+
+- (id)initWithName:(NSString *)name image:(UIImage *)image vcId:(NSString *)vcId;
++ (EaseMessageModel *)messageModelWithName:(NSString *)name image:(UIImage *)image vcId:(NSString *)vcId;
 
 @end

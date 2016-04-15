@@ -11,8 +11,6 @@
   */
 
 #import "SettingsViewController.h"
-
-#import "ApplyViewController.h"
 #import "PushNotificationViewController.h"
 
 @interface SettingsViewController ()
@@ -235,7 +233,6 @@
                 [weakSelf showHint:error.errorDescription];
             }
             else{
-                [[ApplyViewController shareController] clear];
                 [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_LOGINCHANGE object:@NO];
             }
         });

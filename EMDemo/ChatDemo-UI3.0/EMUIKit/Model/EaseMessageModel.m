@@ -159,4 +159,20 @@
     return scaledImage;
 }
 
+- (id)initWithName:(NSString *)name image:(UIImage *)image vcId:(NSString *)vcId
+{
+    self = [super init];
+    if (self) {
+        self.nickname = name;
+        self.avatarImage = image;
+        self.vcId = vcId;
+    }
+    return self;
+}
++ (EaseMessageModel *)messageModelWithName:(NSString *)name image:(UIImage *)image vcId:(NSString *)vcId
+{
+    EaseMessageModel * mm = [[EaseMessageModel alloc]initWithName:name image:image vcId:vcId];
+    return mm;
+}
+
 @end

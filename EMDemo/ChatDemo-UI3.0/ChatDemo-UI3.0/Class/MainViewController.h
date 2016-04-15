@@ -23,8 +23,6 @@
 
 - (void)setupUnreadMessageCount;
 
-- (void)networkChanged:(EMConnectionState)connectionState;
-
 - (void)didReceiveLocalNotification:(UILocalNotification *)notification;
 
 - (void)playSoundAndVibration;

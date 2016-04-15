@@ -13,7 +13,6 @@
 #import "ChatDemoHelper.h"
 
 #import "AppDelegate.h"
-#import "ApplyViewController.h"
 #import "MBProgressHUD.h"
 
 
@@ -128,12 +127,6 @@ static ChatDemoHelper *helper = nil;
 }
 
 #pragma mark - EMClientDelegate
-
-// 网络状态变化回调
-- (void)didConnectionStateChanged:(EMConnectionState)connectionState
-{
-    [self.mainVC networkChanged:connectionState];
-}
 
 - (void)didAutoLoginWithError:(EMError *)error
 {
@@ -286,178 +279,6 @@ static ChatDemoHelper *helper = nil;
             [_mainVC.navigationController setViewControllers:viewControllers animated:YES];
         }
     }
-}
-
-- (void)didReceiveJoinGroupApplication:(EMGroup *)aGroup
-                             applicant:(NSString *)aApplicant
-                                reason:(NSString *)aReason
-{
-    if (!aGroup || !aApplicant) {
-        return;
-    }
-    
-    if (!aReason || aReason.length == 0) {
-        aReason = [NSString stringWithFormat:NSLocalizedString(@"group.applyJoin", @"%@ apply to join groups\'%@\'"), aApplicant, aGroup.subject];
-    }
-    else{
-        aReason = [NSString stringWithFormat:NSLocalizedString(@"group.applyJoinWithName", @"%@ apply to join groups\'%@\'：%@"), aApplicant, aGroup.subject, aReason];
-    }
-    
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":aGroup.subject, @"groupId":aGroup.groupId, @"username":aApplicant, @"groupname":aGroup.subject, @"applyMessage":aReason, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleJoinGroup]}];
-    [[ApplyViewController shareController] addNewApply:dic];
-    if (self.mainVC) {
-        [self.mainVC setupUntreatedApplyCount];
-#if !TARGET_IPHONE_SIMULATOR
-        [self.mainVC playSoundAndVibration];
-#endif
-    }
-    
-    if (self.contactViewVC) {
-        [self.contactViewVC reloadApplyView];
-    }
-}
-
-- (void)didJoinedGroup:(EMGroup *)aGroup
-               inviter:(NSString *)aInviter
-               message:(NSString *)aMessage
-{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:[NSString stringWithFormat:@"%@ invite you to group: %@ [%@]", aInviter, aGroup.subject, aGroup.groupId] delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
-    [alertView show];
-}
-
-- (void)didReceiveDeclinedJoinGroup:(NSString *)aGroupId
-                             reason:(NSString *)aReason
-{
-    if (!aReason || aReason.length == 0) {
-        aReason = [NSString stringWithFormat:NSLocalizedString(@"group.beRefusedToJoin", @"be refused to join the group\'%@\'"), aGroupId];
-    }
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:aReason delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
-    [alertView show];
-}
-
-- (void)didReceiveAcceptedJoinGroup:(EMGroup *)aGroup
-{
-    NSString *message = [NSString stringWithFormat:NSLocalizedString(@"group.agreedAndJoined", @"agreed to join the group of \'%@\'"), aGroup.subject];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"prompt", @"Prompt") message:message delegate:nil cancelButtonTitle:NSLocalizedString(@"ok", @"OK") otherButtonTitles:nil, nil];
-    [alertView show];
-}
-
-- (void)didReceiveGroupInvitation:(NSString *)aGroupId
-                          inviter:(NSString *)aInviter
-                          message:(NSString *)aMessage
-{
-    if (!aGroupId || !aInviter) {
-        return;
-    }
-    
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":@"", @"groupId":aGroupId, @"username":aInviter, @"groupname":@"", @"applyMessage":aMessage, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleGroupInvitation]}];
-    [[ApplyViewController shareController] addNewApply:dic];
-    if (self.mainVC) {
-        [self.mainVC setupUntreatedApplyCount];
-#if !TARGET_IPHONE_SIMULATOR
-        [self.mainVC playSoundAndVibration];
-#endif
-    }
-    
-    if (self.contactViewVC) {
-        [self.contactViewVC reloadApplyView];
-    }
-}
-
-#pragma mark - EMContactManagerDelegate
-- (void)didReceiveAgreedFromUsername:(NSString *)aUsername
-{
-    NSString *msgstr = [NSString stringWithFormat:@"%@同意了加好友申请", aUsername];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:msgstr delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alertView show];
-}
-
-- (void)didReceiveDeclinedFromUsername:(NSString *)aUsername
-{
-    NSString *msgstr = [NSString stringWithFormat:@"%@拒绝了加好友申请", aUsername];
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:msgstr delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-    [alertView show];
-}
-
-- (void)didReceiveDeletedFromUsername:(NSString *)aUsername
-{
-    NSMutableArray *viewControllers = [NSMutableArray arrayWithArray:_mainVC.navigationController.viewControllers];
-    ChatViewController *chatViewContrller = nil;
-    for (id viewController in viewControllers)
-    {
-        if ([viewController isKindOfClass:[ChatViewController class]] && [aUsername isEqualToString:[(ChatViewController *)viewController conversation].conversationId])
-        {
-            chatViewContrller = viewController;
-            break;
-        }
-    }
-    if (chatViewContrller)
-    {
-        [viewControllers removeObject:chatViewContrller];
-        if ([viewControllers count] > 0) {
-            [_mainVC.navigationController setViewControllers:@[viewControllers[0]] animated:YES];
-        } else {
-            [_mainVC.navigationController setViewControllers:viewControllers animated:YES];
-        }
-    }
-    [_mainVC showHint:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"delete", @"delete"), aUsername]];
-    [_contactViewVC reloadDataSource];
-}
-
-- (void)didReceiveAddedFromUsername:(NSString *)aUsername
-{
-    [_contactViewVC reloadDataSource];
-}
-
-- (void)didReceiveFriendInvitationFromUsername:(NSString *)aUsername
-                                       message:(NSString *)aMessage
-{
-    if (!aUsername) {
-        return;
-    }
-    
-    if (!aMessage) {
-        aMessage = [NSString stringWithFormat:NSLocalizedString(@"friend.somebodyAddWithName", @"%@ add you as a friend"), aUsername];
-    }
-    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"title":aUsername, @"username":aUsername, @"applyMessage":aMessage, @"applyStyle":[NSNumber numberWithInteger:ApplyStyleFriend]}];
-    [[ApplyViewController shareController] addNewApply:dic];
-    if (self.mainVC) {
-        [self.mainVC setupUntreatedApplyCount];
-#if !TARGET_IPHONE_SIMULATOR
-        [self.mainVC playSoundAndVibration];
-        
-        BOOL isAppActivity = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
-        if (!isAppActivity) {
-            //发送本地推送
-            UILocalNotification *notification = [[UILocalNotification alloc] init];
-            notification.fireDate = [NSDate date]; //触发通知的时间
-            notification.alertBody = [NSString stringWithFormat:NSLocalizedString(@"friend.somebodyAddWithName", @"%@ add you as a friend"), aUsername];
-            notification.alertAction = NSLocalizedString(@"open", @"Open");
-            notification.timeZone = [NSTimeZone defaultTimeZone];
-        }
-#endif
-    }
-    [_contactViewVC reloadApplyView];
-}
-
-#pragma mark - EMChatroomManagerDelegate
-
-- (void)didReceiveUserJoinedChatroom:(EMChatroom *)aChatroom
-                            username:(NSString *)aUsername
-{
-    
-}
-
-- (void)didReceiveUserLeavedChatroom:(EMChatroom *)aChatroom
-                            username:(NSString *)aUsername
-{
-
-}
-
-- (void)didReceiveKickedFromChatroom:(EMChatroom *)aChatroom
-                              reason:(EMChatroomBeKickedReason)aReason
-{
-    
 }
 
 #pragma mark - EMCallManagerDelegate
@@ -655,7 +476,7 @@ static ChatDemoHelper *helper = nil;
 {
     if (_callSession) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            EMError *error = [[EMClient sharedClient].callManager answerCall:_callSession.sessionId];
+            EMError *error = [[EMClient sharedClient].callManager answerCall:self->_callSession.sessionId];
             if (error) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     if (error.code == EMErrorNetworkUnavailable) {

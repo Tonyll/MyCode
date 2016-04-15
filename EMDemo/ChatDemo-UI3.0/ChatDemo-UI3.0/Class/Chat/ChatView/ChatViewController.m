@@ -10,7 +10,6 @@
 
 #import "ChatGroupDetailViewController.h"
 #import "ChatroomDetailViewController.h"
-#import "UserProfileViewController.h"
 #import "UserProfileManager.h"
 #import "ContactListSelectViewController.h"
 #import "ChatDemoHelper.h"
@@ -159,8 +158,8 @@
 - (void)messageViewController:(EaseMessageViewController *)viewController
    didSelectAvatarMessageModel:(id<IMessageModel>)messageModel
 {
-    UserProfileViewController *userprofile = [[UserProfileViewController alloc] initWithUsername:messageModel.message.from];
-    [self.navigationController pushViewController:userprofile animated:YES];
+    
+    //!!!: need to do , click User Image
 }
 
 #pragma mark - EaseMessageViewControllerDataSource

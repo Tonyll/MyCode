@@ -57,6 +57,10 @@ didFinishLaunchingWithOptions:launchOptions
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    
+    NSLog(@"Remote Notification");
+    
+    
     if (_mainController) {
         [_mainController jumpToChatList];
     }
@@ -64,6 +68,9 @@ didFinishLaunchingWithOptions:launchOptions
 
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
 {
+    
+    NSLog(@"Local Notification");
+    
     if (_mainController) {
         [_mainController didReceiveLocalNotification:notification];
     }

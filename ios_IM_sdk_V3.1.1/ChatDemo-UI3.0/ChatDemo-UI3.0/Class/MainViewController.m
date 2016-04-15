@@ -13,7 +13,6 @@
 #import "MainViewController.h"
 
 #import "SettingsViewController.h"
-#import "ApplyViewController.h"
 #import "ChatViewController.h"
 #import "ConversationListController.h"
 #import "ContactListViewController.h"
@@ -63,19 +62,16 @@ static NSString *kGroupName = @"GroupName";
     
     //获取未读消息数，此时并没有把self注册为SDK的delegate，读取出的未读数是上次退出程序时的
 //    [self didUnreadMessagesCountChanged];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUntreatedApplyCount) name:@"setupUntreatedApplyCount" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount) name:@"setupUnreadMessageCount" object:nil];
     
     [self setupSubviews];
     self.selectedIndex = 0;
-    
     UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [addButton setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
     [addButton addTarget:_contactsVC action:@selector(addFriendAction) forControlEvents:UIControlEventTouchUpInside];
     _addFriendItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     
     [self setupUnreadMessageCount];
-    [self setupUntreatedApplyCount];
     
     [ChatDemoHelper shareHelper].contactViewVC = _contactsVC;
     [ChatDemoHelper shareHelper].conversationListVC = _chatListVC;
@@ -116,7 +112,6 @@ static NSString *kGroupName = @"GroupName";
     self.tabBar.selectionIndicatorImage = [[UIImage imageNamed:@"tabbarSelectBg"] stretchableImageWithLeftCapWidth:25 topCapHeight:25];
     
     _chatListVC = [[ConversationListController alloc] initWithNibName:nil bundle:nil];
-    [_chatListVC networkChanged:_connectionState];
     _chatListVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"title.conversation", @"Conversations")
                                                            image:nil
                                                              tag:0];
@@ -181,24 +176,6 @@ static NSString *kGroupName = @"GroupName";
     
     UIApplication *application = [UIApplication sharedApplication];
     [application setApplicationIconBadgeNumber:unreadCount];
-}
-
-- (void)setupUntreatedApplyCount
-{
-    NSInteger unreadCount = [[[ApplyViewController shareController] dataSource] count];
-    if (_contactsVC) {
-        if (unreadCount > 0) {
-            _contactsVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i",(int)unreadCount];
-        }else{
-            _contactsVC.tabBarItem.badgeValue = nil;
-        }
-    }
-}
-
-- (void)networkChanged:(EMConnectionState)connectionState
-{
-    _connectionState = connectionState;
-    [_chatListVC networkChanged:connectionState];
 }
 
 - (void)playSoundAndVibration{
@@ -306,8 +283,6 @@ static NSString *kGroupName = @"GroupName";
     
     //发送通知
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-//    UIApplication *application = [UIApplication sharedApplication];
-//    application.applicationIconBadgeNumber += 1;
 }
 
 #pragma mark - 自动登录回调

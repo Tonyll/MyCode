@@ -12,7 +12,6 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
-#import "ApplyViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, EMChatManagerDelegate>
 {

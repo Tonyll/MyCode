@@ -17,7 +17,6 @@
 #import "BlackListViewController.h"
 #import "DebugViewController.h"
 #import "EditNicknameViewController.h"
-#import "UserProfileEditViewController.h"
 
 @interface SettingsViewController ()
 
@@ -112,7 +111,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 7;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -135,44 +134,6 @@
             cell.textLabel.text = NSLocalizedString(@"title.apnsSetting", @"Apns Settings");
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         }
-        else if (indexPath.row == 2)
-        {
-            cell.textLabel.text = NSLocalizedString(@"title.buddyBlock", @"Black List");
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-        else if (indexPath.row == 3)
-        {
-            cell.textLabel.text = NSLocalizedString(@"title.debug", @"Debug");
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        }
-        else if (indexPath.row == 4){
-            cell.textLabel.text = NSLocalizedString(@"setting.deleteConWhenLeave", @"Delete conversation when leave a group");
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            self.delConversationSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.delConversationSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.delConversationSwitch.frame.size.height) / 2, self.delConversationSwitch.frame.size.width, self.delConversationSwitch.frame.size.height);
-            [cell.contentView addSubview:self.delConversationSwitch];
-        } else if (indexPath.row == 5){
-            cell.textLabel.text = NSLocalizedString(@"setting.iospushname", @"iOS push nickname");
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else if (indexPath.row == 6){
-            cell.textLabel.text = NSLocalizedString(@"setting.personalInfo", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            while (cell.contentView.subviews.count) {
-                UIView* child = cell.contentView.subviews.lastObject;
-                [child removeFromSuperview];
-            }
-        } else if (indexPath.row == 7){
-            cell.textLabel.text = NSLocalizedString(@"setting.showCallInfo", nil);
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            self.showCallInfoSwitch.frame = CGRectMake(self.tableView.frame.size.width - (self.showCallInfoSwitch.frame.size.width + 10), (cell.contentView.frame.size.height - self.showCallInfoSwitch.frame.size.height) / 2, self.showCallInfoSwitch.frame.size.width, self.showCallInfoSwitch.frame.size.height);
-            [cell.contentView addSubview:self.showCallInfoSwitch];
-        } else if (indexPath.row == 8){
-            cell.textLabel.text = NSLocalizedString(@"setting.setBitrate", nil);
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-            while (cell.contentView.subviews.count) {
-                UIView* child = cell.contentView.subviews.lastObject;
-                [child removeFromSuperview];
-            }
-        }
     }
     
     return cell;
@@ -192,27 +153,6 @@
         PushNotificationViewController *pushController = [[PushNotificationViewController alloc] initWithStyle:UITableViewStylePlain];
         [self.navigationController pushViewController:pushController animated:YES];
     }
-    else if (indexPath.row == 2)
-    {
-        BlackListViewController *blackController = [[BlackListViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:blackController animated:YES];
-    }
-    else if (indexPath.row == 3)
-    {
-        DebugViewController *debugController = [[DebugViewController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:debugController animated:YES];
-    } else if (indexPath.row == 5) {
-        EditNicknameViewController *editName = [[EditNicknameViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:editName animated:YES];
-    } else if (indexPath.row == 6){
-        UserProfileEditViewController *userProfile = [[UserProfileEditViewController alloc] initWithStyle:UITableViewStylePlain];
-        [self.navigationController pushViewController:userProfile animated:YES];
-        
-    } else if (indexPath.row == 8) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"setting.setBitrate", @"Set Bitrate") delegate:self cancelButtonTitle:NSLocalizedString(@"cancel", @"Cancel") otherButtonTitles:NSLocalizedString(@"ok", @"OK"), nil];
-        [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
-        [alert show];
-    }
 }
 
 //弹出提示的代理方法
@@ -226,7 +166,6 @@
             int val;
             if ([scan scanInt:&val] && [scan isAtEnd]) {
                 if ([nameTextField.text intValue] >= 150 && [nameTextField.text intValue] <= 1000) {
-//                    [CallViewController saveBitrate:nameTextField.text];
                     flag = NO;
                 }
             }

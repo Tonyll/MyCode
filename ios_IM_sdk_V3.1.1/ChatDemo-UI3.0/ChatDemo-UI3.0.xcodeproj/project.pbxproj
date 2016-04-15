@@ -39,10 +39,6 @@
 		3CE6293319A1B13700829632 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE6293219A1B13700829632 /* CoreText.framework */; };
 		90011F921AE4BF090088D549 /* EMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90011F911AE4BF090088D549 /* EMAlertView.m */; };
 		9003D86E1939D8D000DC38A4 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9003D7861939D8D000DC38A4 /* ChatViewController.m */; };
-		9003D9131939D8D000DC38A4 /* AddFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9003D85E1939D8D000DC38A4 /* AddFriendCell.m */; };
-		9003D9141939D8D000DC38A4 /* AddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9003D8601939D8D000DC38A4 /* AddFriendViewController.m */; };
-		9003D9151939D8D000DC38A4 /* ApplyFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9003D8621939D8D000DC38A4 /* ApplyFriendCell.m */; };
-		9003D9161939D8D000DC38A4 /* ApplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9003D8641939D8D000DC38A4 /* ApplyViewController.m */; };
 		9003D9181939D8D000DC38A4 /* RealtimeSearchUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9003D8671939D8D000DC38A4 /* RealtimeSearchUtil.m */; };
 		902DEC551931D934006CA75E /* libresolv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 902DEC541931D934006CA75E /* libresolv.dylib */; };
 		90517D671A5C3C1F008F1315 /* AppDelegate+EaseMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 90517D661A5C3C1F008F1315 /* AppDelegate+EaseMob.m */; };
@@ -390,14 +386,6 @@
 		90011F911AE4BF090088D549 /* EMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMAlertView.m; sourceTree = "<group>"; };
 		9003D7851939D8D000DC38A4 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
 		9003D7861939D8D000DC38A4 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
-		9003D85D1939D8D000DC38A4 /* AddFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendCell.h; sourceTree = "<group>"; };
-		9003D85E1939D8D000DC38A4 /* AddFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendCell.m; sourceTree = "<group>"; };
-		9003D85F1939D8D000DC38A4 /* AddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddFriendViewController.h; sourceTree = "<group>"; };
-		9003D8601939D8D000DC38A4 /* AddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddFriendViewController.m; sourceTree = "<group>"; };
-		9003D8611939D8D000DC38A4 /* ApplyFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyFriendCell.h; sourceTree = "<group>"; };
-		9003D8621939D8D000DC38A4 /* ApplyFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyFriendCell.m; sourceTree = "<group>"; };
-		9003D8631939D8D000DC38A4 /* ApplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyViewController.h; sourceTree = "<group>"; };
-		9003D8641939D8D000DC38A4 /* ApplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyViewController.m; sourceTree = "<group>"; };
 		9003D8661939D8D000DC38A4 /* RealtimeSearchUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealtimeSearchUtil.h; sourceTree = "<group>"; };
 		9003D8671939D8D000DC38A4 /* RealtimeSearchUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealtimeSearchUtil.m; sourceTree = "<group>"; };
 		902DEC541931D934006CA75E /* libresolv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libresolv.dylib; path = usr/lib/libresolv.dylib; sourceTree = SDKROOT; };
@@ -1047,14 +1035,6 @@
 		9003D85C1939D8D000DC38A4 /* FriendApply */ = {
 			isa = PBXGroup;
 			children = (
-				9003D85D1939D8D000DC38A4 /* AddFriendCell.h */,
-				9003D85E1939D8D000DC38A4 /* AddFriendCell.m */,
-				9003D85F1939D8D000DC38A4 /* AddFriendViewController.h */,
-				9003D8601939D8D000DC38A4 /* AddFriendViewController.m */,
-				9003D8611939D8D000DC38A4 /* ApplyFriendCell.h */,
-				9003D8621939D8D000DC38A4 /* ApplyFriendCell.m */,
-				9003D8631939D8D000DC38A4 /* ApplyViewController.h */,
-				9003D8641939D8D000DC38A4 /* ApplyViewController.m */,
 			);
 			path = FriendApply;
 			sourceTree = "<group>";
@@ -2296,7 +2276,6 @@
 				90EF2CEF192F2B4E00BDC549 /* SRSlimeView.m in Sources */,
 				EA1BF02E1CB6089D00F086BF /* EaseBubbleView.m in Sources */,
 				EA5BDCC11CB630C400DDF9D3 /* MJRefreshBackFooter.m in Sources */,
-				9003D9131939D8D000DC38A4 /* AddFriendCell.m in Sources */,
 				EA5BDCC21CB630C400DDF9D3 /* MJRefreshComponent.m in Sources */,
 				EA1BF0271CB6089D00F086BF /* EaseBubbleView+File.m in Sources */,
 				EA1BF02D1CB6089D00F086BF /* EaseBubbleView+Voice.m in Sources */,
@@ -2340,7 +2319,6 @@
 				EA5BDCDC1CB630C400DDF9D3 /* EMSDImageCache.m in Sources */,
 				EA1BF0191CB6089D00F086BF /* EaseEmotionEscape.m in Sources */,
 				EA1BF0351CB6089D00F086BF /* EaseChatBarMoreView.m in Sources */,
-				9003D9141939D8D000DC38A4 /* AddFriendViewController.m in Sources */,
 				EA1BF0331CB6089D00F086BF /* EaseFaceView.m in Sources */,
 				3C914D8519514BBD0002DAD3 /* ContactSelectionViewController.m in Sources */,
 				EA1BF0241CB6089D00F086BF /* EaseCustomMessageCell.m in Sources */,
@@ -2348,7 +2326,6 @@
 				D29A6BA91B7208DF002324BB /* UIImageView+HeadImage.m in Sources */,
 				EA1BF02B1CB6089D00F086BF /* EaseBubbleView+Text.m in Sources */,
 				EA1BF01C1CB6089D00F086BF /* EaseConversationListViewController.m in Sources */,
-				9003D9151939D8D000DC38A4 /* ApplyFriendCell.m in Sources */,
 				EA5BDCEC1CB630C400DDF9D3 /* NSIndexPath+PSTCollectionViewAdditions.m in Sources */,
 				EA5BDCD71CB630C400DDF9D3 /* MWPhotoBrowser.m in Sources */,
 				EA5BDCD01CB630C400DDF9D3 /* UIScrollView+MJExtension.m in Sources */,
@@ -2366,7 +2343,6 @@
 				EA5BDCF41CB630C400DDF9D3 /* PSTCollectionViewUpdateItem.m in Sources */,
 				EA1BF02C1CB6089D00F086BF /* EaseBubbleView+Video.m in Sources */,
 				EA5BDCD51CB630C400DDF9D3 /* MWGridViewController.m in Sources */,
-				9003D9161939D8D000DC38A4 /* ApplyViewController.m in Sources */,
 				EA1BEFCC1CB6089D00F086BF /* EMVoiceConverter.mm in Sources */,
 				EA1BF0321CB6089D00F086BF /* EaseTextView.m in Sources */,
 				90911034192EEA70008A48AA /* main.m in Sources */,

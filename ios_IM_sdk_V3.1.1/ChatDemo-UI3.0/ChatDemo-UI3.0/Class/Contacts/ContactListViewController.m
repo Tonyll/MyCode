@@ -15,8 +15,6 @@
 //#import "EaseChineseToPinyin.h"
 #import "ChatViewController.h"
 #import "ChatroomListViewController.h"
-#import "AddFriendViewController.h"
-#import "ApplyViewController.h"
 #import "EMSearchBar.h"
 #import "EMSearchDisplayController.h"
 #import "RealtimeSearchUtil.h"
@@ -54,8 +52,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    [self reloadApplyView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -212,8 +208,7 @@
 
 - (void)addContactAction
 {
-    AddFriendViewController *addController = [[AddFriendViewController alloc] initWithStyle:UITableViewStylePlain];
-    [self.navigationController pushViewController:addController animated:YES];
+    
 }
 
 #pragma mark - private data
@@ -350,26 +345,11 @@
     [self.tableView reloadData];
 }
 
-- (void)reloadApplyView
-{
-    NSInteger count = [[[ApplyViewController shareController] dataSource] count];
-    self.unapplyCount = count;
-    [self.tableView reloadData];
-}
-
 - (void)reloadGroupView
 {
-    [self reloadApplyView];
-    
     if (_groupController) {
         [_groupController reloadDataSource];
     }
-}
-
-- (void)addFriendAction
-{
-    AddFriendViewController *addController = [[AddFriendViewController alloc] initWithStyle:UITableViewStylePlain];
-    [self.navigationController pushViewController:addController animated:YES];
 }
 
 @end

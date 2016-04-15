@@ -41,13 +41,13 @@
 //#warning SDK注册 APNS文件的名字, 需要与后台上传证书时的名字一一对应
     NSString *apnsCertName = nil;
 #if DEBUG
-    apnsCertName = @"SupportPushCert";
+    apnsCertName = @"EaseMobDevPushNew";//@"SupportPushCert";
 #else
-    apnsCertName = @"SupportPushCert";
+    apnsCertName = @"EaseMobDisPushNew";//@"SupportPushCert";
 #endif
     [self easemobApplication:application
 didFinishLaunchingWithOptions:launchOptions
-                      appkey:@"869557506#easetonytest"
+                      appkey:@"tuozhong#jlxtest"//@"869557506#easetonytest"
                 apnsCertName:apnsCertName
                  otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
 

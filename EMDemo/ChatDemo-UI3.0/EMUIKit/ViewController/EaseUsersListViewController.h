@@ -19,11 +19,6 @@
 - (void)userListViewController:(EaseUsersListViewController *)userListViewController
             didSelectUserModel:(id<IUserModel>)userModel;
 
-@optional
-
-- (void)userListViewController:(EaseUsersListViewController *)userListViewController
-            didDeleteUserModel:(id<IUserModel>)userModel;
-
 @end
 
 @protocol EMUserListViewControllerDataSource <NSObject>

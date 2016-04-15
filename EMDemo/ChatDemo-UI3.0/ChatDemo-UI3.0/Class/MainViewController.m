@@ -34,7 +34,6 @@ static NSString *kGroupName = @"GroupName";
     ConversationListController *_chatListVC;
     ContactListViewController *_contactsVC;
     SettingsViewController *_settingsVC;
-//    __weak CallViewController *_callController;
     
     UIBarButtonItem *_addFriendItem;
 }
@@ -119,7 +118,6 @@ static NSString *kGroupName = @"GroupName";
     self.tabBar.selectionIndicatorImage = [[UIImage imageNamed:@"tabbarSelectBg"] stretchableImageWithLeftCapWidth:25 topCapHeight:25];
     
     _chatListVC = [[ConversationListController alloc] initWithNibName:nil bundle:nil];
-    [_chatListVC networkChanged:_connectionState];
     _chatListVC.tabBarItem = [[UITabBarItem alloc] initWithTitle:NSLocalizedString(@"title.conversation", @"Conversations")
                                                            image:nil
                                                              tag:0];
@@ -196,12 +194,6 @@ static NSString *kGroupName = @"GroupName";
             _contactsVC.tabBarItem.badgeValue = nil;
         }
     }
-}
-
-- (void)networkChanged:(EMConnectionState)connectionState
-{
-    _connectionState = connectionState;
-    [_chatListVC networkChanged:connectionState];
 }
 
 - (void)playSoundAndVibration{
@@ -309,8 +301,6 @@ static NSString *kGroupName = @"GroupName";
     
     //发送通知
     [[UIApplication sharedApplication] scheduleLocalNotification:notification];
-//    UIApplication *application = [UIApplication sharedApplication];
-//    application.applicationIconBadgeNumber += 1;
 }
 
 #pragma mark - 自动登录回调
@@ -375,12 +365,7 @@ static NSString *kGroupName = @"GroupName";
 {
     NSDictionary *userInfo = notification.userInfo;
     if (userInfo)
-    {
-        if ([self.navigationController.topViewController isKindOfClass:[ChatViewController class]]) {
-//            ChatViewController *chatController = (ChatViewController *)self.navigationController.topViewController;
-//            [chatController hideImagePicker];
-        }
-        
+    {   
         NSArray *viewControllers = self.navigationController.viewControllers;
         [viewControllers enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop){
             if (obj != self)
