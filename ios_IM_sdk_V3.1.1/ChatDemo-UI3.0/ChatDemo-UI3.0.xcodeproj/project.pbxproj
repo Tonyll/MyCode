@@ -232,6 +232,7 @@
 		EA5BDCF71CB630C400DDF9D3 /* PSTGridLayoutRow.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDCBA1CB630C400DDF9D3 /* PSTGridLayoutRow.m */; };
 		EA5BDCF81CB630C400DDF9D3 /* PSTGridLayoutSection.m in Sources */ = {isa = PBXBuildFile; fileRef = EA5BDCBC1CB630C400DDF9D3 /* PSTGridLayoutSection.m */; };
 		EA5BDCF91CB630C400DDF9D3 /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA5BDCBD1CB630C400DDF9D3 /* MWPhotoBrowser.bundle */; };
+		EA6310B11CC4AFC900F7516A /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6310B01CC4AFC900F7516A /* Reveal.framework */; };
 		EB1975B21ADE0C77002E7E27 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EB1975B11ADE0C77002E7E27 /* libc++.dylib */; };
 		EBD2AB071A7CDAC000D16528 /* chatListCellHead.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD2AA3D1A7CDABF00D16528 /* chatListCellHead.png */; };
 		EBD2AB081A7CDAC000D16528 /* chatListCellHead@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD2AA3E1A7CDABF00D16528 /* chatListCellHead@2x.png */; };
@@ -771,6 +772,7 @@
 		EA5BDCBB1CB630C400DDF9D3 /* PSTGridLayoutSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTGridLayoutSection.h; sourceTree = "<group>"; };
 		EA5BDCBC1CB630C400DDF9D3 /* PSTGridLayoutSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTGridLayoutSection.m; sourceTree = "<group>"; };
 		EA5BDCBD1CB630C400DDF9D3 /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MWPhotoBrowser.bundle; sourceTree = "<group>"; };
+		EA6310B01CC4AFC900F7516A /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		EB1975B11ADE0C77002E7E27 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		EBD2AA3D1A7CDABF00D16528 /* chatListCellHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chatListCellHead.png; sourceTree = "<group>"; };
 		EBD2AA3E1A7CDABF00D16528 /* chatListCellHead@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chatListCellHead@2x.png"; sourceTree = "<group>"; };
@@ -855,6 +857,7 @@
 				C035E8151AEA40F400283EE9 /* CoreData.framework in Frameworks */,
 				EB1975B21ADE0C77002E7E27 /* libc++.dylib in Frameworks */,
 				EBF9556C1ADD0F0C0087E035 /* libstdc++.6.0.9.dylib in Frameworks */,
+				EA6310B11CC4AFC900F7516A /* Reveal.framework in Frameworks */,
 				3CBB931C1A14B227007FED9E /* libsqlite3.dylib in Frameworks */,
 				3CE6293319A1B13700829632 /* CoreText.framework in Frameworks */,
 				3C1CEF7F196EA37600DBA56B /* ImageIO.framework in Frameworks */,
@@ -1029,6 +1032,7 @@
 		9091101B192EEA70008A48AA = {
 			isa = PBXGroup;
 			children = (
+				EA6310B01CC4AFC900F7516A /* Reveal.framework */,
 				D2EA18B71CAE2C6E0080330E /* HyphenateSDK */,
 				9091102D192EEA70008A48AA /* ChatDemo-UI3.0 */,
 				90911026192EEA70008A48AA /* Frameworks */,
@@ -2521,8 +2525,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ChatDemo-UI3.0/3rdparty",
-					"$(PROJECT_DIR)/ChatDemo-UI3.0/3rdparty/Parse",
-					"$(PROJECT_DIR)/ChatDemo-UI3.0/3rdparty/Emoji",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChatDemo-UI3.0/ChatDemo-UI3.0-Prefix.pch";
@@ -2574,8 +2576,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/ChatDemo-UI3.0/3rdparty",
-					"$(PROJECT_DIR)/ChatDemo-UI3.0/3rdparty/Parse",
-					"$(PROJECT_DIR)/ChatDemo-UI3.0/3rdparty/Emoji",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ChatDemo-UI3.0/ChatDemo-UI3.0-Prefix.pch";
