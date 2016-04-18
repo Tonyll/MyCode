@@ -62,7 +62,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     EaseMessageCell *cell = [self appearance];
     cell.statusSize = 20;
     cell.activitySize = 20;
-    cell.bubbleMaxWidth = 300;
+    cell.bubbleMaxWidth = [UIScreen mainScreen ].applicationFrame.size.width - 51 * 2 - 20;//before update - 200
     cell.leftBubbleMargin = UIEdgeInsetsMake(8, 15, 8, 10);
     cell.rightBubbleMargin = UIEdgeInsetsMake(8, 10, 8, 15);
     cell.bubbleMargin = UIEdgeInsetsMake(8, 0, 8, 0);
@@ -235,7 +235,6 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     [self _updateHasReadWidthConstraint];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
     [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.statusButton attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
-//    [self addConstraint:[NSLayoutConstraint constraintWithItem:self.hasRead attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.activity attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0]];
 }
 
 #pragma mark - Update Constraint
@@ -272,7 +271,9 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
 
 - (void)_updateBubbleMaxWidthConstraint
 {
+//    self.bubbleMaxWidthConstraint.active = YES;
     [self removeConstraint:self.bubbleMaxWidthConstraint];
+//    self.bubbleMaxWidthConstraint.active = NO;
 //    self.bubbleMaxWidthConstraint.active = NO;
     
     self.bubbleMaxWidthConstraint = [NSLayoutConstraint constraintWithItem:self.bubbleView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationLessThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.bubbleMaxWidth];
