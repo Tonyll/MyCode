@@ -16,8 +16,6 @@
 
 @interface EaseBaseMessageCell()
 
-@property (strong, nonatomic) UILabel *nameLabel;
-
 @property (nonatomic) NSLayoutConstraint *avatarWidthConstraint;
 @property (nonatomic) NSLayoutConstraint *nameHeightConstraint;
 
@@ -31,8 +29,6 @@
 @end
 
 @implementation EaseBaseMessageCell
-
-@synthesize nameLabel = _nameLabel;
 
 + (void)initialize
 {
@@ -56,14 +52,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier model:model];
     if (self) {
         self.backgroundColor = [UIColor clearColor];
-        
-        _nameLabel = [[UILabel alloc] init];
-        _nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
-        _nameLabel.backgroundColor = [UIColor clearColor];
-        _nameLabel.font = _messageNameFont;
-        _nameLabel.textColor = _messageNameColor;
-        [self.contentView addSubview:_nameLabel];
-        
+
         [self configureLayoutConstraintsWithModel:model];
         
         if ([UIDevice currentDevice].systemVersion.floatValue == 7.0) {
@@ -207,16 +196,6 @@
     }
 }
 
-- (void)_updateNameHeightConstraint
-{
-    if (_nameLabel) {
-        [self removeConstraint:self.nameHeightConstraint];
-        
-        self.nameHeightConstraint = [NSLayoutConstraint constraintWithItem:self.nameLabel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:self.messageNameHeight];
-        [self addConstraint:self.nameHeightConstraint];
-    }
-}
-
 #pragma mark - setter
 
 - (void)setModel:(id<IMessageModel>)model
@@ -228,7 +207,6 @@
     } else {
         self.avatarView.image = model.avatarImage;
     }
-    _nameLabel.text = model.nickname;
     
     if (self.model.isSender) {
         _hasRead.hidden = YES;
@@ -263,30 +241,6 @@
     }
 }
 
-- (void)setMessageNameFont:(UIFont *)messageNameFont
-{
-    _messageNameFont = messageNameFont;
-    if (_nameLabel) {
-        _nameLabel.font = _messageNameFont;
-    }
-}
-
-- (void)setMessageNameColor:(UIColor *)messageNameColor
-{
-    _messageNameColor = messageNameColor;
-    if (_nameLabel) {
-        _nameLabel.textColor = _messageNameColor;
-    }
-}
-
-- (void)setMessageNameHeight:(CGFloat)messageNameHeight
-{
-    _messageNameHeight = messageNameHeight;
-    if (_nameLabel) {
-        [self _updateNameHeightConstraint];
-    }
-}
-
 - (void)setAvatarSize:(CGFloat)avatarSize
 {
     _avatarSize = avatarSize;
@@ -300,14 +254,6 @@
     _avatarCornerRadius = avatarCornerRadius;
     if (self.avatarView){
         self.avatarView.layer.cornerRadius = avatarCornerRadius;
-    }
-}
-
-- (void)setMessageNameIsHidden:(BOOL)messageNameIsHidden
-{
-    _messageNameIsHidden = messageNameIsHidden;
-    if (_nameLabel) {
-        _nameLabel.hidden = messageNameIsHidden;
     }
 }
 

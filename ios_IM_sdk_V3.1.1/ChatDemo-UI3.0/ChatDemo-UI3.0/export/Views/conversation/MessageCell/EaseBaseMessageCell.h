@@ -20,9 +20,6 @@ extern NSString *const EaseMessageCellIdentifierSendImage;
 extern NSString *const EaseMessageCellIdentifierSendFile;
 
 @interface EaseBaseMessageCell : EaseMessageCell
-{
-    UILabel *_nameLabel;
-}
 
 /*!
  @property

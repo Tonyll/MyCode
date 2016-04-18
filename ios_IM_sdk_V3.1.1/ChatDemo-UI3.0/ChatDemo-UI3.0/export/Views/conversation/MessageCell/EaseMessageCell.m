@@ -21,7 +21,7 @@
 #import "UIImageView+EMWebCache.h"
 #import "EaseEmotionEscape.h"
 
-CGFloat const EaseMessageCellPadding = 10;
+CGFloat const EaseMessageCellPadding = 0;
 
 NSString *const EaseMessageCellIdentifierRecvText = @"EaseMessageCellRecvText";
 NSString *const EaseMessageCellIdentifierRecvLocation = @"EaseMessageCellRecvLocation";
