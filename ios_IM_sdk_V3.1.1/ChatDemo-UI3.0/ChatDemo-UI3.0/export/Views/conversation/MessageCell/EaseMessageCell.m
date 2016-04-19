@@ -722,7 +722,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
         {
             NSAttributedString *text = [[EaseEmotionEscape sharedInstance] attStringFromTextForChatting:model.text textFont:cell.messageTextFont];
             CGRect rect = [text boundingRectWithSize:CGSizeMake(bubbleMaxWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading context:nil];
-            height += (rect.size.height > 20 ? rect.size.height : 20) + 10;
+            height += rect.size.height;//(rect.size.height > 20 ? rect.size.height : 20) + 10;
         }
             break;
         case EMMessageBodyTypeImage:

@@ -51,8 +51,6 @@ typedef enum{
 
 @property (strong, nonatomic) UIImageView *avatarView;
 
-@property (strong, nonatomic) UILabel *nameLabel;
-
 @property (strong, nonatomic) UIButton *statusButton;
 
 @property (strong, nonatomic) UILabel *hasRead;
