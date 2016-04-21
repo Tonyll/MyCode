@@ -19,13 +19,11 @@
 
 #if DEMO_CALL == 1
 
-#import "CallViewController.h"
-
-@interface ChatDemoHelper : NSObject <EMClientDelegate,EMChatManagerDelegate,EMContactManagerDelegate,EMGroupManagerDelegate,EMChatroomManagerDelegate,EMCallManagerDelegate>
+@interface ChatDemoHelper : NSObject <EMClientDelegate,EMChatManagerDelegate,EMContactManagerDelegate,EMGroupManagerDelegate>
 
 #else
 
-@interface ChatDemoHelper : NSObject <EMClientDelegate,EMChatManagerDelegate,EMContactManagerDelegate,EMGroupManagerDelegate,EMChatroomManagerDelegate>
+@interface ChatDemoHelper : NSObject <EMClientDelegate,EMChatManagerDelegate,EMContactManagerDelegate,EMGroupManagerDelegate>
 
 #endif
 
@@ -36,13 +34,6 @@
 @property (nonatomic, weak) MainViewController *mainVC;
 
 @property (nonatomic, weak) ChatViewController *chatVC;
-
-#if DEMO_CALL == 1
-
-@property (strong, nonatomic) EMCallSession *callSession;
-@property (strong, nonatomic) CallViewController *callController;
-
-#endif
 
 + (instancetype)shareHelper;
 

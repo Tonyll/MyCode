@@ -20,7 +20,6 @@
 #import "EaseBaseMessageCell.h"
 #import "EaseMessageTimeCell.h"
 #import "EaseChatToolbar.h"
-#import "EaseLocationViewController.h"
 #import "EMCDDeviceManager+Media.h"
 #import "EMCDDeviceManager+ProximitySensor.h"
 #import "UIViewController+HUD.h"
@@ -296,7 +295,7 @@ shouldSendHasReadAckForMessage:(EMMessage *)message
 
 @end
 
-@interface EaseMessageViewController : EaseRefreshTableViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, EMChatManagerDelegate, EMCDDeviceManagerDelegate, EMChatToolbarDelegate, EaseChatBarMoreViewDelegate, EMLocationViewDelegate,EMChatroomManagerDelegate>
+@interface EaseMessageViewController : EaseRefreshTableViewController<UINavigationControllerDelegate, UIImagePickerControllerDelegate, EMChatManagerDelegate, EMCDDeviceManagerDelegate, EMChatToolbarDelegate, EaseChatBarMoreViewDelegate,EMChatroomManagerDelegate>
 
 @property (weak, nonatomic) id<EaseMessageViewControllerDelegate> delegate;
 

@@ -78,9 +78,6 @@ typedef enum{
  */
 - (void)moreViewTakePicAction:(EaseChatBarMoreView *)moreView;
 - (void)moreViewPhotoAction:(EaseChatBarMoreView *)moreView;
-- (void)moreViewLocationAction:(EaseChatBarMoreView *)moreView;
-- (void)moreViewAudioCallAction:(EaseChatBarMoreView *)moreView;
-- (void)moreViewVideoCallAction:(EaseChatBarMoreView *)moreView;
 
 /*!
  @method

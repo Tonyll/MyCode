@@ -14,14 +14,12 @@
 
 @interface PushNotificationViewController ()
 {
-    EMPushDisplayStyle _pushDisplayStyle;
+//    EMPushDisplayStyle _pushDisplayStyle;
     EMPushNoDisturbStatus _noDisturbingStatus;
     NSInteger _noDisturbingStart;
     NSInteger _noDisturbingEnd;
     NSString *_nickName;
 }
-
-@property (strong, nonatomic) UISwitch *pushDisplaySwitch;
 
 @end
 
@@ -62,56 +60,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - getter
-
-- (UISwitch *)pushDisplaySwitch
-{
-    if (_pushDisplaySwitch == nil) {
-        _pushDisplaySwitch = [[UISwitch alloc] init];
-        [_pushDisplaySwitch addTarget:self action:@selector(pushDisplayChanged:) forControlEvents:UIControlEventValueChanged];
-    }
-    
-    return _pushDisplaySwitch;
-}
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    if (section == 0) {
-        return 1;
-    }
-    else if (section == 1)
-    {
-        return 3;
-    }
-    
-    return 0;
+    return 3;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
-        return YES;
-    }
-    
-    return NO;
+    return YES;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (section == 1) {
-        return NSLocalizedString(@"setting.notDisturb", @"No disturbing");
-    }
-    return nil;
+    return NSLocalizedString(@"setting.notDisturb", @"No disturbing");
 }
 
 
@@ -122,31 +92,20 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            cell.textLabel.text = NSLocalizedString(@"setting.showDetail", @"notify the display messages");
-            
-            self.pushDisplaySwitch.frame = CGRectMake(self.tableView.frame.size.width - self.pushDisplaySwitch.frame.size.width - 10, (cell.contentView.frame.size.height - self.pushDisplaySwitch.frame.size.height) / 2, self.pushDisplaySwitch.frame.size.width, self.pushDisplaySwitch.frame.size.height);
-            [cell.contentView addSubview:self.pushDisplaySwitch];
-        }
+
+    if (indexPath.row == 0) {
+        cell.textLabel.text = NSLocalizedString(@"setting.open", @"Open");
+        cell.accessoryType = _noDisturbingStatus == EMPushNoDisturbStatusDay ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     }
-    else if (indexPath.section == 1)
+    else if (indexPath.row == 1)
     {
-        if (indexPath.row == 0) {
-            cell.textLabel.text = NSLocalizedString(@"setting.open", @"Open");
-            cell.accessoryType = _noDisturbingStatus == EMPushNoDisturbStatusDay ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-        }
-        else if (indexPath.row == 1)
-        {
-            cell.textLabel.text = NSLocalizedString(@"setting.nightOpen", @"only open at night (22:00 - 7:00)");
-            cell.accessoryType = _noDisturbingStatus == EMPushNoDisturbStatusCustom ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-        }
-        else if (indexPath.row == 2)
-        {
-            cell.textLabel.text = NSLocalizedString(@"setting.close", @"Close");
-            cell.accessoryType = _noDisturbingStatus == EMPushNoDisturbStatusClose ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-        }
+        cell.textLabel.text = NSLocalizedString(@"setting.nightOpen", @"only open at night (22:00 - 7:00)");
+        cell.accessoryType = _noDisturbingStatus == EMPushNoDisturbStatusCustom ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    }
+    else if (indexPath.row == 2)
+    {
+        cell.textLabel.text = NSLocalizedString(@"setting.close", @"Close");
+        cell.accessoryType = _noDisturbingStatus == EMPushNoDisturbStatusClose ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     }
     
     return cell;
@@ -229,10 +188,10 @@
 {
     BOOL isUpdate = NO;
     EMPushOptions *options = [[EMClient sharedClient] pushOptions];
-    if (_pushDisplayStyle != options.displayStyle) {
-        options.displayStyle = _pushDisplayStyle;
-        isUpdate = YES;
-    }
+//    if (_pushDisplayStyle != options.displayStyle) {
+//        options.displayStyle = _pushDisplayStyle;
+//        isUpdate = YES;
+//    }
     
     if (_nickName && _nickName.length > 0 && ![_nickName isEqualToString:options.nickname])
     {
@@ -262,17 +221,6 @@
     });
 }
 
-- (void)pushDisplayChanged:(UISwitch *)pushDisplaySwitch
-{
-    if (pushDisplaySwitch.isOn) {
-#pragma 此处设置详情显示时的昵称，比如_nickName = @"环信";
-        _pushDisplayStyle = EMPushDisplayStyleMessageSummary;
-    }
-    else{
-        _pushDisplayStyle = EMPushDisplayStyleSimpleBanner;
-    }
-}
-
 - (void)loadPushOptions
 {
     __weak typeof(self) weakself = self;
@@ -293,15 +241,13 @@
 {
     EMPushOptions *options = [[EMClient sharedClient] pushOptions];
     _nickName = options.nickname;
-    _pushDisplayStyle = options.displayStyle;
+//    _pushDisplayStyle = options.displayStyle;
     _noDisturbingStatus = options.noDisturbStatus;
     if (_noDisturbingStatus != EMPushNoDisturbStatusClose) {
         _noDisturbingStart = options.noDisturbingStartH;
         _noDisturbingEnd = options.noDisturbingEndH;
     }
     
-    BOOL isDisplayOn = _pushDisplayStyle == EMPushDisplayStyleSimpleBanner ? NO : YES;
-    [self.pushDisplaySwitch setOn:isDisplayOn animated:YES];
     [self.tableView reloadData];
 }
 

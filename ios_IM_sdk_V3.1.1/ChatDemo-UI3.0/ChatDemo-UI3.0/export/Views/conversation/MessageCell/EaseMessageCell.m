@@ -68,7 +68,7 @@ NSString *const EaseMessageCellIdentifierSendFile = @"EaseMessageCellSendFile";
     cell.bubbleMargin = UIEdgeInsetsMake(8, 0, 8, 0);
     
     cell.messageTextFont = [UIFont systemFontOfSize:15];
-    cell.messageTextColor = [UIColor blackColor];
+    cell.messageTextColor = [UIColor whiteColor];
     
     cell.messageLocationFont = [UIFont systemFontOfSize:10];
     cell.messageLocationColor = [UIColor whiteColor];

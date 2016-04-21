@@ -14,7 +14,6 @@
 
 //#import "EaseChineseToPinyin.h"
 #import "ChatViewController.h"
-#import "ChatroomListViewController.h"
 #import "EMSearchBar.h"
 #import "EMSearchDisplayController.h"
 #import "RealtimeSearchUtil.h"

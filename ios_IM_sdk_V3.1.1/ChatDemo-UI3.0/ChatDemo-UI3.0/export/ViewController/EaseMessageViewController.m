@@ -566,74 +566,6 @@
     return isMark;
 }
 
-- (void)_locationMessageCellSelected:(id<IMessageModel>)model
-{
-    _scrollToBottomWhenAppear = NO;
-    
-    EaseLocationViewController *locationController = [[EaseLocationViewController alloc] initWithLocation:CLLocationCoordinate2DMake(model.latitude, model.longitude)];
-    [self.navigationController pushViewController:locationController animated:YES];
-}
-
-- (void)_videoMessageCellSelected:(id<IMessageModel>)model
-{
-    _scrollToBottomWhenAppear = NO;
-    
-    EMVideoMessageBody *videoBody = (EMVideoMessageBody*)model.message.body;
-    
-    //判断本地路劲是否存在
-    NSString *localPath = [model.fileLocalPath length] > 0 ? model.fileLocalPath : videoBody.localPath;
-    if ([localPath length] == 0) {
-        [self showHint:NSEaseLocalizedString(@"message.videoFail", @"video for failure!")];
-        return;
-    }
-    
-    dispatch_block_t block = ^{
-        //发送已读回执
-        [self _sendHasReadResponseForMessages:@[model.message]
-                                       isRead:YES];
-        
-        NSURL *videoURL = [NSURL fileURLWithPath:localPath];
-        MPMoviePlayerViewController *moviePlayerController = [[MPMoviePlayerViewController alloc] initWithContentURL:videoURL];
-        [moviePlayerController.moviePlayer prepareToPlay];
-        moviePlayerController.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
-        [self presentMoviePlayerViewControllerAnimated:moviePlayerController];
-    };
-    
-    __weak typeof(self) weakSelf = self;
-    void (^completion)(EMMessage *aMessage, EMError *error) = ^(EMMessage *aMessage, EMError *error) {
-        if (!error)
-        {
-            [weakSelf _reloadTableViewDataWithMessage:aMessage];
-        }
-        else
-        {
-            [weakSelf showHint:NSEaseLocalizedString(@"message.thumImageFail", @"thumbnail for failure!")];
-        }
-    };
-    
-    if (videoBody.thumbnailDownloadStatus == EMDownloadStatusFailed || ![[NSFileManager defaultManager] fileExistsAtPath:videoBody.thumbnailLocalPath]) {
-        [self showHint:@"begin downloading thumbnail image, click later"];
-        [[EMClient sharedClient].chatManager asyncDownloadMessageThumbnail:model.message progress:nil completion:completion];
-        return;
-    }
-    
-    if (videoBody.downloadStatus == EMDownloadStatusSuccessed && [[NSFileManager defaultManager] fileExistsAtPath:localPath])
-    {
-        block();
-        return;
-    }
-    
-    [self showHudInView:self.view hint:NSEaseLocalizedString(@"message.downloadingVideo", @"downloading video...")];
-    [[EMClient sharedClient].chatManager asyncDownloadMessageAttachments:model.message progress:nil completion:^(EMMessage *message, EMError *error) {
-        [weakSelf hideHud];
-        if (!error) {
-            block();
-        }else{
-            [weakSelf showHint:NSEaseLocalizedString(@"message.videoFail", @"video for failure!")];
-        }
-    }];
-}
-
 - (void)_imageMessageCellSelected:(id<IMessageModel>)model
 {
     __weak EaseMessageViewController *weakSelf = self;
@@ -1070,26 +1002,9 @@
             [self _imageMessageCellSelected:model];
         }
             break;
-        case EMMessageBodyTypeLocation:
-        {
-             [self _locationMessageCellSelected:model];
-        }
-            break;
         case EMMessageBodyTypeVoice:
         {
             [self _audioMessageCellSelected:model];
-        }
-            break;
-        case EMMessageBodyTypeVideo:
-        {
-            [self _videoMessageCellSelected:model];
-
-        }
-            break;
-        case EMMessageBodyTypeFile:
-        {
-            _scrollToBottomWhenAppear = NO;
-            [self showHint:@"Custom implementation!"];
         }
             break;
         default:
@@ -1304,41 +1219,6 @@
     self.isViewDidAppear = NO;
     [[EaseSDKHelper shareHelper] setIsShowingimagePicker:YES];
 #endif
-}
-
-- (void)moreViewLocationAction:(EaseChatBarMoreView *)moreView
-{
-    // 隐藏键盘
-    [self.chatToolbar endEditing:YES];
-    
-    EaseLocationViewController *locationController = [[EaseLocationViewController alloc] init];
-    locationController.delegate = self;
-    [self.navigationController pushViewController:locationController animated:YES];
-}
-
-- (void)moreViewAudioCallAction:(EaseChatBarMoreView *)moreView
-{
-    // 隐藏键盘
-    [self.chatToolbar endEditing:YES];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_CALL object:@{@"chatter":self.conversation.conversationId, @"type":[NSNumber numberWithInt:0]}];
-}
-
-- (void)moreViewVideoCallAction:(EaseChatBarMoreView *)moreView
-{
-    // 隐藏键盘
-    [self.chatToolbar endEditing:YES];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_CALL object:@{@"chatter":self.conversation.conversationId, @"type":[NSNumber numberWithInt:1]}];
-}
-
-#pragma mark - EMLocationViewDelegate
-
--(void)sendLocationLatitude:(double)latitude
-                  longitude:(double)longitude
-                 andAddress:(NSString *)address
-{
-    [self sendLocationMessageLatitude:latitude longitude:longitude andAddress:address];
 }
 
 #pragma mark - EaseMob
