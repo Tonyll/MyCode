@@ -199,7 +199,7 @@
         [emotions addObject:emotion];
     }
     EaseEmotion *temp = [emotions objectAtIndex:0];
-    EaseEmotionManager *managerDefault = [[EaseEmotionManager alloc] initWithType:EMEmotionDefault emotionRow:3 emotionCol:7 emotions:emotions tagImage:[UIImage imageNamed:temp.emotionId]];
+    EaseEmotionManager *managerDefault = [[EaseEmotionManager alloc] initWithType:EMEmotionDefault emotionRow:5 emotionCol:8 emotions:emotions tagImage:[UIImage imageNamed:temp.emotionId]];
     
     NSMutableArray *emotionGifs = [NSMutableArray array];
     _emotionDic = [NSMutableDictionary dictionary];
