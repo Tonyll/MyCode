@@ -191,9 +191,9 @@ static NSString *kGroupName = @"GroupName";
     self.lastPlaySoundDate = [NSDate date];
     
     // 收到消息时，播放音频
-    [[EMCDDeviceManager sharedInstance] playNewMessageSound];
+//    [[EMCDDeviceManager sharedInstance] playNewMessageSound];
     // 收到消息时，震动
-    [[EMCDDeviceManager sharedInstance] playVibration];
+//    [[EMCDDeviceManager sharedInstance] playVibration];
 }
 
 - (void)showNotificationWithMessage:(EMMessage *)message
