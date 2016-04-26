@@ -47,7 +47,6 @@ static ChatDemoHelper *helper = nil;
     [[EMClient sharedClient] removeDelegate:self];
     [[EMClient sharedClient].groupManager removeDelegate:self];
     [[EMClient sharedClient].contactManager removeDelegate:self];
-    [[EMClient sharedClient].roomManager removeDelegate:self];
     [[EMClient sharedClient].chatManager removeDelegate:self];
     
 #if DEMO_CALL == 1

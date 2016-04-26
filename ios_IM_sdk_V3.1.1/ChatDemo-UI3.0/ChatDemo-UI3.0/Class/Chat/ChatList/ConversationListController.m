@@ -45,7 +45,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self registerNotifications];
+    [self registerNotifications]; 
     [self refresh];
 }
 
@@ -91,17 +91,8 @@
     id<IConversationModel> model = [self.dataArray objectAtIndex:indexPath.row];
     cell.model = model;
     
-//    if (_dataSource && [_dataSource respondsToSelector:@selector(conversationListViewController:latestMessageTitleForConversationModel:)]) {
-        cell.detailLabel.attributedText =  [[EaseEmotionEscape sharedInstance] attStringFromTextForChatting:[self conversationListViewController:self latestMessageTitleForConversationModel:model] textFont:cell.detailLabel.font];
-//    } else {
-//        cell.detailLabel.attributedText =  [[EaseEmotionEscape sharedInstance] attStringFromTextForChatting:[self _latestMessageTitleForConversationModel:model]textFont:cell.detailLabel.font];
-//    }
-    
-//    if (_dataSource && [_dataSource respondsToSelector:@selector(conversationListViewController:latestMessageTimeForConversationModel:)]) {
-        cell.timeLabel.text = [self conversationListViewController:self latestMessageTimeForConversationModel:model];
-//    } else {
-//        cell.timeLabel.text = [self _latestMessageTimeForConversationModel:model];
-//    }
+    cell.detailLabel.attributedText =  [[EaseEmotionEscape sharedInstance] attStringFromTextForChatting:[self conversationListViewController:self latestMessageTitleForConversationModel:model] textFont:cell.detailLabel.font];
+    cell.timeLabel.text = [self conversationListViewController:self latestMessageTimeForConversationModel:model];
     
     return cell;
 }
@@ -183,6 +174,8 @@
 //            model.title = profileEntity.nickname == nil ? profileEntity.username : profileEntity.nickname;
 //            model.avatarURLPath = profileEntity.imageUrl;
 //        }
+        
+//        model.avatarURLPath = [NSURL URLWithString:[Common getImgHeaderInEaseMobConvertion:conversation]]   
     } else if (model.conversation.type == EMConversationTypeGroupChat) {
         NSString *imageName = @"groupPublicHeader";
         if (![conversation.ext objectForKey:@"subject"])
