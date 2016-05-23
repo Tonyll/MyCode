@@ -942,18 +942,10 @@
 			children = (
 				D2B61E341BC7C76B007CB53E /* ContactListViewController.h */,
 				D2B61E351BC7C76B007CB53E /* ContactListViewController.m */,
-				9003D85C1939D8D000DC38A4 /* FriendApply */,
 				9003D8661939D8D000DC38A4 /* RealtimeSearchUtil.h */,
 				9003D8671939D8D000DC38A4 /* RealtimeSearchUtil.m */,
 			);
 			path = Contacts;
-			sourceTree = "<group>";
-		};
-		9003D85C1939D8D000DC38A4 /* FriendApply */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FriendApply;
 			sourceTree = "<group>";
 		};
 		905326B219333E8E00F064D7 /* TTGlobalUICommon */ = {
@@ -2332,7 +2324,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tony Wang (E8CCTW8P4T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tony Wang (E8CCTW8P4T)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2351,6 +2344,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "d4b3d59f-fd4d-4667-a4c7-83613245552c";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2448,7 +2442,7 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Extension of Dalian Science and Technology Co., Ltd. (3H6QQDQ57T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EASEMOB_INC = "";
 				EASEMOB_LIB = "";
 				EASEMOB_LIBNAME = "";

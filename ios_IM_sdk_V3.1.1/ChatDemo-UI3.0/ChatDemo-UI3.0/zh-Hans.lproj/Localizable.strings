@@ -53,7 +53,7 @@
 "doneWithCount" = "确定(%i)";
 "sureToDelete" = "请确定删除";
 "receiveCmd" = "有透传消息";
-"receiveMessage" = "您有一条新消息";
+"receiveMessage" = "您有一条新消息123";
 "loginAtOtherDevice" = "你的账号已在其他地方登录";
 "loginUserRemoveFromServer" = "你的账号已被从服务器端移除";
 "deleteFailed" = "删除失败:%@";

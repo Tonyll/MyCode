@@ -61,14 +61,6 @@
                 }
             }
                 break;
-            case EMMessageBodyTypeLocation:
-            {
-                EMLocationMessageBody *locationBody = (EMLocationMessageBody *)_firstMessageBody;
-                self.address = locationBody.address;
-                self.latitude = locationBody.latitude;
-                self.longitude = locationBody.longitude;
-            }
-                break;
             case EMMessageBodyTypeVoice:
             {
                 EMVoiceMessageBody *voiceBody = (EMVoiceMessageBody *)_firstMessageBody;
@@ -81,41 +73,6 @@
                 // 音频路径
                 self.fileLocalPath = voiceBody.localPath;
                 self.fileURLPath = voiceBody.remotePath;
-            }
-                break;
-            case EMMessageBodyTypeVideo:
-            {
-                EMVideoMessageBody *videoBody = (EMVideoMessageBody *)message.body;
-                self.thumbnailImageSize = videoBody.thumbnailSize;
-                if ([videoBody.thumbnailLocalPath length] > 0) {
-                    NSData *thumbnailImageData = [NSData dataWithContentsOfFile:videoBody.thumbnailLocalPath];
-                    if (thumbnailImageData.length) {
-                        self.thumbnailImage = [UIImage imageWithData:thumbnailImageData];
-                    }
-                    self.image = self.thumbnailImage;
-                }
-                
-                // 视频路径
-                self.fileLocalPath = videoBody.localPath;
-                self.fileURLPath = videoBody.remotePath;
-            }
-                break;
-            case EMMessageBodyTypeFile:
-            {
-                EMFileMessageBody *fileMessageBody = (EMFileMessageBody *)_firstMessageBody;
-                self.fileIconName = @"chat_item_file";
-                self.fileName = fileMessageBody.displayName;
-                self.fileSize = fileMessageBody.fileLength;
-                
-                if (self.fileSize < 1024) {
-                    self.fileSizeDes = [NSString stringWithFormat:@"%fB", self.fileSize];
-                }
-                else if(self.fileSize < 1024 * 1024){
-                    self.fileSizeDes = [NSString stringWithFormat:@"%.2fkB", self.fileSize / 1024];
-                }
-                else if (self.fileSize < 2014 * 1024 * 1024){
-                    self.fileSizeDes = [NSString stringWithFormat:@"%.2fMB", self.fileSize / (1024 * 1024)];
-                }
             }
                 break;
             default:

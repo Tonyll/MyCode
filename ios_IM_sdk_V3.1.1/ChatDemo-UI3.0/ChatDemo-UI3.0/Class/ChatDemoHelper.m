@@ -20,7 +20,7 @@
 
 #import "CallViewController.h"
 
-@interface ChatDemoHelper()<EMCallManagerDelegate>
+@interface ChatDemoHelper()<EMCallManagerDelegate,UIAlertView>
 {
     NSTimer *_callTimer;
 }
@@ -180,6 +180,12 @@ static ChatDemoHelper *helper = nil;
 
 - (void)didReceiveMessages:(NSArray *)aMessages
 {
+//    EMMessage *mes = (EMMessage *)[aMessages objectAtIndex:0];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"test" message:[NSString stringWithFormat:@"%@",[aMessages count]] delegate:self cancelButtonTitle:@"calcle" otherButtonTitles:@"confirm", nil];
+//    [alert show];
+    
+    
     BOOL isRefreshCons = YES;
     for(EMMessage *message in aMessages){
         BOOL needShowNotification = (message.chatType != EMChatTypeChat) ? [self _needShowNotification:message.conversationId] : YES;

@@ -134,7 +134,7 @@
     
     BOOL needReload = YES;
     
-    if (indexPath.section == 1) {
+    if (indexPath.section == 0) {
         switch (indexPath.row) {
             case 0:
             {

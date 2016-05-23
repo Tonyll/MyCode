@@ -35,18 +35,19 @@
     // Do any additional setup after loading the view.
     self.showRefreshHeader = YES;
     
-    [self tableViewDidTriggerHeaderRefresh];
+//    [self tableViewDidTriggerHeaderRefresh];
     
     self.tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
     [self removeEmptyConversationsFromDB];
+    [self refresh];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self registerNotifications]; 
-    [self refresh];
+//    [self refresh];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
@@ -312,9 +313,6 @@
                                    return(NSComparisonResult)NSOrderedDescending;
                                }
                            }];
-        
-        
-        
         [weakself.dataArray removeAllObjects];
         for (EMConversation *converstion in sorted) {
             EaseConversationModel *model = nil;
@@ -364,15 +362,6 @@
             } break;
             case EMMessageBodyTypeVoice:{
                 latestMessageTitle = NSEaseLocalizedString(@"message.voice1", @"[voice]");
-            } break;
-            case EMMessageBodyTypeLocation: {
-                latestMessageTitle = NSEaseLocalizedString(@"message.location1", @"[location]");
-            } break;
-            case EMMessageBodyTypeVideo: {
-                latestMessageTitle = NSEaseLocalizedString(@"message.video1", @"[video]");
-            } break;
-            case EMMessageBodyTypeFile: {
-                latestMessageTitle = NSEaseLocalizedString(@"message.file1", @"[file]");
             } break;
             default: {
             } break;

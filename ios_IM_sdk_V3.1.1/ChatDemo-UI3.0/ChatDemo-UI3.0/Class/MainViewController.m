@@ -32,8 +32,6 @@ static NSString *kGroupName = @"GroupName";
     ConversationListController *_chatListVC;
     ContactListViewController *_contactsVC;
     SettingsViewController *_settingsVC;
-    
-    UIBarButtonItem *_addFriendItem;
 }
 
 @property (strong, nonatomic) NSDate *lastPlaySoundDate;
@@ -61,15 +59,10 @@ static NSString *kGroupName = @"GroupName";
     self.title = NSLocalizedString(@"title.conversation", @"Conversations");
     
     //获取未读消息数，此时并没有把self注册为SDK的delegate，读取出的未读数是上次退出程序时的
-//    [self didUnreadMessagesCountChanged];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupUnreadMessageCount) name:@"setupUnreadMessageCount" object:nil];
     
     [self setupSubviews];
     self.selectedIndex = 0;
-    UIButton *addButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-    [addButton setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
-    [addButton addTarget:_contactsVC action:@selector(addFriendAction) forControlEvents:UIControlEventTouchUpInside];
-    _addFriendItem = [[UIBarButtonItem alloc] initWithCustomView:addButton];
     
     [self setupUnreadMessageCount];
     
@@ -96,7 +89,6 @@ static NSString *kGroupName = @"GroupName";
         self.navigationItem.rightBarButtonItem = nil;
     }else if (item.tag == 1){
         self.title = NSLocalizedString(@"title.addressbook", @"AddressBook");
-        self.navigationItem.rightBarButtonItem = _addFriendItem;
     }else if (item.tag == 2){
         self.title = NSLocalizedString(@"title.setting", @"Setting");
         self.navigationItem.rightBarButtonItem = nil;
@@ -257,7 +249,7 @@ static NSString *kGroupName = @"GroupName";
             }
         }
         
-        notification.alertBody = [NSString stringWithFormat:@"%@:%@", title, messageStr];
+        notification.alertBody = [NSString stringWithFormat:@"%@111:%@sfsdfsdf", title, messageStr];
     }
     else{
         notification.alertBody = NSLocalizedString(@"receiveMessage", @"you have a new message");
