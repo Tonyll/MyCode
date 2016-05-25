@@ -26,7 +26,7 @@
     
     twitterPaggingViewer = [[XHTwitterPaggingViewer alloc] init];
     
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:7];
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:3];
     
     NSArray *titles = @[@"Home", @"Friend", @"曾宪华"];
     
@@ -40,17 +40,13 @@
     twitterPaggingViewer.viewControllers = viewControllers;
     
     twitterPaggingViewer.didChangedPageCompleted = ^(NSInteger cuurentPage, NSString *title) {
-        // NSLog(@"cuurentPage : %ld on title : %@", (long)cuurentPage, title);
+         NSLog(@"cuurentPage : %ld on title : %@", (long)cuurentPage, title);
     };
     
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:twitterPaggingViewer];
     
     [self.window makeKeyAndVisible];
-    
-    // Setup Default Page
-    // [twitterPaggingViewer setCurrentPage:2 animated:NO];
-    
     
     return YES;
 }

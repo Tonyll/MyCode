@@ -23,18 +23,6 @@
 
 #pragma mark - Publish Method
 
-- (void)configuraTableViewNormalSeparatorInset {
-    if ([self validateSeparatorInset]) {
-        [_tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-}
-
-- (void)configuraSectionIndexBackgroundColorWithTableView:(UITableView *)tableView {
-    if ([tableView respondsToSelector:@selector(setSectionIndexBackgroundColor:)]) {
-        tableView.sectionIndexBackgroundColor = [UIColor clearColor];
-    }
-}
-
 - (void)loadDataSource {
     // subClasse
 }
@@ -44,20 +32,12 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         CGRect tableViewFrame = self.view.bounds;
-        tableViewFrame.size.height -= (self.navigationController.viewControllers.count > 1 ? 0 : (CGRectGetHeight(self.tabBarController.tabBar.bounds))) + [XHFoundationCommon getAdapterHeight];
         _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:self.tableViewStyle];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView setScrollsToTop:NO];
         
         _tableView.tableFooterView = [[UIView alloc] init];
-        if (![self validateSeparatorInset]) {
-            if (self.tableViewStyle == UITableViewStyleGrouped) {
-                UIView *backgroundView = [[UIView alloc] initWithFrame:_tableView.bounds];
-                backgroundView.backgroundColor = _tableView.backgroundColor;
-                _tableView.backgroundView = backgroundView;
-            }
-        }
     }
     return _tableView;
 }

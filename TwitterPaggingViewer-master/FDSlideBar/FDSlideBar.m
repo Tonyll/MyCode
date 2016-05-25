@@ -8,7 +8,6 @@
 
 #import "FDSlideBar.h"
 #import "FDSlideBarItem.h"
-#import "MJExtension.h"
 #define DEVICE_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
 #define DEFAULT_SLIDER_COLOR [UIColor orangeColor]
 #define SLIDER_VIEW_HEIGHT 23

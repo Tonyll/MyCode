@@ -317,11 +317,11 @@ typedef NS_ENUM(NSInteger, XHRefreshState) {
 }
 
 - (CGFloat)getAdaptorHeight {
-    if ([self.delegate respondsToSelector:@selector(keepiOS7NewApiCharacter)]) {
-        return ([self.delegate keepiOS7NewApiCharacter] ? 64 : 0);
-    } else {
+//    if ([self.delegate respondsToSelector:@selector(keepiOS7NewApiCharacter)]) {
+//        return ([self.delegate keepiOS7NewApiCharacter] ? 64 : 0);
+//    } else {
         return 0;
-    }
+//    }
 }
 
 - (NSInteger)autoLoadMoreRefreshedCount {

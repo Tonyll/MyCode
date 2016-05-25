@@ -26,6 +26,7 @@
 		ABFA6858195510F900335010 /* XHBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFA6853195510F900335010 /* XHBaseTableViewController.m */; };
 		ABFA6859195510F900335010 /* XHFoundationCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFA6855195510F900335010 /* XHFoundationCommon.m */; };
 		ABFA685A195510F900335010 /* XHTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFA6857195510F900335010 /* XHTableViewController.m */; };
+		EA0750281CF44B9B00590542 /* XHTwitterPaggingViewerExample-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA0750271CF44B9B00590542 /* XHTwitterPaggingViewerExample-Info.plist */; };
 		EAB35BD01CF2DC6B0023FE21 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB35BCF1CF2DC6B0023FE21 /* Reveal.framework */; };
 		EAB35BD61CF2E6510023FE21 /* FDSlideBar.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB35BD31CF2E6510023FE21 /* FDSlideBar.m */; };
 		EAB35BD71CF2E6510023FE21 /* FDSlideBarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB35BD51CF2E6510023FE21 /* FDSlideBarItem.m */; };
@@ -52,7 +53,6 @@
 		ABFA6823195510C800335010 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABFA6825195510C800335010 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		ABFA6827195510C800335010 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		ABFA682B195510C800335010 /* XHTwitterPaggingViewerExample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XHTwitterPaggingViewerExample-Info.plist"; sourceTree = "<group>"; };
 		ABFA682D195510C800335010 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ABFA682F195510C800335010 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABFA6831195510C800335010 /* XHTwitterPaggingViewerExample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XHTwitterPaggingViewerExample-Prefix.pch"; sourceTree = "<group>"; };
@@ -71,6 +71,7 @@
 		ABFA6856195510F900335010 /* XHTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTableViewController.h; sourceTree = "<group>"; };
 		ABFA6857195510F900335010 /* XHTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTableViewController.m; sourceTree = "<group>"; };
 		BEB5BA9A4AFB4FCC91064867 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		EA0750271CF44B9B00590542 /* XHTwitterPaggingViewerExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "XHTwitterPaggingViewerExample-Info.plist"; sourceTree = "<group>"; };
 		EAB35BCF1CF2DC6B0023FE21 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		EAB35BD21CF2E6510023FE21 /* FDSlideBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDSlideBar.h; sourceTree = "<group>"; };
 		EAB35BD31CF2E6510023FE21 /* FDSlideBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDSlideBar.m; sourceTree = "<group>"; };
@@ -174,7 +175,7 @@
 		ABFA682A195510C800335010 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				ABFA682B195510C800335010 /* XHTwitterPaggingViewerExample-Info.plist */,
+				EA0750271CF44B9B00590542 /* XHTwitterPaggingViewerExample-Info.plist */,
 				ABFA682C195510C800335010 /* InfoPlist.strings */,
 				ABFA682F195510C800335010 /* main.m */,
 				ABFA6831195510C800335010 /* XHTwitterPaggingViewerExample-Prefix.pch */,
@@ -258,7 +259,7 @@
 		ABFA6818195510C800335010 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "曾宪华 QQ群: (142557668) QQ:543413507  Gmail:xhzengAIB@gmail.com";
 				TargetAttributes = {
 					ABFA681F195510C800335010 = {
@@ -293,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABFA682E195510C800335010 /* InfoPlist.strings in Resources */,
+				EA0750281CF44B9B00590542 /* XHTwitterPaggingViewerExample-Info.plist in Resources */,
 				ABFA6836195510C800335010 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +416,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -500,6 +503,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.testNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -536,6 +540,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tony.testNew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -556,6 +561,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "XHTwitterPaggingViewerExampleTests/XHTwitterPaggingViewerExampleTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.HUAJIE.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -574,6 +580,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "XHTwitterPaggingViewerExample/XHTwitterPaggingViewerExample-Prefix.pch";
 				INFOPLIST_FILE = "XHTwitterPaggingViewerExampleTests/XHTwitterPaggingViewerExampleTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.HUAJIE.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

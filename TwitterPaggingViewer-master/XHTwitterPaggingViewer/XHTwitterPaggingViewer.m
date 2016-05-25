@@ -17,7 +17,9 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     XHSlideTypeRight = 1,
 };
 
-@interface XHTwitterPaggingViewer () <UIScrollViewDelegate>
+@interface XHTwitterPaggingViewer () <UIScrollViewDelegate>{
+    FDSlideBar *menuView;
+}
 
 /**
  *  显示内容的容器
@@ -29,8 +31,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
  *  显示title集合的容器
  */
 @property (nonatomic, strong) XHPaggingNavbar *paggingNavbar;
-
-@property (nonatomic, strong) FDSlideBar *menuView;
 
 /**
  *  标识当前页码
@@ -121,20 +121,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     return _paggingNavbar;
 }
 
-- (FDSlideBar *)menuView{
-    if (_menuView) {
-        _menuView = [[FDSlideBar alloc] init];
-        _menuView.backgroundColor = [UIColor grayColor];
-        _menuView.itemsTitle = @[@"消息",@"联系人",@"群组"];
-        // Set some style to the slideBar
-        _menuView.itemColor = [UIColor blackColor];
-        _menuView.itemSelectedColor = [UIColor whiteColor];
-        _menuView.sliderColor = [UIColor yellowColor];
-        _menuView.backgroundColor = [UIColor clearColor];
-    }
-    return _menuView;
-}
-
 - (UIViewController *)getPageViewControllerAtIndex:(NSInteger)index {
     if (index < self.viewControllers.count) {
         return self.viewControllers[index];
@@ -213,11 +199,33 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setupNavigationBar];
+//    [self setupNavigationBar];
+    [self setupMenuViews];
     
     [self setupViews];
     
     [self reloadData];
+}
+
+- (void)setupMenuViews{
+    
+
+    menuView = [[FDSlideBar alloc] init];
+    menuView.backgroundColor = [UIColor grayColor];
+    menuView.itemsTitle = @[@"消息",@"联系人",@"群组"];
+    // Set some style to the slideBar
+    menuView.itemColor = [UIColor blackColor];
+    menuView.itemSelectedColor = [UIColor whiteColor];
+    menuView.sliderColor = [UIColor yellowColor];
+    
+    [menuView slideBarItemSelectedCallback:^(NSUInteger idx) {
+        
+        NSLog(@"select index is :%d",idx);
+        [self setCurrentPage:idx];
+        [self scrollToSelectVC];
+    }];
+
+    self.navigationItem.titleView = menuView;
 }
 
 - (void)setupNavigationBar {   
@@ -241,6 +249,8 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     self.paggingScrollView = nil;
     
     self.paggingNavbar = nil;
+    
+    menuView = nil;
     
     self.viewControllers = nil;
     
@@ -273,10 +283,10 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 //                leftMenuViewFrame.origin.x += translationPoint.x;
 //                self.leftViewController.view.frame = leftMenuViewFrame;
                 
-                [panGestureRecognizer setTranslation:CGPointZero inView:panGestureRecognizer.view];
+//                [panGestureRecognizer setTranslation:CGPointZero inView:panGestureRecognizer.view];
             } else if (contentOffset.x >= contentSize.width - baseWidth) {
                 // 滑动到最右边
-                [panGestureRecognizer setTranslation:CGPointZero inView:panGestureRecognizer.view];
+//                [panGestureRecognizer setTranslation:CGPointZero inView:panGestureRecognizer.view];
             }
             break;
         }
@@ -331,6 +341,28 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
         }
     }
     return nil;
+}
+
+#pragma mark - Private Func
+/**
+ *  滑动到指定的VC
+ */
+- (void)scrollToSelectVC{
+    UIViewController *fromViewController = [self.viewControllers objectAtIndex:self.lastPage];
+    UIViewController *toViewController = [self.viewControllers objectAtIndex:self.currentPage];
+    
+    [fromViewController viewWillDisappear: true];
+    [fromViewController viewDidDisappear: true];
+    [toViewController viewWillAppear: true];
+    [toViewController viewDidAppear: true];
+    
+    CGPoint offset = CGPointMake(self.currentPage * CGRectGetWidth(self.paggingScrollView.frame), -64);
+    // 设置新的偏移量
+    [self.paggingScrollView setContentOffset:offset animated:YES];
+
+    if (self.didChangedPageCompleted) {
+        self.didChangedPageCompleted(self.currentPage, [[self.viewControllers valueForKey:@"title"] objectAtIndex:self.currentPage]);
+    }
 }
 
 #pragma mark - UIScrollView Delegate

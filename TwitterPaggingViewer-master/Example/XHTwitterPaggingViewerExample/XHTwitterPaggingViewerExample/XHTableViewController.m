@@ -54,7 +54,7 @@
     // Do any additional setup after loading the view.
     if (!self.showPushDetail) {
         UIEdgeInsets edgeInsets = self.tableView.contentInset;
-        edgeInsets.top = ([XHFoundationCommon isIOS7] ? 64 : 0);
+//        edgeInsets.top = ([XHFoundationCommon isIOS7] ? 64 : 0);
         self.tableView.contentInset = edgeInsets;
         self.tableView.scrollIndicatorInsets = edgeInsets;
     }
