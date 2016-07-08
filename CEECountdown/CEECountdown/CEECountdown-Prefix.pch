@@ -1,0 +1,31 @@
+//
+//  CEECountdown-Prefix.pch
+//  CEECountdown
+//
+//  Created by Tony L on 7/7/16.
+//  Copyright © 2016 com.jiemo. All rights reserved.
+//
+
+#ifndef CEECountdown_Prefix_pch
+#define CEECountdown_Prefix_pch
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import <Masonry.h>
+
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#define RGBAHEX(rgbValue) \
+[UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 \
+green:((float)((rgbValue & 0xFF00) >> 8)) / 255.0 \
+blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
+
+#define CEETabBarNormalColor RGBAHEX(0xefa32c)        // TabBar title颜色
+#define CEETabBarSelectColor RGBAHEX(0x693807)        // TabBar title选中颜色
+#define CEETabBarTintColor   RGBAHEX(0xfff485)        // TabBar 颜色
+
+#define CEENavColor          RGBAHEX(0xfff484)
+
+
+
+#endif /* CEECountdown_Prefix_pch */
