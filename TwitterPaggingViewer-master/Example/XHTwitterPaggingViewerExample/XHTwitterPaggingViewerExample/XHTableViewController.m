@@ -19,23 +19,23 @@
         NSMutableArray *dataSource = [[NSMutableArray alloc] initWithArray:@[@"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer."]];
         
         NSMutableArray *indexPaths;
-        if (self.requestCurrentPage) {
-            indexPaths = [[NSMutableArray alloc] initWithCapacity:dataSource.count];
-            [dataSource enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                [indexPaths addObject:[NSIndexPath indexPathForRow:self.dataSource.count + idx inSection:0]];
-            }];
-        }
-        sleep(1.5);
+//        if (self.requestCurrentPage) {
+//            indexPaths = [[NSMutableArray alloc] initWithCapacity:dataSource.count];
+//            [dataSource enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//                [indexPaths addObject:[NSIndexPath indexPathForRow:self.dataSource.count + idx inSection:0]];
+//            }];
+//        }
+        sleep(5);
         dispatch_async(dispatch_get_main_queue(), ^{
-            if (self.requestCurrentPage) {
-                [self.dataSource addObjectsFromArray:dataSource];
-                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-                [self endLoadMoreRefreshing];
-            } else {
+//            if (self.requestCurrentPage) {
+//                [self.dataSource addObjectsFromArray:dataSource];
+//                [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+//                [self endLoadMoreRefreshing];
+//            } else {
                 self.dataSource = dataSource;
                 [self.tableView reloadData];
-                [self endPullDownRefreshing];
-            }
+//                [self endPullDownRefreshing];
+//            }
         });
     });
 }
@@ -46,18 +46,19 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self startPullDownRefreshing];
+//    [self startPullDownRefreshing];
+    [self loadDataSource];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    if (!self.showPushDetail) {
-        UIEdgeInsets edgeInsets = self.tableView.contentInset;
-//        edgeInsets.top = ([XHFoundationCommon isIOS7] ? 64 : 0);
-        self.tableView.contentInset = edgeInsets;
-        self.tableView.scrollIndicatorInsets = edgeInsets;
-    }
+//    if (!self.showPushDetail) {
+//        UIEdgeInsets edgeInsets = self.tableView.contentInset;
+////        edgeInsets.top = ([XHFoundationCommon isIOS7] ? 64 : 0);
+//        self.tableView.contentInset = edgeInsets;
+//        self.tableView.scrollIndicatorInsets = edgeInsets;
+//    }
 }
 
 - (void)didReceiveMemoryWarning {

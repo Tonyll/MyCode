@@ -8,8 +8,6 @@
 
 #import "XHTwitterPaggingViewer.h"
 
-#import "XHPaggingNavbar.h"
-
 #import "FDSlideBar.h"
 
 typedef NS_ENUM(NSInteger, XHSlideType) {
@@ -28,20 +26,10 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 @property (nonatomic, strong) UIScrollView *paggingScrollView;
 
 /**
- *  显示title集合的容器
- */
-@property (nonatomic, strong) XHPaggingNavbar *paggingNavbar;
-
-/**
  *  标识当前页码
  */
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger lastPage;
-
-
-@property (nonatomic, strong) UIViewController *leftViewController;
-
-@property (nonatomic, strong) UIViewController *rightViewController;
 
 @end
 
@@ -54,7 +42,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 }
 
 - (void)setCurrentPage:(NSInteger)currentPage animated:(BOOL)animated {
-    self.paggingNavbar.currentPage = currentPage;
     self.currentPage = currentPage;
     
     CGFloat pageWidth = CGRectGetWidth(self.paggingScrollView.frame);
@@ -78,9 +65,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     }];
 
     [self.paggingScrollView setContentSize:CGSizeMake(CGRectGetWidth(self.view.bounds) * self.viewControllers.count, 0)];
-    
-    self.paggingNavbar.titles = [self.viewControllers valueForKey:@"title"];
-    [self.paggingNavbar reloadData];
     
     [self setupScrollToTop];
     
@@ -113,14 +97,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     return _paggingScrollView;
 }
 
-- (XHPaggingNavbar *)paggingNavbar {
-    if (!_paggingNavbar) {
-        _paggingNavbar = [[XHPaggingNavbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds) / 2.0, 44)];
-        _paggingNavbar.backgroundColor = [UIColor clearColor];
-    }
-    return _paggingNavbar;
-}
-
 - (UIViewController *)getPageViewControllerAtIndex:(NSInteger)index {
     if (index < self.viewControllers.count) {
         return self.viewControllers[index];
@@ -134,8 +110,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
         return;
     _lastPage = _currentPage;
     _currentPage = currentPage;
-    
-    self.paggingNavbar.currentPage = currentPage;
     
     [self setupScrollToTop];
     [self callBackChangedPage];
@@ -166,23 +140,23 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     [targetViewController didMoveToParentViewController:self];
 }
 
-- (instancetype)initWithLeftViewController:(UIViewController *)leftViewController {
-    return [self initWithLeftViewController:leftViewController rightViewController:nil];
-}
-
-- (instancetype)initWithRightViewController:(UIViewController *)rightViewController {
-    return [self initWithLeftViewController:nil rightViewController:rightViewController];
-}
-
-- (instancetype)initWithLeftViewController:(UIViewController *)leftViewController rightViewController:(UIViewController *)rightViewController {
-    self = [super init];
-    if (self) {
-        self.leftViewController = leftViewController;
-        
-        self.rightViewController = rightViewController;
-    }
-    return self;
-}
+//- (instancetype)initWithLeftViewController:(UIViewController *)leftViewController {
+//    return [self initWithLeftViewController:leftViewController rightViewController:nil];
+//}
+//
+//- (instancetype)initWithRightViewController:(UIViewController *)rightViewController {
+//    return [self initWithLeftViewController:nil rightViewController:rightViewController];
+//}
+//
+//- (instancetype)initWithLeftViewController:(UIViewController *)leftViewController rightViewController:(UIViewController *)rightViewController {
+//    self = [super init];
+//    if (self) {
+//        self.leftViewController = leftViewController;
+//        
+//        self.rightViewController = rightViewController;
+//    }
+//    return self;
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -200,43 +174,39 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     // Do any additional setup after loading the view.
     
 //    [self setupNavigationBar];
-    [self setupMenuViews];
+//    [self setupMenuViews];
     
     [self setupViews];
     
     [self reloadData];
 }
 
-- (void)setupMenuViews{
-    
-
-    menuView = [[FDSlideBar alloc] init];
-    menuView.backgroundColor = [UIColor grayColor];
-    menuView.itemsTitle = @[@"消息",@"联系人",@"群组"];
-    // Set some style to the slideBar
-    menuView.itemColor = [UIColor blackColor];
-    menuView.itemSelectedColor = [UIColor whiteColor];
-    menuView.sliderColor = [UIColor yellowColor];
-    
-    [menuView slideBarItemSelectedCallback:^(NSUInteger idx) {
-        
-        NSLog(@"select index is :%d",idx);
-        [self setCurrentPage:idx];
-        [self scrollToSelectVC];
-    }];
-
-    self.navigationItem.titleView = menuView;
-}
-
-- (void)setupNavigationBar {   
-    self.navigationItem.titleView = self.paggingNavbar;
-}
+//- (void)setupMenuViews{
+//    
+//
+//    menuView = [[FDSlideBar alloc] init];
+//    menuView.backgroundColor = [UIColor grayColor];
+//    menuView.itemsTitle = @[@"消息",@"联系人",@"群组"];
+//    // Set some style to the slideBar
+//    menuView.itemColor = [UIColor blackColor];
+//    menuView.itemSelectedColor = [UIColor whiteColor];
+//    menuView.sliderColor = [UIColor yellowColor];
+//    
+//    [menuView slideBarItemSelectedCallback:^(NSUInteger idx) {
+//        
+//        NSLog(@"select index is :%d",idx);
+//        [self setCurrentPage:idx];
+//        [self scrollToSelectVC];
+//    }];
+//
+//    self.navigationItem.titleView = menuView;
+//}
 
 - (void)setupViews {
     [self.view addSubview:self.centerContainerView];
     
-    [self setupTargetViewController:self.leftViewController withSlideType:XHSlideTypeLeft];
-    [self setupTargetViewController:self.rightViewController withSlideType:XHSlideTypeRight];
+//    [self setupTargetViewController:self.leftViewController withSlideType:XHSlideTypeLeft];
+//    [self setupTargetViewController:self.rightViewController withSlideType:XHSlideTypeRight];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -247,8 +217,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 - (void)dealloc {
     self.paggingScrollView.delegate = nil;
     self.paggingScrollView = nil;
-    
-    self.paggingNavbar = nil;
     
     menuView = nil;
     
@@ -372,7 +340,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.paggingNavbar.contentOffset = scrollView.contentOffset;
+//    self.paggingNavbar.contentOffset = scrollView.contentOffset;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

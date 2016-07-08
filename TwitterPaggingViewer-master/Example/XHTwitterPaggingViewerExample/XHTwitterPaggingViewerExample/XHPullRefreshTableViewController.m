@@ -16,21 +16,21 @@
 
 @implementation XHPullRefreshTableViewController
 
-- (void)startPullDownRefreshing {
-    [self.refreshControl startPullDownRefreshing];
-}
-
-- (void)endPullDownRefreshing {
-    [self.refreshControl endPullDownRefreshing];
-}
-
-- (void)endLoadMoreRefreshing {
-    [self.refreshControl endLoadMoreRefresing];
-}
-
-- (void)endMoreOverWithMessage:(NSString *)message {
-    [self.refreshControl endMoreOverWithMessage:message];
-}
+//- (void)startPullDownRefreshing {
+//    [self.refreshControl startPullDownRefreshing];
+//}
+//
+//- (void)endPullDownRefreshing {
+//    [self.refreshControl endPullDownRefreshing];
+//}
+//
+//- (void)endLoadMoreRefreshing {
+//    [self.refreshControl endLoadMoreRefresing];
+//}
+//
+//- (void)endMoreOverWithMessage:(NSString *)message {
+//    [self.refreshControl endMoreOverWithMessage:message];
+//}
 
 #pragma mark - Propertys
 

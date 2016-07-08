@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		51920567B2C7409CB6CDC785 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D8D4EEFAD4E96A5E642A7 /* libPods.a */; };
-		7D093BB0196413DA00F563BD /* XHPullRefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D093BAF196413DA00F563BD /* XHPullRefreshTableViewController.m */; };
-		ABCFFB6A1963852800E7E72C /* XHPaggingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCFFB671963852800E7E72C /* XHPaggingNavbar.m */; };
 		ABCFFB6B1963852800E7E72C /* XHTwitterPaggingViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCFFB691963852800E7E72C /* XHTwitterPaggingViewer.m */; };
 		ABFA6824195510C800335010 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFA6823195510C800335010 /* Foundation.framework */; };
 		ABFA6826195510C800335010 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFA6825195510C800335010 /* CoreGraphics.framework */; };
@@ -43,10 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7D093BAE196413DA00F563BD /* XHPullRefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPullRefreshTableViewController.h; sourceTree = "<group>"; };
-		7D093BAF196413DA00F563BD /* XHPullRefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPullRefreshTableViewController.m; sourceTree = "<group>"; };
-		ABCFFB661963852800E7E72C /* XHPaggingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPaggingNavbar.h; sourceTree = "<group>"; };
-		ABCFFB671963852800E7E72C /* XHPaggingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPaggingNavbar.m; sourceTree = "<group>"; };
 		ABCFFB681963852800E7E72C /* XHTwitterPaggingViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTwitterPaggingViewer.h; sourceTree = "<group>"; };
 		ABCFFB691963852800E7E72C /* XHTwitterPaggingViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTwitterPaggingViewer.m; sourceTree = "<group>"; };
 		ABFA6820195510C800335010 /* XHTwitterPaggingViewerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHTwitterPaggingViewerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,8 +103,6 @@
 		ABCFFB651963852800E7E72C /* XHTwitterPaggingViewer */ = {
 			isa = PBXGroup;
 			children = (
-				ABCFFB661963852800E7E72C /* XHPaggingNavbar.h */,
-				ABCFFB671963852800E7E72C /* XHPaggingNavbar.m */,
 				ABCFFB681963852800E7E72C /* XHTwitterPaggingViewer.h */,
 				ABCFFB691963852800E7E72C /* XHTwitterPaggingViewer.m */,
 			);
@@ -162,8 +154,6 @@
 				ABFA6853195510F900335010 /* XHBaseTableViewController.m */,
 				ABFA6854195510F900335010 /* XHFoundationCommon.h */,
 				ABFA6855195510F900335010 /* XHFoundationCommon.m */,
-				7D093BAE196413DA00F563BD /* XHPullRefreshTableViewController.h */,
-				7D093BAF196413DA00F563BD /* XHPullRefreshTableViewController.m */,
 				ABFA6856195510F900335010 /* XHTableViewController.h */,
 				ABFA6857195510F900335010 /* XHTableViewController.m */,
 				ABFA6835195510C800335010 /* Images.xcassets */,
@@ -347,7 +337,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D093BB0196413DA00F563BD /* XHPullRefreshTableViewController.m in Sources */,
 				EAB35BD61CF2E6510023FE21 /* FDSlideBar.m in Sources */,
 				ABFA6858195510F900335010 /* XHBaseTableViewController.m in Sources */,
 				ABFA6834195510C800335010 /* AppDelegate.m in Sources */,
@@ -356,7 +345,6 @@
 				ABCFFB6B1963852800E7E72C /* XHTwitterPaggingViewer.m in Sources */,
 				ABFA6859195510F900335010 /* XHFoundationCommon.m in Sources */,
 				EAB35BD71CF2E6510023FE21 /* FDSlideBarItem.m in Sources */,
-				ABCFFB6A1963852800E7E72C /* XHPaggingNavbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

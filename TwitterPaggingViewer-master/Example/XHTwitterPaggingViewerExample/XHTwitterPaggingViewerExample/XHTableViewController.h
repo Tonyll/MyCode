@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "XHPullRefreshTableViewController.h"
+//#import "XHPullRefreshTableViewController.h"
 
-@interface XHTableViewController : XHPullRefreshTableViewController
+#import "XHBaseTableViewController.h"
+
+@interface XHTableViewController : XHBaseTableViewController
 
 @property (nonatomic, assign) BOOL showPushDetail;
 

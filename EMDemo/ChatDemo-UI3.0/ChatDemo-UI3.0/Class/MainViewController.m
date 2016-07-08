@@ -110,6 +110,11 @@ static NSString *kGroupName = @"GroupName";
     }
 }
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"%@",viewController.description);
+}
+
 #pragma mark - private
 
 - (void)setupSubviews
