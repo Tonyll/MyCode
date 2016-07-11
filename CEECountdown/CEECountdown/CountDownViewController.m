@@ -155,7 +155,7 @@
         }
         
         _countdownLabel.attributedText = attrStr;
-        _countdownLabel.font = [UIFont fontWithName:@"Digital-7" size:16];
+        _countdownLabel.font = [UIFont fontWithName:@"Digital-7" size:28];
         _countdownLabel.textAlignment = NSTextAlignmentCenter;
         [_countdownView addSubview:_countdownLabel];
         [_countdownLabel mas_makeConstraints:^(MASConstraintMaker *make) {

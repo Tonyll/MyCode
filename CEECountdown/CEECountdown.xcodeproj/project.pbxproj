@@ -24,6 +24,8 @@
 		EA1AC21B1D2E46A400698608 /* CEETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC21A1D2E46A400698608 /* CEETabBarController.m */; };
 		EA1AC21E1D2E47D900698608 /* CEENavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC21D1D2E47D900698608 /* CEENavigationViewController.m */; };
 		EA6531AF1D333A990080895E /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */; };
+		EA6531BC1D339D960080895E /* Digital-7Mono.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EA6531BA1D339D960080895E /* Digital-7Mono.TTF */; };
+		EA6531BD1D339D960080895E /* Heavitas.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA6531BB1D339D960080895E /* Heavitas.ttf */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,8 +79,8 @@
 		EA1AC21D1D2E47D900698608 /* CEENavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEENavigationViewController.m; sourceTree = "<group>"; };
 		EA6531AD1D333A990080895E /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
 		EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
-		EA6531B11D333BF60080895E /* Digital-7Mono.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7Mono.TTF"; sourceTree = "<group>"; };
-		EA6531B21D333BF60080895E /* Heavitas.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Heavitas.ttf; sourceTree = "<group>"; };
+		EA6531BA1D339D960080895E /* Digital-7Mono.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7Mono.TTF"; sourceTree = "<group>"; };
+		EA6531BB1D339D960080895E /* Heavitas.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Heavitas.ttf; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,8 +202,8 @@
 		EA6531B01D333BD10080895E /* Font_Source */ = {
 			isa = PBXGroup;
 			children = (
-				EA6531B11D333BF60080895E /* Digital-7Mono.TTF */,
-				EA6531B21D333BF60080895E /* Heavitas.ttf */,
+				EA6531BA1D339D960080895E /* Digital-7Mono.TTF */,
+				EA6531BB1D339D960080895E /* Heavitas.ttf */,
 			);
 			name = Font_Source;
 			sourceTree = "<group>";
@@ -324,9 +326,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6531BC1D339D960080895E /* Digital-7Mono.TTF in Resources */,
 				EA1AC19F1D2CE9F000698608 /* LaunchScreen.storyboard in Resources */,
 				EA1AC19C1D2CE9F000698608 /* Assets.xcassets in Resources */,
 				EA1AC19A1D2CE9F000698608 /* Main.storyboard in Resources */,
+				EA6531BD1D339D960080895E /* Heavitas.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
