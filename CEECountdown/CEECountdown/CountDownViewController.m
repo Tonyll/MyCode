@@ -7,10 +7,12 @@
 //
 
 #import "CountDownViewController.h"
+#import "CBAutoScrollLabel.h"
 
 @interface CountDownViewController (){
     dispatch_source_t _timer;
     NSArray *colorArr;
+    NSString *_countdownLabelTextVal;
 }
 
 @property (nonatomic, strong) UIView *bottomView;
@@ -23,7 +25,7 @@
 @property (nonatomic, strong) UILabel *countdownLabel;
 
 @property (nonatomic, strong) UILabel *bottomDayLabel;
-@property (nonatomic, strong) UILabel *bottomScrollLabel;
+@property (nonatomic, strong) CBAutoScrollLabel *bottomScrollLabel;
 
 @end
 
@@ -33,14 +35,26 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    colorArr = @[RGBAHEX(0xec6941),RGBAHEX(0x01a4e5),RGBAHEX(0xe4007f),RGBAHEX(0x22ac38),RGBAHEX(0xae5da1),RGBAHEX(0x0068b7),RGBAHEX(0x920783),RGBAHEX(0x097c25),RGBAHEX(0x7d0022),RGBAHEX(0xe60012)];
-    
+    colorArr = @[@0xec6941, @0x01a4e5, @0xe4007f, @0x22ac38, @0xae5da1, @0x0068b7, @0x920783, @0x097c25, @0x7d0022, @0xe60012];
     [self setupSubViews];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat  = @"yyyy/MM/dd HH:mm:ss";
-    NSDate *aDate = [df dateFromString: @"2016/07/08 12:00:00"];
+    NSDate *aDate = [df dateFromString: @"2017/06/07 9:00:00"];
     [self countDown:aDate];
+    
+    NSArray *familys = [UIFont familyNames];
+    
+    for (int i = 0; i < [familys count]; i++)
+    {
+        NSString *family = [familys objectAtIndex:i];
+        NSLog(@"=====Fontfamily:%@", family);
+        NSArray *fonts = [UIFont fontNamesForFamilyName:family];
+        for(int j = 0; j < [fonts count]; j++)
+        {
+            NSLog(@"***FontName:%@", [fonts objectAtIndex:j]);
+        }
+    }
 }
 
 - (void)setupSubViews{
@@ -78,24 +92,14 @@
     
     {//centerView subView
         UILabel *timeLabel = [[UILabel alloc] init];
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] init];
-        
         timeLabel.opaque = NO;
         //设置字体格式和大小
         NSString *str0 = @"2017年7月7日";
-        NSDictionary *dictAttr0 = @{NSFontAttributeName:[UIFont boldSystemFontOfSize:20]};
-        NSAttributedString *attr0 = [[NSAttributedString alloc]initWithString:str0 attributes:dictAttr0];
-        [attributedString appendAttributedString:attr0];
-        
-        //设置字体颜色
-        NSString *str1 = @"";
-        NSDictionary *dictAttr1 = @{NSForegroundColorAttributeName:RGBAHEX(0x6a3906)};
-        NSAttributedString *attr1 = [[NSAttributedString alloc]initWithString:str1 attributes:dictAttr1];
-        [attributedString appendAttributedString:attr1];
-        
-        timeLabel.attributedText = attributedString;
+        timeLabel.text = str0;
+        timeLabel.textColor = CEECountDownFontColor;
+        timeLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:28];
         timeLabel.textAlignment = NSTextAlignmentCenter;
-        [timeLabel sizeToFit];
+//        [timeLabel sizeToFit];
         
         [_centerView addSubview:timeLabel];
         [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -104,18 +108,15 @@
             make.height.mas_equalTo(@20);
         }];
         
-        
         _dayView = [[UIView alloc] init];
-        _dayView.backgroundColor = [UIColor grayColor];
         [_centerView addSubview:_dayView];
         [_dayView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(_centerView).mas_offset(CGPointMake(0, 10));
+            make.center.mas_equalTo(_centerView).mas_offset(CGPointMake(0, -10));
             make.height.mas_equalTo(0.4 * (CEEScreenHeight - 55 - 211));
             make.left.right.mas_equalTo(_centerView);
         }];
         
         _countdownView = [[UIView alloc] init];
-        _countdownView.backgroundColor = [UIColor darkGrayColor];
         [_centerView addSubview:_countdownView];
         [_countdownView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(_centerView);
@@ -127,21 +128,41 @@
         _dayLabel.textAlignment = NSTextAlignmentCenter;
         [_dayView addSubview:_dayLabel];
         [_dayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(_dayView).mas_offset(CGPointMake(-10, 0));
+            make.center.mas_equalTo(_dayView).mas_offset(CGPointMake(0, -10));
             make.top.mas_equalTo(_dayView).mas_offset(10);
             make.bottom.mas_equalTo(_dayView).mas_offset(-10);
         }];
         
         
         _countdownLabel = [[UILabel alloc] init];
-        _countdownLabel.text = @"1296:49:03";
+        _countdownLabelTextVal = @"1296:49:03";
+        NSArray *_countdownLabelVal = [_countdownLabelTextVal componentsSeparatedByString:@":"];
+        
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:_countdownLabelTextVal];
+//        [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:16] range:NSMakeRange(0, _countdownLabelTextVal.length)];
+        int indexVal = 0;
+        for (int i = 0; i < [_countdownLabelVal count]; i++) {
+            if (i == 0) {
+                [attrStr addAttribute:NSForegroundColorAttributeName value:RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]) range:NSMakeRange(0, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1)];
+            }
+            if (i < ([_countdownLabelVal count] - 1)) {
+                [attrStr addAttribute:NSForegroundColorAttributeName value:RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]) range:NSMakeRange(indexVal, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1)];
+            }
+            if (i == ([_countdownLabelVal count] - 1)) {
+                [attrStr addAttribute:NSForegroundColorAttributeName value:RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]) range:NSMakeRange(indexVal, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length)];
+            }
+            indexVal += [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1;
+        }
+        
+        _countdownLabel.attributedText = attrStr;
+        _countdownLabel.font = [UIFont fontWithName:@"Digital-7" size:16];
         _countdownLabel.textAlignment = NSTextAlignmentCenter;
         [_countdownView addSubview:_countdownLabel];
         [_countdownLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(30);
-            make.top.left.right.mas_equalTo(_countdownView);
+            make.left.right.mas_equalTo(_countdownView);
+            make.top.mas_equalTo(_countdownView).offset(20);
         }];
-        
     }
     
     {
@@ -149,6 +170,7 @@
         _bottomDayLabel.textAlignment = NSTextAlignmentCenter;
         _bottomDayLabel.text = @"去除周末实际仅剩40天";
         _bottomDayLabel.textColor = CEECountDownFontColor;
+        _bottomDayLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
         [_bottomView addSubview:_bottomDayLabel];
         [_bottomDayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.mas_equalTo(_bottomView).mas_offset(CGPointMake(0, -15));
@@ -156,10 +178,11 @@
             make.height.mas_equalTo(15);
         }];
         
-        _bottomScrollLabel = [[UILabel alloc] init];
+        _bottomScrollLabel = [[CBAutoScrollLabel alloc] init];
         _bottomScrollLabel.textAlignment = NSTextAlignmentCenter;
-        _bottomScrollLabel.text = @"去除周末实际仅剩40天";
+        _bottomScrollLabel.text = @"2016年高考成绩放榜和分数段公布时间为6月22日晚，考生对成绩有疑问需在6月25日12:00前申请成绩复核登记。6月24日17:00点前，填报本科提前批志愿。";
         _bottomScrollLabel.textColor = CEECountDownFontColor;
+        _bottomScrollLabel.font= [UIFont fontWithName:@"Helvetica-Bold" size:16];
         [_bottomView addSubview:_bottomScrollLabel];
         [_bottomScrollLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.mas_equalTo(_bottomView).mas_offset(CGPointMake(0, 15));
@@ -191,7 +214,7 @@
             int hour = (timeout - day*(3600*24))/3600.0;
             int min = (timeout - day*(3600*24) - hour*3600)/60;
             int sec = (timeout - day*(3600*24) - hour*3600 - min*60);
-            NSArray *arr = @[@(day),@(hour),@(min),@(sec)];
+            NSArray *arr = @[@(day),@(hour + day * 24),@(min),@(sec)];
             NSArray *arrStr = @[@"day",@"hour",@"min",@"sec"];
             //到这里已经可以获取到具体的时差 这边可以显示在你
             [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

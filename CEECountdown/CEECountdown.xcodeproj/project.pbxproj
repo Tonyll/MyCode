@@ -23,6 +23,7 @@
 		EA1AC2181D2E457300698608 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1AC2171D2E457300698608 /* Reveal.framework */; };
 		EA1AC21B1D2E46A400698608 /* CEETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC21A1D2E46A400698608 /* CEETabBarController.m */; };
 		EA1AC21E1D2E47D900698608 /* CEENavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC21D1D2E47D900698608 /* CEENavigationViewController.m */; };
+		EA6531AF1D333A990080895E /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,10 @@
 		EA1AC21A1D2E46A400698608 /* CEETabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEETabBarController.m; sourceTree = "<group>"; };
 		EA1AC21C1D2E47D900698608 /* CEENavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEENavigationViewController.h; sourceTree = "<group>"; };
 		EA1AC21D1D2E47D900698608 /* CEENavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEENavigationViewController.m; sourceTree = "<group>"; };
+		EA6531AD1D333A990080895E /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
+		EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
+		EA6531B11D333BF60080895E /* Digital-7Mono.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7Mono.TTF"; sourceTree = "<group>"; };
+		EA6531B21D333BF60080895E /* Heavitas.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Heavitas.ttf; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +148,7 @@
 		EA1AC18E1D2CE9F000698608 /* CEECountdown */ = {
 			isa = PBXGroup;
 			children = (
+				EA6531B01D333BD10080895E /* Font_Source */,
 				EA1AC1921D2CE9F000698608 /* AppDelegate.h */,
 				EA1AC1931D2CE9F000698608 /* AppDelegate.m */,
 				EA1AC21C1D2E47D900698608 /* CEENavigationViewController.h */,
@@ -151,6 +157,8 @@
 				EA1AC21A1D2E46A400698608 /* CEETabBarController.m */,
 				EA1AC2121D2E369900698608 /* CountDownViewController.h */,
 				EA1AC2131D2E369900698608 /* CountDownViewController.m */,
+				EA6531AD1D333A990080895E /* CBAutoScrollLabel.h */,
+				EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */,
 				EA1AC1951D2CE9F000698608 /* ViewController.h */,
 				EA1AC1961D2CE9F000698608 /* ViewController.m */,
 				EA1AC1981D2CE9F000698608 /* Main.storyboard */,
@@ -187,6 +195,15 @@
 				EA1AC1B61D2CE9F000698608 /* Info.plist */,
 			);
 			path = CEECountdownUITests;
+			sourceTree = "<group>";
+		};
+		EA6531B01D333BD10080895E /* Font_Source */ = {
+			isa = PBXGroup;
+			children = (
+				EA6531B11D333BF60080895E /* Digital-7Mono.TTF */,
+				EA6531B21D333BF60080895E /* Heavitas.ttf */,
+			);
+			name = Font_Source;
 			sourceTree = "<group>";
 		};
 		ED24C642A8E8D8D358662559 /* Frameworks */ = {
@@ -386,6 +403,7 @@
 				EA1AC2141D2E369900698608 /* CountDownViewController.m in Sources */,
 				EA1AC1941D2CE9F000698608 /* AppDelegate.m in Sources */,
 				EA1AC1911D2CE9F000698608 /* main.m in Sources */,
+				EA6531AF1D333A990080895E /* CBAutoScrollLabel.m in Sources */,
 				EA1AC21B1D2E46A400698608 /* CEETabBarController.m in Sources */,
 				EA1AC21E1D2E47D900698608 /* CEENavigationViewController.m in Sources */,
 			);

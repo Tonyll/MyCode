@@ -31,7 +31,7 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 #define CEENavColor          RGBAHEX(0xfff484)
 
-#define CEECountDownFontColor RGBAHEX(0x6a3906)
+#define CEECountDownFontColor RGBAHEX(0x6e3810)
 
 
 
