@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CountDownViewController : UIViewController
+@interface CountDownViewController : BaseViewController
 
 @end

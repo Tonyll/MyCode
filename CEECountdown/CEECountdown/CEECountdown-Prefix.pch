@@ -14,6 +14,8 @@
 
 #import <Masonry.h>
 #import "BaseViewController.h"
+#import "CEEAlertView.h"
+#import "UIBarButtonItem+Extension.h"
 
 #define CEEUserDefaults [NSUserDefaults standardUserDefaults]
 #define CEEScreenBounds [UIScreen mainScreen].bounds
@@ -34,6 +36,16 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 #define CEECountDownFontColor RGBAHEX(0x6e3810)
 
+
+#ifdef DEBUG
+#define CEELog(...) NSLog(__VA_ARGS__)
+#else
+#define CEELog(...)
+#endif
+
+#define CEELogFunc XCFLog(@"%s", __func__)
+
+#define WeakSelf __weak typeof(self) weakSelf = self;
 
 
 #endif /* CEECountdown_Prefix_pch */

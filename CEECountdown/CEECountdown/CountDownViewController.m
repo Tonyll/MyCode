@@ -112,7 +112,7 @@
         
         timeLabel.text = na;
         timeLabel.textColor = CEECountDownFontColor;
-        timeLabel.font = [UIFont systemFontOfSize:26];//[UIFont fontWithName:@"Helvetica-Bold" size:26];
+        timeLabel.font = [UIFont systemFontOfSize:26];
         timeLabel.textAlignment = NSTextAlignmentCenter;
 //        [timeLabel sizeToFit];
         
@@ -224,8 +224,7 @@
 
 //GCD
 - (void)countDown:(NSDate *)futureDate{
-    __weak typeof(self) weakSelf = self;
-    
+    WeakSelf;
     NSTimeInterval futureTimeInterval = [futureDate timeIntervalSinceDate:[NSDate date]];
     __block int timeout = futureTimeInterval;
     dispatch_queue_t queue = dispatch_queue_create("com.CEECountdown.countdown", 0);
@@ -317,8 +316,6 @@
         }
         lastDay = days - (totalWeek * 2) - endWeekDay + 1;
     }
-    
-    NSLog(@"lastDay is :%d",lastDay);
     _remainDay = [NSString stringWithFormat:@"%d",lastDay];;
     _bottomDayLabel.text = [NSString stringWithFormat:@"去除周末实际仅剩%@天",_remainDay];
 }

@@ -7,8 +7,9 @@
 //
 
 #import "BaseViewController.h"
+#import "LoginViewController.h"
 
-@interface BaseViewController ()
+@interface BaseViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -19,16 +20,25 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.title = @"2017高考倒计时";
-    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:CEETabBarSelectColor,NSForegroundColorAttributeName,nil];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:CEETabBarSelectColor,NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
-    UIButton * navRoad=[[UIButton alloc]init];
-    navRoad.frame=CGRectMake(0, 0, 36, 36);
+    UIButton *navRoad = [[UIButton alloc] init];
+    navRoad.frame = CGRectMake(0, 0, 34, 34);
     [navRoad setBackgroundImage:[UIImage imageNamed:@"nav_road"] forState:UIControlStateNormal];
-    [navRoad setBackgroundImage:[UIImage imageNamed:@"nav_road_selecte"] forState:UIControlStateHighlighted];
-    [navRoad addTarget:self action:@selector(road) forControlEvents:UIControlEventTouchUpInside];
+    [navRoad setBackgroundImage:[UIImage imageNamed:@"nav_road_select"] forState:UIControlStateHighlighted];
+    [navRoad addTarget:self action:@selector(jumpRoad) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * rightBtn = [[UIBarButtonItem alloc] initWithCustomView:navRoad];
     self.navigationItem.rightBarButtonItem = rightBtn;
+    
+    UIButton *navSetBtn = [[UIButton alloc] init];
+    navSetBtn.frame = CGRectMake(0, 0, 24, 24);
+    [navSetBtn setBackgroundImage:[UIImage imageNamed:@"nav_setup"] forState:UIControlStateNormal];
+    [navSetBtn setBackgroundImage:[UIImage imageNamed:@"nav_setup_select"] forState:UIControlStateHighlighted];
+    [navSetBtn addTarget:self action:@selector(loginAlertShow) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * leftBtn = [[UIBarButtonItem alloc] initWithCustomView:navSetBtn];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+    
     
     self.navigationController.navigationBar.translucent = NO;
 }
@@ -38,14 +48,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)loginAlertShow{
+    WeakSelf;
+    [CEEAlertView showAlertWithTitle:@"登录提示"
+                            message:@"您还没有登录,是否登录?"
+                    completionBlock:^(NSUInteger buttonIndex, CEEAlertView *alertView) {
+                        if (buttonIndex == 1) {
+                            [weakSelf jumpToLoginVC];
+                        }
+                    } cancelButtonTitle:@"取消"
+                  otherButtonTitles:@"确定", nil];
 }
-*/
+
+- (void)jumpToLoginVC{
+    LoginViewController *loginVC = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:loginVC animated:YES];
+}
+
+- (void)jumpRoad{
+    
+}
+
+
 
 @end

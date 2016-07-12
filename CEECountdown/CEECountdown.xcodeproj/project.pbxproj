@@ -35,6 +35,8 @@
 		EA6531D81D34ED470080895E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531D71D34ED470080895E /* BaseViewController.m */; };
 		EA6531DD1D34EEAE0080895E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531DC1D34EEAE0080895E /* LoginViewController.m */; };
 		EA6531E01D34EEB80080895E /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531DF1D34EEB80080895E /* RegistViewController.m */; };
+		EA6531E41D34F3E90080895E /* CEEAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E31D34F3E90080895E /* CEEAlertView.m */; };
+		EA6531E71D34F8F70080895E /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E61D34F8F70080895E /* UIBarButtonItem+Extension.m */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +110,10 @@
 		EA6531DC1D34EEAE0080895E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EA6531DE1D34EEB80080895E /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
 		EA6531DF1D34EEB80080895E /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
+		EA6531E21D34F3E90080895E /* CEEAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEEAlertView.h; sourceTree = "<group>"; };
+		EA6531E31D34F3E90080895E /* CEEAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEEAlertView.m; sourceTree = "<group>"; };
+		EA6531E51D34F8F70080895E /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
+		EA6531E61D34F8F70080895E /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +183,7 @@
 		EA1AC18E1D2CE9F000698608 /* CEECountdown */ = {
 			isa = PBXGroup;
 			children = (
+				EA6531E11D34F3B90080895E /* 3rdparty */,
 				EA6531DA1D34EE520080895E /* UserInfo */,
 				EA6531D91D34EDF70080895E /* CountDown */,
 				EA6531D51D34ED230080895E /* BaseVC */,
@@ -189,8 +196,6 @@
 				EA1AC21D1D2E47D900698608 /* CEENavigationViewController.m */,
 				EA1AC2191D2E46A400698608 /* CEETabBarController.h */,
 				EA1AC21A1D2E46A400698608 /* CEETabBarController.m */,
-				EA6531AD1D333A990080895E /* CBAutoScrollLabel.h */,
-				EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */,
 				EA1AC1951D2CE9F000698608 /* ViewController.h */,
 				EA1AC1961D2CE9F000698608 /* ViewController.m */,
 				EA1AC1981D2CE9F000698608 /* Main.storyboard */,
@@ -260,6 +265,8 @@
 				EA6531CC1D3499020080895E /* NSString+MoreExtentions.m */,
 				EA6531CD1D3499020080895E /* UIView+Extension.h */,
 				EA6531CE1D3499020080895E /* UIView+Extension.m */,
+				EA6531E51D34F8F70080895E /* UIBarButtonItem+Extension.h */,
+				EA6531E61D34F8F70080895E /* UIBarButtonItem+Extension.m */,
 			);
 			name = Category;
 			path = category;
@@ -292,6 +299,17 @@
 				EA6531DF1D34EEB80080895E /* RegistViewController.m */,
 			);
 			name = UserInfo;
+			sourceTree = "<group>";
+		};
+		EA6531E11D34F3B90080895E /* 3rdparty */ = {
+			isa = PBXGroup;
+			children = (
+				EA6531AD1D333A990080895E /* CBAutoScrollLabel.h */,
+				EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */,
+				EA6531E21D34F3E90080895E /* CEEAlertView.h */,
+				EA6531E31D34F3E90080895E /* CEEAlertView.m */,
+			);
+			name = 3rdparty;
 			sourceTree = "<group>";
 		};
 		ED24C642A8E8D8D358662559 /* Frameworks */ = {
@@ -490,10 +508,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6531C61D3498CA0080895E /* FDCalendar.m in Sources */,
+				EA6531E41D34F3E90080895E /* CEEAlertView.m in Sources */,
 				EA1AC1971D2CE9F000698608 /* ViewController.m in Sources */,
 				EA6531D11D3499020080895E /* UIView+Extension.m in Sources */,
 				EA1AC2141D2E369900698608 /* CountDownViewController.m in Sources */,
 				EA1AC1941D2CE9F000698608 /* AppDelegate.m in Sources */,
+				EA6531E71D34F8F70080895E /* UIBarButtonItem+Extension.m in Sources */,
 				EA6531D81D34ED470080895E /* BaseViewController.m in Sources */,
 				EA1AC1911D2CE9F000698608 /* main.m in Sources */,
 				EA6531CF1D3499020080895E /* NSString+DateTransform.m in Sources */,

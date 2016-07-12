@@ -20,9 +20,6 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    
-    
     FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
     [self.view addSubview:calendar];
 }

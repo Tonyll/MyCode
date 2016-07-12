@@ -29,23 +29,19 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     if (self.viewControllers.count > 0) {
         // 替换back按钮
-//        UIBarButtonItem *backBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"backStretchBackgroundNormal"
-//                                                                         imageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)
-//                                                                                  target:self
-//                                                                                  action:@selector(back)];
-//        viewController.navigationItem.leftBarButtonItem = backBarButtonItem;
-//        // 隐藏tabbar
-//        viewController.hidesBottomBarWhenPushed = YES;
+        UIBarButtonItem *backBarButtonItem = [UIBarButtonItem barButtonItemWithImageName:@"nav_back"
+                                                                         imageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)
+                                                                                  target:self
+                                                                                  action:@selector(back)];
+        viewController.navigationItem.leftBarButtonItem = backBarButtonItem;
+        // 隐藏tabbar
+        viewController.hidesBottomBarWhenPushed = YES;
     }
     [super pushViewController:viewController animated:animated];
 }
 
 - (void)back {
     [self popViewControllerAnimated:YES];
-}
-
-- (NSString *)title{
-    return @"2017高考倒计时";
 }
 
 @end
