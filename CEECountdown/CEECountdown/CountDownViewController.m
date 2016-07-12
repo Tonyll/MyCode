@@ -13,6 +13,12 @@
     dispatch_source_t _timer;
     NSArray *colorArr;
     NSString *_countdownLabelTextVal;
+    NSString *_countdownDayVal;
+    
+    
+    UIColor *_hourColor;
+    UIColor *_minColor;
+    UIColor *_secColor;
 }
 
 @property (nonatomic, strong) UIView *bottomView;
@@ -35,27 +41,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    colorArr = @[@0xec6941, @0x01a4e5, @0xe4007f, @0x22ac38, @0xae5da1, @0x0068b7, @0x920783, @0x097c25, @0x7d0022, @0xe60012];
+    [self initData];
     [self setupSubViews];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat  = @"yyyy/MM/dd HH:mm:ss";
     NSDate *aDate = [df dateFromString: @"2017/06/07 9:00:00"];
     [self countDown:aDate];
-    
-    NSArray *familys = [UIFont familyNames];
-    
-    for (int i = 0; i < [familys count]; i++)
-    {
-        NSString *family = [familys objectAtIndex:i];
-        NSLog(@"=====Fontfamily:%@", family);
-        NSArray *fonts = [UIFont fontNamesForFamilyName:family];
-        for(int j = 0; j < [fonts count]; j++)
-        {
-            NSLog(@"***FontName:%@", [fonts objectAtIndex:j]);
-        }
-    }
 }
+
+- (void)initData{
+    colorArr = @[@0xec6941, @0x01a4e5, @0xe4007f, @0x22ac38, @0xae5da1, @0x0068b7, @0x920783, @0x097c25, @0x7d0022, @0xe60012];
+    
+    _hourColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
+    _minColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
+    _secColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
+}
+
 
 - (void)setupSubViews{
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"countDown_bg"]];
@@ -93,11 +95,17 @@
     {//centerView subView
         UILabel *timeLabel = [[UILabel alloc] init];
         timeLabel.opaque = NO;
-        //设置字体格式和大小
-        NSString *str0 = @"2017年7月7日";
-        timeLabel.text = str0;
+
+        NSDate * date = [NSDate date];
+        NSTimeInterval sec = [date timeIntervalSinceNow];
+        NSDate * currentDate = [[NSDate alloc] initWithTimeIntervalSinceNow:sec];
+        NSDateFormatter * df = [[NSDateFormatter alloc] init ];
+        [df setDateFormat:@"yyyy年MM月dd日"];
+        NSString * na = [df stringFromDate:currentDate];
+        
+        timeLabel.text = na;
         timeLabel.textColor = CEECountDownFontColor;
-        timeLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:28];
+        timeLabel.font = [UIFont systemFontOfSize:26];//[UIFont fontWithName:@"Helvetica-Bold" size:26];
         timeLabel.textAlignment = NSTextAlignmentCenter;
 //        [timeLabel sizeToFit];
         
@@ -124,7 +132,8 @@
         }];
         
         _dayLabel = [[UILabel alloc] init];
-        _dayLabel.text = @"154天";
+        _countdownDayVal = @"";
+        [self setUpDayLabelVal];
         _dayLabel.textAlignment = NSTextAlignmentCenter;
         [_dayView addSubview:_dayLabel];
         [_dayLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -133,31 +142,9 @@
             make.bottom.mas_equalTo(_dayView).mas_offset(-10);
         }];
         
-        
-        _countdownLabel = [[UILabel alloc] init];
-        _countdownLabelTextVal = @"1296:49:03";
-        NSArray *_countdownLabelVal = [_countdownLabelTextVal componentsSeparatedByString:@":"];
-        
-        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:_countdownLabelTextVal];
-//        [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:16] range:NSMakeRange(0, _countdownLabelTextVal.length)];
-        int indexVal = 0;
-        for (int i = 0; i < [_countdownLabelVal count]; i++) {
-            if (i == 0) {
-                [attrStr addAttribute:NSForegroundColorAttributeName value:RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]) range:NSMakeRange(0, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1)];
-            }
-            if (i < ([_countdownLabelVal count] - 1)) {
-                [attrStr addAttribute:NSForegroundColorAttributeName value:RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]) range:NSMakeRange(indexVal, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1)];
-            }
-            if (i == ([_countdownLabelVal count] - 1)) {
-                [attrStr addAttribute:NSForegroundColorAttributeName value:RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]) range:NSMakeRange(indexVal, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length)];
-            }
-            indexVal += [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1;
-        }
-        
-        _countdownLabel.attributedText = attrStr;
-        _countdownLabel.font = [UIFont fontWithName:@"Digital-7" size:28];
-        _countdownLabel.textAlignment = NSTextAlignmentCenter;
-        [_countdownView addSubview:_countdownLabel];
+        self.countdownLabel = [[UILabel alloc] init];
+        _countdownLabelTextVal = @"";
+        [_countdownView addSubview:self.countdownLabel];
         [_countdownLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(30);
             make.left.right.mas_equalTo(_countdownView);
@@ -192,8 +179,46 @@
     }
 }
 
+- (void) setUpDayLabelVal{
+    if (_countdownDayVal.length > 0) {
+        NSInteger dayLabelLength = _countdownDayVal.length;
+        NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:_countdownDayVal];
+        [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:120] range:NSMakeRange(0, _countdownDayVal.length - 1)];
+        [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Helvetica-Bold" size:20] range:NSMakeRange(_countdownDayVal.length - 1, 1)];
+        for (int i = 0; i<(dayLabelLength - 1); i++) {
+            [attrStr addAttribute:NSForegroundColorAttributeName value:RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]) range:NSMakeRange(i, 1)];
+        }
+        
+        self.dayLabel.attributedText = attrStr;
+    }
+}
+
+- (void)setUpCountCountdownLabel{
+    NSArray *_countdownLabelVal = [_countdownLabelTextVal componentsSeparatedByString:@":"];
+    
+    NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:_countdownLabelTextVal];
+    [attrStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Digital-7" size:30] range:NSMakeRange(0, _countdownLabelTextVal.length)];
+    int indexVal = 0;
+    if (_countdownLabelTextVal.length != 0) {
+        for (int i = 0; i < [_countdownLabelVal count]; i++) {
+            if (i == 0) {
+                [attrStr addAttribute:NSForegroundColorAttributeName value:_hourColor range:NSMakeRange(0, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1)];
+            }else if (i < ([_countdownLabelVal count] - 1)) {
+                [attrStr addAttribute:NSForegroundColorAttributeName value:_minColor range:NSMakeRange(indexVal, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1)];
+            }else if (i == ([_countdownLabelVal count] - 1)) {
+                [attrStr addAttribute:NSForegroundColorAttributeName value:_secColor range:NSMakeRange(indexVal, [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length)];
+            }
+            indexVal += [NSString stringWithFormat:@"%@",[_countdownLabelVal objectAtIndex:i]].length + 1;
+        }
+    }
+    self.countdownLabel.attributedText = attrStr;
+    self.countdownLabel.textAlignment = NSTextAlignmentCenter;
+}
+
 //GCD
 - (void)countDown:(NSDate *)futureDate{
+    __weak typeof(self) weakSelf = self;
+    
     NSTimeInterval futureTimeInterval = [futureDate timeIntervalSinceDate:[NSDate date]];
     __block int timeout = futureTimeInterval;
     dispatch_queue_t queue = dispatch_queue_create("com.CEECountdown.countdown", 0);
@@ -209,20 +234,37 @@
             });
         } else{
             timeout--;
-            NSLog(@"timeout is %d",timeout);
             int day = timeout/(3600*24);
             int hour = (timeout - day*(3600*24))/3600.0;
             int min = (timeout - day*(3600*24) - hour*3600)/60;
             int sec = (timeout - day*(3600*24) - hour*3600 - min*60);
-            NSArray *arr = @[@(day),@(hour + day * 24),@(min),@(sec)];
-            NSArray *arrStr = @[@"day",@"hour",@"min",@"sec"];
-            //到这里已经可以获取到具体的时差 这边可以显示在你
-            [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                NSLog(@"%@:%@",arrStr[idx],obj);
-            }];
-            NSLog(@"------------------------");
+            NSString *minStr;
+            NSString *secStr;
+            if (min < 10) {
+                minStr = [NSString stringWithFormat:@"0%d", min];
+            } else{
+                minStr = [NSString stringWithFormat:@"%d", min];
+            }
+            if (sec < 10) {
+                secStr = [NSString stringWithFormat:@"0%d", sec];
+            } else{
+                secStr = [NSString stringWithFormat:@"%d", sec];
+            }
+            _countdownLabelTextVal = [NSString stringWithFormat:@"%d:%@:%@",hour + day * 24,minStr,secStr];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                NSString *tmpDayVal = [NSString stringWithFormat:@"%d天",day];
+                if (![_countdownDayVal isEqualToString:tmpDayVal]) {
+                    _countdownDayVal = tmpDayVal;
+                    [weakSelf setUpDayLabelVal];
+                }
+                if (sec == 59) {
+                    _minColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
+                    _secColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
+                }
+                [weakSelf setUpCountCountdownLabel];
+            });
         }
-        
     });
     dispatch_resume(_timer);
 }
