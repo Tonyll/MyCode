@@ -9,6 +9,7 @@
 #import "CEETabBarController.h"
 #import "CountDownViewController.h"
 #import "CEENavigationViewController.h"
+#import "CalendarViewController.h"
 
 @interface CEETabBarController ()
 
@@ -38,35 +39,24 @@
 }
 
 - (void)viewDidLoad {
-    [self setupChildViewController:[[CountDownViewController alloc] init]
-                             title:@"倒计时"
-                             image:@"bar_countdown"
-                     selectedImage:@"bar_countdown_select"];
-//    [self setupChildViewController:[[CountDownViewController alloc] init]
-//                             title:@"吐槽弹幕"
-//                             image:@"bar_barrage"
-//                     selectedImage:@"bar_barrage_select"];
-//    [self setupChildViewController:[[CountDownViewController alloc] init]
-//                             title:@"对对碰"
-//                             image:@"bar_concentration"
-//                     selectedImage:@"bar_concentration_select"];
-    [self setupChildViewController:[[CountDownViewController alloc] init]
-                             title:@"高考日历"
-                             image:@"bar_calendar"
-                     selectedImage:@"bar_calendar_select"];
-}
-
-- (void)setupChildViewController:(UIViewController *)childController
-                           title:(NSString *)title
-                           image:(NSString *)image
-                   selectedImage:(NSString *)selectedImage {
-    childController.title = title;
-    [childController.tabBarItem setImage:[[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [childController.tabBarItem setSelectedImage:[[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    CEENavigationViewController *navCon = [[CEENavigationViewController alloc] initWithRootViewController:childController];
-    navCon.title = @"2017高考倒计时";
     
-    [self addChildViewController:navCon];
+    CEENavigationViewController *navCon = [[CEENavigationViewController alloc] initWithRootViewController:[[CountDownViewController alloc] init]];
+    navCon.title = @"2017高考倒计时";
+    CEENavigationViewController *navCon1 = [[CEENavigationViewController alloc] initWithRootViewController:[[CalendarViewController alloc] init]];
+    navCon1.title = @"2017高考倒计时";
+    
+    self.viewControllers = [NSArray arrayWithObjects:navCon, navCon1, nil];
+    
+    NSArray *titleArr = @[@"倒计时",@"高考日历"];
+    NSArray *imgArr = @[@"bar_countdown",@"bar_calendar"];
+    NSArray *imgSelectArr = @[@"bar_countdown_select",@"bar_calendar_select"];
+    for (int i = 0 ; i < self.tabBar.items.count;i++) {
+        UITabBarItem *item =  [self.tabBar.items objectAtIndex:i];
+        item.tag = i;
+        item.title = titleArr[i];
+        item.image = [[UIImage imageNamed:imgArr[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        item.selectedImage = [[UIImage imageNamed:imgSelectArr[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

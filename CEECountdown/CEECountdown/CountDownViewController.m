@@ -19,6 +19,8 @@
     UIColor *_hourColor;
     UIColor *_minColor;
     UIColor *_secColor;
+    
+    NSString *_remainDay;//距离高考剩余天数
 }
 
 @property (nonatomic, strong) UIView *bottomView;
@@ -43,6 +45,9 @@
     
     [self initData];
     [self setupSubViews];
+    [self calculateDays];
+    
+    self.title = @"2017高考倒计时";
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat  = @"yyyy/MM/dd HH:mm:ss";
@@ -155,7 +160,7 @@
     {
         _bottomDayLabel = [[UILabel alloc] init];
         _bottomDayLabel.textAlignment = NSTextAlignmentCenter;
-        _bottomDayLabel.text = @"去除周末实际仅剩40天";
+        _bottomDayLabel.text = [NSString stringWithFormat:@"去除周末实际仅剩%@天",_remainDay];
         _bottomDayLabel.textColor = CEECountDownFontColor;
         _bottomDayLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
         [_bottomView addSubview:_bottomDayLabel];
@@ -258,7 +263,7 @@
                     _countdownDayVal = tmpDayVal;
                     [weakSelf setUpDayLabelVal];
                 }
-                if (sec == 59) {
+                if (sec == 0) {
                     _minColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
                     _secColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
                 }
@@ -267,6 +272,53 @@
         }
     });
     dispatch_resume(_timer);
+}
+
+/**
+ *  计算剩余时间 去除周么
+ */
+- (void)calculateDays
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    //然后创建日期对象
+    
+    NSDate *date1 = [dateFormatter dateFromString:@"2017-6-7"];
+    
+    NSDate *date = [NSDate date];
+    
+    NSCalendar * calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay|NSCalendarUnitWeekOfYear|NSCalendarUnitWeekday fromDate:date];
+    NSTimeInterval time = [date1 timeIntervalSinceDate:date];
+    //计算天数、时、分、秒
+    
+    int days = ((int)time)/(3600*24);
+    
+    int totalWeek = days / 7;
+    int yuDay = days % 7;
+    int lastDay = 0;
+    if (yuDay == 0) {
+        lastDay = days - (totalWeek * 2);
+    } else{
+        int weekDay = 0;
+        int endWeekDay = 0;
+        weekDay = comps.weekday == 0 ? 7 : (int)comps.weekday;
+        
+        if ((weekDay == 6 && yuDay >= 2) || (weekDay == 7 && yuDay >= 1) || (weekDay == 5 && yuDay >= 3) || (weekDay == 4 && yuDay >= 4) || (weekDay == 3 && yuDay >= 5) || (weekDay == 2 && yuDay >= 6) || (weekDay == 1 && yuDay >=7))
+        {
+            endWeekDay =2;
+        }
+        if ((weekDay == 6 && yuDay < 1) || (weekDay == 7 && yuDay <5) || (weekDay == 5 && yuDay < 2) || (weekDay == 4 && yuDay < 3) || (weekDay == 3 && yuDay < 4) || (weekDay == 2 && yuDay < 5) || (weekDay == 1 && yuDay < 6))          {
+            endWeekDay = 1;
+        }
+        lastDay = days - (totalWeek * 2) - endWeekDay + 1;
+    }
+    
+    NSLog(@"lastDay is :%d",lastDay);
+    _remainDay = [NSString stringWithFormat:@"%d",lastDay];;
+    _bottomDayLabel.text = [NSString stringWithFormat:@"去除周末实际仅剩%@天",_remainDay];
 }
 
 - (void)didReceiveMemoryWarning {

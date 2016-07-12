@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationBar.barTintColor = CEENavColor;
+    self.navigationBar.tintColor = CEETabBarNormalColor;
 }
 
 - (void)didReceiveMemoryWarning {
