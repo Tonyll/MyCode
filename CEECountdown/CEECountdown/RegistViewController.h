@@ -1,5 +1,5 @@
 //
-//  CalendarViewController.h
+//  RegistViewController.h
 //  CEECountdown
 //
 //  Created by Tony L on 7/12/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CalendarViewController : BaseViewController
+@interface RegistViewController : UIViewController
 
 @end

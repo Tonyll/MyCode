@@ -1,30 +1,22 @@
 //
-//  CalendarViewController.m
+//  RegistViewController.m
 //  CEECountdown
 //
 //  Created by Tony L on 7/12/16.
 //  Copyright © 2016 com.jiemo. All rights reserved.
 //
 
-#import "CalendarViewController.h"
-#import "FDCalendar.h"
+#import "RegistViewController.h"
 
-@interface CalendarViewController ()
+@interface RegistViewController ()
 
 @end
 
-@implementation CalendarViewController
+@implementation RegistViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    
-    
-    FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
-    [self.view addSubview:calendar];
 }
 
 - (void)didReceiveMemoryWarning {

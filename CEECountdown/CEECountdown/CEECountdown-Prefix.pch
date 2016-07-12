@@ -13,6 +13,7 @@
 #import <Foundation/Foundation.h>
 
 #import <Masonry.h>
+#import "BaseViewController.h"
 
 #define CEEUserDefaults [NSUserDefaults standardUserDefaults]
 #define CEEScreenBounds [UIScreen mainScreen].bounds

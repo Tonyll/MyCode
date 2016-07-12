@@ -1,30 +1,22 @@
 //
-//  CalendarViewController.m
+//  LoginViewController.m
 //  CEECountdown
 //
 //  Created by Tony L on 7/12/16.
 //  Copyright © 2016 com.jiemo. All rights reserved.
 //
 
-#import "CalendarViewController.h"
-#import "FDCalendar.h"
+#import "LoginViewController.h"
 
-@interface CalendarViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation CalendarViewController
+@implementation LoginViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    
-    
-    FDCalendar *calendar = [[FDCalendar alloc] initWithCurrentDate:[NSDate date]];
-    [self.view addSubview:calendar];
 }
 
 - (void)didReceiveMemoryWarning {

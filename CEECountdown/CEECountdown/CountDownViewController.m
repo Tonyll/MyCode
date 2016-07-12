@@ -47,7 +47,9 @@
     [self setupSubViews];
     [self calculateDays];
     
-    self.title = @"2017高考倒计时";
+    self.navigationItem.title = @"2017高考倒计时";
+    NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:CEETabBarSelectColor,NSForegroundColorAttributeName,nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat  = @"yyyy/MM/dd HH:mm:ss";

@@ -41,9 +41,7 @@
 - (void)viewDidLoad {
     
     CEENavigationViewController *navCon = [[CEENavigationViewController alloc] initWithRootViewController:[[CountDownViewController alloc] init]];
-    navCon.title = @"2017高考倒计时";
     CEENavigationViewController *navCon1 = [[CEENavigationViewController alloc] initWithRootViewController:[[CalendarViewController alloc] init]];
-    navCon1.title = @"2017高考倒计时";
     
     self.viewControllers = [NSArray arrayWithObjects:navCon, navCon1, nil];
     
