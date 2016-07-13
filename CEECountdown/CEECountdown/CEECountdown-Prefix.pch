@@ -16,6 +16,7 @@
 #import "BaseViewController.h"
 #import "CEEAlertView.h"
 #import "UIBarButtonItem+Extension.h"
+#import <ReactiveCocoa.h>
 
 #define CEEUserDefaults [NSUserDefaults standardUserDefaults]
 #define CEEScreenBounds [UIScreen mainScreen].bounds
@@ -36,6 +37,8 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 
 #define CEECountDownFontColor RGBAHEX(0x6e3810)
 
+#define CEEBackgroundColor RGBAHEX(0xf8f8f8)
+
 
 #ifdef DEBUG
 #define CEELog(...) NSLog(__VA_ARGS__)
@@ -46,6 +49,8 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 #define CEELogFunc XCFLog(@"%s", __func__)
 
 #define WeakSelf __weak typeof(self) weakSelf = self;
+
+#define NavTitle @"2017高考倒计时"
 
 
 #endif /* CEECountdown_Prefix_pch */

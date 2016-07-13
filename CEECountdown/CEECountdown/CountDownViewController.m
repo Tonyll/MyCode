@@ -21,6 +21,8 @@
     UIColor *_secColor;
     
     NSString *_remainDay;//距离高考剩余天数
+    
+    int timeout;
 }
 
 @property (nonatomic, strong) UIView *bottomView;
@@ -47,14 +49,23 @@
     [self setupSubViews];
     [self calculateDays];
     
-    self.navigationItem.title = @"2017高考倒计时";
+    self.navigationItem.title = NavTitle;
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:CEETabBarSelectColor,NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat  = @"yyyy/MM/dd HH:mm:ss";
     NSDate *aDate = [df dateFromString: @"2017/06/07 9:00:00"];
-    [self countDown:aDate];
+
+    NSTimeInterval futureTimeInterval = [aDate timeIntervalSinceDate:[NSDate date]];
+    timeout = futureTimeInterval;
+    
+    [self doCountDown];
+    
+    [[RACSignal interval:1 onScheduler:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSDate * date) {
+        WeakSelf;
+        [weakSelf doCountDown];
+    }];
 }
 
 - (void)initData{
@@ -64,7 +75,6 @@
     _minColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
     _secColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
 }
-
 
 - (void)setupSubViews{
     UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"countDown_bg"]];
@@ -220,6 +230,50 @@
     }
     self.countdownLabel.attributedText = attrStr;
     self.countdownLabel.textAlignment = NSTextAlignmentCenter;
+}
+
+//RAC
+- (void)doCountDown{
+    WeakSelf;
+    if (timeout < 0) {
+        dispatch_source_cancel(_timer);
+        _timer = nil;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"倒计时结束");
+        });
+    } else{
+        timeout--;
+        int day = timeout/(3600*24);
+        int hour = (timeout - day*(3600*24))/3600.0;
+        int min = (timeout - day*(3600*24) - hour*3600)/60;
+        int sec = (timeout - day*(3600*24) - hour*3600 - min*60);
+        NSString *minStr;
+        NSString *secStr;
+        if (min < 10) {
+            minStr = [NSString stringWithFormat:@"0%d", min];
+        } else{
+            minStr = [NSString stringWithFormat:@"%d", min];
+        }
+        if (sec < 10) {
+            secStr = [NSString stringWithFormat:@"0%d", sec];
+        } else{
+            secStr = [NSString stringWithFormat:@"%d", sec];
+        }
+        _countdownLabelTextVal = [NSString stringWithFormat:@"%d:%@:%@",hour + day * 24,minStr,secStr];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSString *tmpDayVal = [NSString stringWithFormat:@"%d天",day];
+            if (![_countdownDayVal isEqualToString:tmpDayVal]) {
+                _countdownDayVal = tmpDayVal;
+                [weakSelf setUpDayLabelVal];
+            }
+            if (sec == 0) {
+                _minColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
+                _secColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
+            }
+            [weakSelf setUpCountCountdownLabel];
+        });
+    }
 }
 
 //GCD
