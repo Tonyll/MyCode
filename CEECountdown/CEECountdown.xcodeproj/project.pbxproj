@@ -33,10 +33,13 @@
 		EA6531D01D3499020080895E /* NSString+MoreExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531CC1D3499020080895E /* NSString+MoreExtentions.m */; };
 		EA6531D11D3499020080895E /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531CE1D3499020080895E /* UIView+Extension.m */; };
 		EA6531D81D34ED470080895E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531D71D34ED470080895E /* BaseViewController.m */; };
-		EA6531DD1D34EEAE0080895E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531DC1D34EEAE0080895E /* LoginViewController.m */; };
 		EA6531E01D34EEB80080895E /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531DF1D34EEB80080895E /* RegistViewController.m */; };
 		EA6531E41D34F3E90080895E /* CEEAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E31D34F3E90080895E /* CEEAlertView.m */; };
 		EA6531E71D34F8F70080895E /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E61D34F8F70080895E /* UIBarButtonItem+Extension.m */; };
+		EA6531EB1D35E86D0080895E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E91D35E86D0080895E /* LoginViewController.m */; };
+		EA6531EC1D35E86D0080895E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6531EA1D35E86D0080895E /* LoginViewController.xib */; };
+		EA6531F01D361D490080895E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531EF1D361D490080895E /* User.m */; };
+		EA6531F31D3622160080895E /* UserViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531F21D3622160080895E /* UserViewModel.m */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -106,14 +109,19 @@
 		EA6531CE1D3499020080895E /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		EA6531D61D34ED470080895E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		EA6531D71D34ED470080895E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		EA6531DB1D34EEAE0080895E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		EA6531DC1D34EEAE0080895E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EA6531DE1D34EEB80080895E /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
 		EA6531DF1D34EEB80080895E /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 		EA6531E21D34F3E90080895E /* CEEAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEEAlertView.h; sourceTree = "<group>"; };
 		EA6531E31D34F3E90080895E /* CEEAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEEAlertView.m; sourceTree = "<group>"; };
 		EA6531E51D34F8F70080895E /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
 		EA6531E61D34F8F70080895E /* UIBarButtonItem+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Extension.m"; sourceTree = "<group>"; };
+		EA6531E81D35E86D0080895E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		EA6531E91D35E86D0080895E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		EA6531EA1D35E86D0080895E /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		EA6531EE1D361D490080895E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		EA6531EF1D361D490080895E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		EA6531F11D3622160080895E /* UserViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewModel.h; sourceTree = "<group>"; };
+		EA6531F21D3622160080895E /* UserViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewModel.m; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +191,7 @@
 		EA1AC18E1D2CE9F000698608 /* CEECountdown */ = {
 			isa = PBXGroup;
 			children = (
+				EA6531ED1D361D1B0080895E /* Model&ViewModel */,
 				EA6531E11D34F3B90080895E /* 3rdparty */,
 				EA6531DA1D34EE520080895E /* UserInfo */,
 				EA6531D91D34EDF70080895E /* CountDown */,
@@ -293,10 +302,11 @@
 		EA6531DA1D34EE520080895E /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				EA6531DB1D34EEAE0080895E /* LoginViewController.h */,
-				EA6531DC1D34EEAE0080895E /* LoginViewController.m */,
 				EA6531DE1D34EEB80080895E /* RegistViewController.h */,
 				EA6531DF1D34EEB80080895E /* RegistViewController.m */,
+				EA6531E81D35E86D0080895E /* LoginViewController.h */,
+				EA6531E91D35E86D0080895E /* LoginViewController.m */,
+				EA6531EA1D35E86D0080895E /* LoginViewController.xib */,
 			);
 			name = UserInfo;
 			sourceTree = "<group>";
@@ -310,6 +320,17 @@
 				EA6531E31D34F3E90080895E /* CEEAlertView.m */,
 			);
 			name = 3rdparty;
+			sourceTree = "<group>";
+		};
+		EA6531ED1D361D1B0080895E /* Model&ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EA6531EE1D361D490080895E /* User.h */,
+				EA6531EF1D361D490080895E /* User.m */,
+				EA6531F11D3622160080895E /* UserViewModel.h */,
+				EA6531F21D3622160080895E /* UserViewModel.m */,
+			);
+			name = "Model&ViewModel";
 			sourceTree = "<group>";
 		};
 		ED24C642A8E8D8D358662559 /* Frameworks */ = {
@@ -432,6 +453,7 @@
 			files = (
 				EA6531BC1D339D960080895E /* Digital-7Mono.TTF in Resources */,
 				EA1AC19F1D2CE9F000698608 /* LaunchScreen.storyboard in Resources */,
+				EA6531EC1D35E86D0080895E /* LoginViewController.xib in Resources */,
 				EA1AC19C1D2CE9F000698608 /* Assets.xcassets in Resources */,
 				EA1AC19A1D2CE9F000698608 /* Main.storyboard in Resources */,
 				EA6531BD1D339D960080895E /* Heavitas.ttf in Resources */,
@@ -520,11 +542,13 @@
 				EA6531C11D3498AA0080895E /* CalendarViewController.m in Sources */,
 				EA6531C71D3498CA0080895E /* FDCalendarItem.m in Sources */,
 				EA6531AF1D333A990080895E /* CBAutoScrollLabel.m in Sources */,
+				EA6531F31D3622160080895E /* UserViewModel.m in Sources */,
 				EA1AC21B1D2E46A400698608 /* CEETabBarController.m in Sources */,
+				EA6531EB1D35E86D0080895E /* LoginViewController.m in Sources */,
+				EA6531F01D361D490080895E /* User.m in Sources */,
 				EA1AC21E1D2E47D900698608 /* CEENavigationViewController.m in Sources */,
 				EA6531D01D3499020080895E /* NSString+MoreExtentions.m in Sources */,
 				EA6531E01D34EEB80080895E /* RegistViewController.m in Sources */,
-				EA6531DD1D34EEAE0080895E /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
