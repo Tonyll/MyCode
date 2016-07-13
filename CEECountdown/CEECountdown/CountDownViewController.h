@@ -10,4 +10,9 @@
 
 @interface CountDownViewController : BaseViewController
 
+/**
+ *  高考时间
+ */
+@property (nonatomic, strong) NSString *destinationTimeStr;
+
 @end

@@ -53,13 +53,6 @@
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:CEETabBarSelectColor,NSForegroundColorAttributeName,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    df.dateFormat  = @"yyyy/MM/dd HH:mm:ss";
-    NSDate *aDate = [df dateFromString: @"2017/06/07 9:00:00"];
-
-    NSTimeInterval futureTimeInterval = [aDate timeIntervalSinceDate:[NSDate date]];
-    timeout = futureTimeInterval;
-    
     [self doCountDown];
     
     [[RACSignal interval:1 onScheduler:[RACScheduler mainThreadScheduler]] subscribeNext:^(NSDate * date) {
@@ -74,6 +67,14 @@
     _hourColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
     _minColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
     _secColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
+    
+    self.destinationTimeStr = @"2017/06/07 9:00:00";
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateFormat  = @"yyyy/MM/dd HH:mm:ss";
+    NSDate *aDate = [df dateFromString:_destinationTimeStr];
+    
+    NSTimeInterval futureTimeInterval = [aDate timeIntervalSinceDate:[NSDate date]];
+    timeout = futureTimeInterval;
 }
 
 - (void)setupSubViews{
@@ -124,7 +125,6 @@
         timeLabel.textColor = CEECountDownFontColor;
         timeLabel.font = [UIFont systemFontOfSize:26];
         timeLabel.textAlignment = NSTextAlignmentCenter;
-//        [timeLabel sizeToFit];
         
         [_centerView addSubview:timeLabel];
         [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -274,59 +274,6 @@
             [weakSelf setUpCountCountdownLabel];
         });
     }
-}
-
-//GCD
-- (void)countDown:(NSDate *)futureDate{
-    WeakSelf;
-    NSTimeInterval futureTimeInterval = [futureDate timeIntervalSinceDate:[NSDate date]];
-    __block int timeout = futureTimeInterval;
-    dispatch_queue_t queue = dispatch_queue_create("com.CEECountdown.countdown", 0);
-    _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    dispatch_source_set_timer(_timer, dispatch_time(DISPATCH_TIME_NOW, 0), NSEC_PER_SEC, 0);
-    
-    dispatch_source_set_event_handler(_timer, ^{
-        if (timeout < 0) {
-            dispatch_source_cancel(_timer);
-            _timer = nil;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSLog(@"倒计时结束");
-            });
-        } else{
-            timeout--;
-            int day = timeout/(3600*24);
-            int hour = (timeout - day*(3600*24))/3600.0;
-            int min = (timeout - day*(3600*24) - hour*3600)/60;
-            int sec = (timeout - day*(3600*24) - hour*3600 - min*60);
-            NSString *minStr;
-            NSString *secStr;
-            if (min < 10) {
-                minStr = [NSString stringWithFormat:@"0%d", min];
-            } else{
-                minStr = [NSString stringWithFormat:@"%d", min];
-            }
-            if (sec < 10) {
-                secStr = [NSString stringWithFormat:@"0%d", sec];
-            } else{
-                secStr = [NSString stringWithFormat:@"%d", sec];
-            }
-            _countdownLabelTextVal = [NSString stringWithFormat:@"%d:%@:%@",hour + day * 24,minStr,secStr];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                NSString *tmpDayVal = [NSString stringWithFormat:@"%d天",day];
-                if (![_countdownDayVal isEqualToString:tmpDayVal]) {
-                    _countdownDayVal = tmpDayVal;
-                    [weakSelf setUpDayLabelVal];
-                }
-                if (sec == 0) {
-                    _minColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
-                    _secColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
-                }
-                [weakSelf setUpCountCountdownLabel];
-            });
-        }
-    });
-    dispatch_resume(_timer);
 }
 
 /**
