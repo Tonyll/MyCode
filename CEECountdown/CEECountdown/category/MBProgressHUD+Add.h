@@ -10,6 +10,8 @@
 
 @interface MBProgressHUD (Add)
 
-+ (MBProgressHUD *)showMessag:(NSString *)message toView:(UIView *)view;
++ (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view;
+
++ (MBProgressHUD *)showMessag:(NSString *)message toView:(UIView *)view AfterDelay:(CGFloat)delay;
 
 @end

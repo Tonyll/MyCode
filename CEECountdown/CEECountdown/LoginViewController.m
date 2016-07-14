@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "CEENetWork.h"
 
 @interface LoginViewController ()
 {
@@ -59,13 +60,60 @@
 }
 - (IBAction)loginAction:(id)sender {
     NSLog(@"do login");
-    if (![self isMobileNumber:_usernameText.text]) {
-        [MBProgressHUD showMessag:@"请输入正确的手机号!" toView:self.view];
-        return;
-    } else if(_passwordText.text.length < 6){
-        [MBProgressHUD showMessag:@"密码长度不能小于6位!" toView:self.view];
+    if ([CEEUtils NoNetFunc]) {
+        MB_NONETCONECTING;
         return;
     }
+    if (![self isMobileNumber:_usernameText.text]) {
+        [MBProgressHUD showMessage:@"请输入正确的手机号!" toView:self.view];
+        return;
+    } else if(_passwordText.text.length < 6){
+        [MBProgressHUD showMessage:@"密码长度不能小于6位!" toView:self.view];
+        return;
+    }
+    
+    self.navigationItem.rightBarButtonItem.enabled =NO;
+    [self.view endEditing:YES];
+//    [_telNumberTextField resignFirstResponder];
+//    //手机号和用户名全部验证通过,提交手机号码和用户名进行网络请求
+//    _username = _telNumberTextField.text;
+//    _password = _pwdTextField.text;
+    
+    NSDictionary * dic = @{
+                           @"username":_usernameText.text,
+                           @"password":_passwordText.text,
+                           };
+    [[CEENetWork sharedManager] requestWithMethod:POST WithPath:@"http://innerapi1.jiemodou.net/User/Login" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+//        Model *model = [MTLJSONAdapter modelOfClass:[Model class] fromJSONDictionary:dic error:nil];
+//        NSLog(@"%@", model.origin);
+    } WithFailurBlock:^(NSError *error) {
+        
+    }];
+    
+//    [MBProgressHUD showMessag:@"正在登录中..." toView:self.view AfterDelay:30.0f];
+//    [[HttpTool sharedInstance] post_action_loginWithUserName:_username Password:_password Finish:^(id responseObject, NSError *error) {
+//        if (error)
+//        {
+//            self.navigationItem.rightBarButtonItem.enabled =YES;
+//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//            MB_NONETCONECTING;
+//            return ;
+//        }
+//        self.navigationItem.rightBarButtonItem.enabled =YES;
+//        if ([[responseObject objectForKey:@"errorcode"]integerValue]==9008) {
+//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//            [MBProgressHUD showError:@"手机号或密码错误!" toView:self.view];
+//        }else if([[responseObject objectForKey:@"errorcode"]integerValue] == 9005){
+//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//            [MBProgressHUD showError:@"验证码错误!" toView:self.view];
+//        }else if([[responseObject objectForKey:@"errorcode"]integerValue] == 9009){
+//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+//            [MBProgressHUD showError:@"手机号码不存在!" toView:self.view];
+//        }else{
+//            NSLog(@"登录成功。。。");
+//            [self finishLoginWithData:responseObject WithType:0];
+//        }
+//    }];
 }
 
 - (void)doRac{
