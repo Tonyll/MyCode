@@ -83,7 +83,8 @@
                            @"username":_usernameText.text,
                            @"password":_passwordText.text,
                            };
-    [[CEENetWork sharedManager] requestWithMethod:POST WithPath:@"http://innerapi1.jiemodou.net/User/Login" WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+    [[CEENetWork sharedManager] requestWithMethod:POST WithPath:@"http://innerapi1.jiemodou.net/User/Login" WithParams:dic WithSuccessBlock:^(NSDictionary *dic) {
+        NSLog(@"dic: %@",dic);
 //        Model *model = [MTLJSONAdapter modelOfClass:[Model class] fromJSONDictionary:dic error:nil];
 //        NSLog(@"%@", model.origin);
     } WithFailurBlock:^(NSError *error) {

@@ -55,7 +55,9 @@
             break;
         }
         case POST:{
-            [self POST:path parameters:params progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:params];
+            [dic setValue:[self getGParam] forKey:@"G"];
+            [self POST:path parameters:@{@"jsonParams":[dic JSONString]} progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 NSLog(@"JSON: %@", responseObject);
                 success(responseObject);
             } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -71,44 +73,43 @@
     }    
 }
 
-//-(NSDictionary*)getGParam
-//{
-//    NSString* openUDID = [OpenUDID value];
-//    //    openUDID = [[ASIdentifierManager sharedManager].advertisingIdentifier UUIDString];
-//    NSString *strBuild = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-//    NSArray *versions = [strBuild componentsSeparatedByString:@"."];
-//    __block NSInteger versionInt = 0;
-//    [versions enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        NSInteger n1 = [obj integerValue];
-//        NSInteger k = 0;
-//        
-//        switch (idx) {
-//            case 0:
-//                k = 100;
-//                break;
-//            case 1:
-//                k = 10;
-//                break;
-//            case 2:
-//                k = 1;
-//                break;
-//            default:
-//                break;
-//        }
-//        versionInt += n1 * k;
-//    }];
-//    
-//    NSDictionary *dic =
-//    @{
-//      @"dt":@"2",
-//      @"deviceId":openUDID,
-//      @"at":@"0",
-//      @"av":@(versionInt),
-//      @"sv":@"103",
-//      };
-//    
-//    
-//    return dic;
-//}
+-(NSDictionary*)getGParam
+{
+    NSString* openUDID = [OpenUDID value];
+    NSString *strBuild = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSArray *versions = [strBuild componentsSeparatedByString:@"."];
+    __block NSInteger versionInt = 0;
+    [versions enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSInteger n1 = [obj integerValue];
+        NSInteger k = 0;
+        
+        switch (idx) {
+            case 0:
+                k = 100;
+                break;
+            case 1:
+                k = 10;
+                break;
+            case 2:
+                k = 1;
+                break;
+            default:
+                break;
+        }
+        versionInt += n1 * k;
+    }];
+    
+    NSDictionary *dic =
+    @{
+      @"dt":@"2",
+      @"deviceId":openUDID,
+      @"at":@"3",
+      @"av":@(versionInt),
+      @"sv":@"103",
+      };
+    
+    
+    return dic;
+}
 
 @end

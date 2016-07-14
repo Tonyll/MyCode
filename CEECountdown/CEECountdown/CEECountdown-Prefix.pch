@@ -23,6 +23,7 @@
 #import "CEEUtils.h"
 #import <AFNetworking.h>
 #import <Reachability.h>
+#import <JSONKit.h>
 
 #define CEEUserDefaults [NSUserDefaults standardUserDefaults]
 #define CEEScreenBounds [UIScreen mainScreen].bounds
