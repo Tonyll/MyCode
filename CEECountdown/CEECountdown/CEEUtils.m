@@ -10,7 +10,7 @@
 
 @implementation CEEUtils
 
-+ (NSString *)errorCodeHandle:(CEEErrorCode)errorCode{
++ (NSString *)errorCodeHandle:(NSInteger)errorCode{
     NSString *returnStr = @"登录失败";
     switch (errorCode) {
         case CEEErrorMobileForm:

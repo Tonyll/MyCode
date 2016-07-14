@@ -10,7 +10,7 @@
 
 @interface CEEUtils : NSObject
 
-+ (NSString *)errorCodeHandle:(CEEErrorCode)errorCode;
++ (NSString *)errorCodeHandle:(NSInteger)errorCode;
 
 +(BOOL)NoNetFunc;
 

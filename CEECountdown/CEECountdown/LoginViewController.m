@@ -74,21 +74,25 @@
     
     self.navigationItem.rightBarButtonItem.enabled =NO;
     [self.view endEditing:YES];
-//    [_telNumberTextField resignFirstResponder];
-//    //手机号和用户名全部验证通过,提交手机号码和用户名进行网络请求
-//    _username = _telNumberTextField.text;
-//    _password = _pwdTextField.text;
-    
+
     NSDictionary * dic = @{
                            @"username":_usernameText.text,
                            @"password":_passwordText.text,
                            };
-    [[CEENetWork sharedManager] requestWithMethod:POST WithPath:@"http://innerapi1.jiemodou.net/User/Login" WithParams:dic WithSuccessBlock:^(NSDictionary *dic) {
+    [[CEENetWork sharedManager] requestWithMethod:POST WithPath:URL_USER_LOGIN WithParams:dic WithSuccessBlock:^(NSDictionary *dic) {
         NSLog(@"dic: %@",dic);
 //        Model *model = [MTLJSONAdapter modelOfClass:[Model class] fromJSONDictionary:dic error:nil];
 //        NSLog(@"%@", model.origin);
-    } WithFailurBlock:^(NSError *error) {
+        if ([[dic objectForKey:@"errorcode"] integerValue]) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+            NSString *errMsg  = [CEEUtils errorCodeHandle:[[dic objectForKey:@"errorcode"] integerValue]];
+            [MBProgressHUD showMessage:errMsg toView:self.view];
+            return;
+        }
         
+    } WithFailurBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
     
 //    [MBProgressHUD showMessag:@"正在登录中..." toView:self.view AfterDelay:30.0f];

@@ -17,6 +17,8 @@ typedef void (^requestSuccessBlock)(NSDictionary *dic);
 //请求失败回调block
 typedef void (^requestFailureBlock)(NSError *error);
 
+typedef void (^responseHandler)(id responseObject, NSError *error);
+
 + (instancetype)sharedManager;
 
 - (void)requestWithMethod:(HTTPMethodType)method
