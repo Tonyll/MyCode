@@ -40,6 +40,8 @@
 		EA6531EC1D35E86D0080895E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6531EA1D35E86D0080895E /* LoginViewController.xib */; };
 		EA6531F01D361D490080895E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531EF1D361D490080895E /* User.m */; };
 		EA6531F31D3622160080895E /* UserViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531F21D3622160080895E /* UserViewModel.m */; };
+		EA6531F91D373D670080895E /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531F81D373D670080895E /* MBProgressHUD+Add.m */; };
+		EA6531FF1D3785700080895E /* CEEUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531FE1D3785700080895E /* CEEUtils.m */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +124,11 @@
 		EA6531EF1D361D490080895E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		EA6531F11D3622160080895E /* UserViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewModel.h; sourceTree = "<group>"; };
 		EA6531F21D3622160080895E /* UserViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewModel.m; sourceTree = "<group>"; };
+		EA6531F71D373D670080895E /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		EA6531F81D373D670080895E /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		EA6531FA1D37403E0080895E /* CEEMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEEMacro.h; sourceTree = "<group>"; };
+		EA6531FD1D3785700080895E /* CEEUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEEUtils.h; sourceTree = "<group>"; };
+		EA6531FE1D3785700080895E /* CEEUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEEUtils.m; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +198,7 @@
 		EA1AC18E1D2CE9F000698608 /* CEECountdown */ = {
 			isa = PBXGroup;
 			children = (
+				EA6531FB1D37408F0080895E /* Config */,
 				EA6531ED1D361D1B0080895E /* Model&ViewModel */,
 				EA6531E11D34F3B90080895E /* 3rdparty */,
 				EA6531DA1D34EE520080895E /* UserInfo */,
@@ -212,6 +220,9 @@
 				EA1AC19D1D2CE9F000698608 /* LaunchScreen.storyboard */,
 				EA1AC1A01D2CE9F000698608 /* Info.plist */,
 				EA1AC18F1D2CE9F000698608 /* Supporting Files */,
+				EA6531FA1D37403E0080895E /* CEEMacro.h */,
+				EA6531FD1D3785700080895E /* CEEUtils.h */,
+				EA6531FE1D3785700080895E /* CEEUtils.m */,
 			);
 			path = CEECountdown;
 			sourceTree = "<group>";
@@ -276,6 +287,8 @@
 				EA6531CE1D3499020080895E /* UIView+Extension.m */,
 				EA6531E51D34F8F70080895E /* UIBarButtonItem+Extension.h */,
 				EA6531E61D34F8F70080895E /* UIBarButtonItem+Extension.m */,
+				EA6531F71D373D670080895E /* MBProgressHUD+Add.h */,
+				EA6531F81D373D670080895E /* MBProgressHUD+Add.m */,
 			);
 			name = Category;
 			path = category;
@@ -331,6 +344,13 @@
 				EA6531F21D3622160080895E /* UserViewModel.m */,
 			);
 			name = "Model&ViewModel";
+			sourceTree = "<group>";
+		};
+		EA6531FB1D37408F0080895E /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Config;
 			sourceTree = "<group>";
 		};
 		ED24C642A8E8D8D358662559 /* Frameworks */ = {
@@ -530,6 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6531C61D3498CA0080895E /* FDCalendar.m in Sources */,
+				EA6531F91D373D670080895E /* MBProgressHUD+Add.m in Sources */,
 				EA6531E41D34F3E90080895E /* CEEAlertView.m in Sources */,
 				EA1AC1971D2CE9F000698608 /* ViewController.m in Sources */,
 				EA6531D11D3499020080895E /* UIView+Extension.m in Sources */,
@@ -543,6 +564,7 @@
 				EA6531C71D3498CA0080895E /* FDCalendarItem.m in Sources */,
 				EA6531AF1D333A990080895E /* CBAutoScrollLabel.m in Sources */,
 				EA6531F31D3622160080895E /* UserViewModel.m in Sources */,
+				EA6531FF1D3785700080895E /* CEEUtils.m in Sources */,
 				EA1AC21B1D2E46A400698608 /* CEETabBarController.m in Sources */,
 				EA6531EB1D35E86D0080895E /* LoginViewController.m in Sources */,
 				EA6531F01D361D490080895E /* User.m in Sources */,

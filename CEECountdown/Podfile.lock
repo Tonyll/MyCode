@@ -18,6 +18,7 @@ PODS:
   - JSONKit-NoWarning (1.2)
   - Masonry (1.0.1)
   - MBProgressHUD (0.9.2)
+  - Reachability (3.2)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - JSONKit-NoWarning (~> 1.2)
   - Masonry (~> 1.0.1)
   - MBProgressHUD (~> 0.9.2)
+  - Reachability (~> 3.2)
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.8.1)
   - UMengAnalytics (~> 4.0.4)
@@ -46,6 +48,7 @@ SPEC CHECKSUMS:
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   UMengAnalytics: 4ed421fb3bca63b26fc13c947743cabf3831d199
