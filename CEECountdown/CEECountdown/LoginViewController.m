@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "CEENetWork.h"
+#import "UserModel.h"
 
 @interface LoginViewController ()
 {
@@ -81,8 +82,6 @@
                            };
     [[CEENetWork sharedManager] requestWithMethod:POST WithPath:URL_USER_LOGIN WithParams:dic WithSuccessBlock:^(NSDictionary *dic) {
         NSLog(@"dic: %@",dic);
-//        Model *model = [MTLJSONAdapter modelOfClass:[Model class] fromJSONDictionary:dic error:nil];
-//        NSLog(@"%@", model.origin);
         if ([[dic objectForKey:@"errorcode"] integerValue]) {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             
@@ -90,6 +89,8 @@
             [MBProgressHUD showMessage:errMsg toView:self.view];
             return;
         }
+        UserModel *model = [MTLJSONAdapter modelOfClass:[UserModel class] fromJSONDictionary:dic error:nil];
+        
         
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

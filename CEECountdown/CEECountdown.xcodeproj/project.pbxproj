@@ -38,11 +38,11 @@
 		EA6531E71D34F8F70080895E /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E61D34F8F70080895E /* UIBarButtonItem+Extension.m */; };
 		EA6531EB1D35E86D0080895E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E91D35E86D0080895E /* LoginViewController.m */; };
 		EA6531EC1D35E86D0080895E /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6531EA1D35E86D0080895E /* LoginViewController.xib */; };
-		EA6531F01D361D490080895E /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531EF1D361D490080895E /* User.m */; };
 		EA6531F31D3622160080895E /* UserViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531F21D3622160080895E /* UserViewModel.m */; };
 		EA6531F91D373D670080895E /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531F81D373D670080895E /* MBProgressHUD+Add.m */; };
 		EA6531FF1D3785700080895E /* CEEUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531FE1D3785700080895E /* CEEUtils.m */; };
 		EA6532041D3797C40080895E /* CEENetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6532031D3797C40080895E /* CEENetWork.m */; };
+		EA6532081D37BC7B0080895E /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6532071D37BC7B0080895E /* UserModel.m */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -121,8 +121,6 @@
 		EA6531E81D35E86D0080895E /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		EA6531E91D35E86D0080895E /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		EA6531EA1D35E86D0080895E /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		EA6531EE1D361D490080895E /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		EA6531EF1D361D490080895E /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		EA6531F11D3622160080895E /* UserViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewModel.h; sourceTree = "<group>"; };
 		EA6531F21D3622160080895E /* UserViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewModel.m; sourceTree = "<group>"; };
 		EA6531F71D373D670080895E /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
@@ -133,6 +131,8 @@
 		EA6532021D3797C40080895E /* CEENetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEENetWork.h; sourceTree = "<group>"; };
 		EA6532031D3797C40080895E /* CEENetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEENetWork.m; sourceTree = "<group>"; };
 		EA6532051D3799060080895E /* HTTPConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPConfig.h; sourceTree = "<group>"; };
+		EA6532061D37BC7B0080895E /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		EA6532071D37BC7B0080895E /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -342,10 +342,10 @@
 		EA6531ED1D361D1B0080895E /* Model&ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				EA6531EE1D361D490080895E /* User.h */,
-				EA6531EF1D361D490080895E /* User.m */,
 				EA6531F11D3622160080895E /* UserViewModel.h */,
 				EA6531F21D3622160080895E /* UserViewModel.m */,
+				EA6532061D37BC7B0080895E /* UserModel.h */,
+				EA6532071D37BC7B0080895E /* UserModel.m */,
 			);
 			name = "Model&ViewModel";
 			sourceTree = "<group>";
@@ -586,12 +586,12 @@
 				EA6531C11D3498AA0080895E /* CalendarViewController.m in Sources */,
 				EA6532041D3797C40080895E /* CEENetWork.m in Sources */,
 				EA6531C71D3498CA0080895E /* FDCalendarItem.m in Sources */,
+				EA6532081D37BC7B0080895E /* UserModel.m in Sources */,
 				EA6531AF1D333A990080895E /* CBAutoScrollLabel.m in Sources */,
 				EA6531F31D3622160080895E /* UserViewModel.m in Sources */,
 				EA6531FF1D3785700080895E /* CEEUtils.m in Sources */,
 				EA1AC21B1D2E46A400698608 /* CEETabBarController.m in Sources */,
 				EA6531EB1D35E86D0080895E /* LoginViewController.m in Sources */,
-				EA6531F01D361D490080895E /* User.m in Sources */,
 				EA1AC21E1D2E47D900698608 /* CEENavigationViewController.m in Sources */,
 				EA6531D01D3499020080895E /* NSString+MoreExtentions.m in Sources */,
 				EA6531E01D34EEB80080895E /* RegistViewController.m in Sources */,

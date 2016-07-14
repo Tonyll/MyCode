@@ -10,7 +10,7 @@
 
 @implementation UserViewModel
 
-- (instancetype)initWithUser:(User *)user {
+- (instancetype)initWithUser:(UserModel *)user {
     self = [super init];
     if (self) {
         self.userName = user.userName;

@@ -1,14 +1,14 @@
 //
-//  User.h
+//  UserModel.h
 //  CEECountdown
 //
-//  Created by Tony L on 7/13/16.
+//  Created by Tony L on 7/14/16.
 //  Copyright © 2016 com.jiemo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <Mantle/Mantle.h>
 
-@interface User : NSObject
+@interface UserModel : MTLModel
 
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *password;
@@ -20,7 +20,5 @@
 @property (strong, nonatomic) NSString *hometown;
 @property (strong, nonatomic) NSString *favorite;
 @property (strong, nonatomic) NSString *qq;
-
-
 
 @end

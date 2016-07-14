@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "User.h"
+#import "UserModel.h"
 
 @interface UserViewModel : NSObject
 
-- (instancetype)initWithUser:(User *)user;
+- (instancetype)initWithUser:(UserModel *)user;
 
 @property (strong, nonatomic, readwrite) NSString *userName;
 @property (assign, nonatomic, readonly, getter=isUserNameValid) BOOL userNameValid;
