@@ -16,12 +16,10 @@ PODS:
     - AFNetworking/NSURLSession
   - IQKeyboardManager (4.0.4)
   - JSONKit-NoWarning (1.2)
-  - Mantle (2.0.7):
-    - Mantle/extobjc (= 2.0.7)
-  - Mantle/extobjc (2.0.7)
   - Masonry (1.0.1)
   - MBProgressHUD (0.9.2)
   - OpenUDID (1.0.0)
+  - PDKeychainBindingsController (0.0.1)
   - Reachability (3.2)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -34,32 +32,35 @@ PODS:
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
   - UMengAnalytics (4.0.4)
+  - YYModel (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - IQKeyboardManager (~> 4.0.4)
   - JSONKit-NoWarning (~> 1.1)
   - JSONKit-NoWarning (~> 1.2)
-  - Mantle (~> 2.0.7)
   - Masonry (~> 1.0.1)
   - MBProgressHUD (~> 0.9.2)
   - OpenUDID (~> 1.0.0)
+  - PDKeychainBindingsController (~> 0.0.1)
   - Reachability (~> 3.2)
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.8.1)
   - UMengAnalytics (~> 4.0.4)
+  - YYModel (~> 1.0.4)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   IQKeyboardManager: 4a6f83b540283c2645aaeba2bd8dc0f09b5c77f8
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
-  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  PDKeychainBindingsController: fa8cb3cf99f2ea9240d61066ed0549f34e2cec3c
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
   UMengAnalytics: 4ed421fb3bca63b26fc13c947743cabf3831d199
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
 COCOAPODS: 0.39.0

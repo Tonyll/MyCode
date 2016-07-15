@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UserModel.h"
 
 @interface CEEUtils : NSObject
 
 + (NSString *)errorCodeHandle:(NSInteger)errorCode;
 
-+(BOOL)NoNetFunc;
++ (BOOL)NoNetFunc;
+
++ (void)saveUserInfoToLocal:(NSString *)jsonStr;
+
++ (UserModel *)getUserInfoFromLocal;
 
 @end

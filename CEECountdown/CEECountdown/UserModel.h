@@ -6,12 +6,10 @@
 //  Copyright © 2016 com.jiemo. All rights reserved.
 //
 
-#import <Mantle/Mantle.h>
+@interface UserModel : NSObject
 
-@interface UserModel : MTLModel
-
-@property (strong, nonatomic) NSString *userName;
-@property (strong, nonatomic) NSString *password;
+//@property (strong, nonatomic) NSString *userName;
+//@property (strong, nonatomic) NSString *password;
 
 @property (strong, nonatomic) NSString *birthday;
 @property (strong, nonatomic) NSString *imageUrl;
@@ -20,5 +18,7 @@
 @property (strong, nonatomic) NSString *hometown;
 @property (strong, nonatomic) NSString *favorite;
 @property (strong, nonatomic) NSString *qq;
+
+@property (strong, nonatomic) NSString *userMobileNum;
 
 @end

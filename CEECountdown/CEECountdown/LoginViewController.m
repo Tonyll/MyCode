@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "CEENetWork.h"
 #import "UserModel.h"
+#import "UserInfoViewController.h"
 
 @interface LoginViewController ()
 {
@@ -37,9 +38,11 @@
     [self.view setBackgroundColor:CEEBackgroundColor];
     self.navigationItem.title = @"登录";
     
-//    self.loginBtn.backgroundColor = [UIColor grayColor];//CEETabBarSelectColor;
     [self.loginBtn.layer setCornerRadius:(self.loginBtn.frame.size.height / 2)];
     [self.loginBtn.layer setMasksToBounds:YES];
+    
+    self.usernameText.text = @"13322260852";
+    self.passwordText.text = @"111111";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,7 +63,6 @@
     }
 }
 - (IBAction)loginAction:(id)sender {
-    NSLog(@"do login");
     if ([CEEUtils NoNetFunc]) {
         MB_NONETCONECTING;
         return;
@@ -71,6 +73,9 @@
     } else if(_passwordText.text.length < 6){
         [MBProgressHUD showMessage:@"密码长度不能小于6位!" toView:self.view];
         return;
+    } else if(_passwordText.text.length > 16){
+        [MBProgressHUD showMessage:@"密码长度不能大于16位!" toView:self.view];
+        return;
     }
     
     self.navigationItem.rightBarButtonItem.enabled =NO;
@@ -80,8 +85,8 @@
                            @"username":_usernameText.text,
                            @"password":_passwordText.text,
                            };
+    [MBProgressHUD showMessag:@"正在登录中..." toView:self.view AfterDelay:30.0f];
     [[CEENetWork sharedManager] requestWithMethod:POST WithPath:URL_USER_LOGIN WithParams:dic WithSuccessBlock:^(NSDictionary *dic) {
-        NSLog(@"dic: %@",dic);
         if ([[dic objectForKey:@"errorcode"] integerValue]) {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             
@@ -89,50 +94,30 @@
             [MBProgressHUD showMessage:errMsg toView:self.view];
             return;
         }
-        UserModel *model = [MTLJSONAdapter modelOfClass:[UserModel class] fromJSONDictionary:dic error:nil];
+        NSDictionary * data = [dic objectForKey:@"data"];
+        UserModel *model = [UserModel yy_modelWithDictionary:data];
+        model.userMobileNum = self.usernameText.text;
         
-        
+        LOCAL_SET_ISLOGIN(YES);
+        LOCAL_SYNCHRONIZE;
+        [CEEUtils saveUserInfoToLocal:[model yy_modelToJSONString]];
+        [self.navigationController popViewControllerAnimated:YES];
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
-    
-//    [MBProgressHUD showMessag:@"正在登录中..." toView:self.view AfterDelay:30.0f];
-//    [[HttpTool sharedInstance] post_action_loginWithUserName:_username Password:_password Finish:^(id responseObject, NSError *error) {
-//        if (error)
-//        {
-//            self.navigationItem.rightBarButtonItem.enabled =YES;
-//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//            MB_NONETCONECTING;
-//            return ;
-//        }
-//        self.navigationItem.rightBarButtonItem.enabled =YES;
-//        if ([[responseObject objectForKey:@"errorcode"]integerValue]==9008) {
-//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//            [MBProgressHUD showError:@"手机号或密码错误!" toView:self.view];
-//        }else if([[responseObject objectForKey:@"errorcode"]integerValue] == 9005){
-//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//            [MBProgressHUD showError:@"验证码错误!" toView:self.view];
-//        }else if([[responseObject objectForKey:@"errorcode"]integerValue] == 9009){
-//            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//            [MBProgressHUD showError:@"手机号码不存在!" toView:self.view];
-//        }else{
-//            NSLog(@"登录成功。。。");
-//            [self finishLoginWithData:responseObject WithType:0];
-//        }
-//    }];
 }
 
 - (void)doRac{
     // 设置用户名是否合法的信号
     // map用于改变信号返回的值，在信号中判断后，返回bool值
-//    WeakSelf;
+    WeakSelf;
     RACSignal *usernameSignal = [self.usernameText.rac_textSignal map:^id(NSString *usernameText) {
-//        if ([weakSelf isMobileNumber:usernameText]) {
-//            return @(YES);
-//        }
-        if (usernameText.length > 0) {
+        if ([weakSelf isMobileNumber:usernameText]) {
             return @(YES);
         }
+//        if (usernameText.length > 0) {
+//            return @(YES);
+//        }
         return @(NO);
     }];
     
@@ -140,12 +125,12 @@
         
         NSUInteger length = usernameText.length;
         
-//        if (length >= 6 && length <= 16) {
-//            return @(YES);
-//        }
-        if (length > 0) {
+        if (length >= 6 && length <= 16) {
             return @(YES);
         }
+//        if (length > 0) {
+//            return @(YES);
+//        }
         return @(NO);
     }];
     

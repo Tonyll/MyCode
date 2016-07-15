@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "LoginViewController.h"
+#import "UserInfoViewController.h"
 
 @interface BaseViewController ()<UIAlertViewDelegate>
 
@@ -35,7 +36,7 @@
     navSetBtn.frame = CGRectMake(0, 0, 24, 24);
     [navSetBtn setBackgroundImage:[UIImage imageNamed:@"nav_setup"] forState:UIControlStateNormal];
     [navSetBtn setBackgroundImage:[UIImage imageNamed:@"nav_setup_select"] forState:UIControlStateHighlighted];
-    [navSetBtn addTarget:self action:@selector(loginAlertShow) forControlEvents:UIControlEventTouchUpInside];
+    [navSetBtn addTarget:self action:@selector(userInfoJump) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem * leftBtn = [[UIBarButtonItem alloc] initWithCustomView:navSetBtn];
     self.navigationItem.leftBarButtonItem = leftBtn;
     
@@ -46,6 +47,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)userInfoJump{
+    if (LOCAL_GET_ISLOGIN) {
+        UserModel *model = [CEEUtils getUserInfoFromLocal];
+        
+        UserInfoViewController *userInfoVC = [[UserInfoViewController alloc] init];
+        userInfoVC.userInfo = model;
+        [self.navigationController pushViewController:userInfoVC animated:YES];
+    } else {
+        [self loginAlertShow];
+    }
 }
 
 

@@ -43,6 +43,9 @@
 		EA6531FF1D3785700080895E /* CEEUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531FE1D3785700080895E /* CEEUtils.m */; };
 		EA6532041D3797C40080895E /* CEENetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6532031D3797C40080895E /* CEENetWork.m */; };
 		EA6532081D37BC7B0080895E /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6532071D37BC7B0080895E /* UserModel.m */; };
+		EA65320C1D37CF9C0080895E /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA65320A1D37CF9C0080895E /* UserInfoViewController.m */; };
+		EA65320D1D37CF9C0080895E /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA65320B1D37CF9C0080895E /* UserInfoViewController.xib */; };
+		EA6532151D387E6A0080895E /* UserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6532141D387E6A0080895E /* UserInfoTableViewCell.m */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +136,12 @@
 		EA6532051D3799060080895E /* HTTPConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTTPConfig.h; sourceTree = "<group>"; };
 		EA6532061D37BC7B0080895E /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		EA6532071D37BC7B0080895E /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		EA6532091D37CF9C0080895E /* UserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoViewController.h; sourceTree = "<group>"; };
+		EA65320A1D37CF9C0080895E /* UserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoViewController.m; sourceTree = "<group>"; };
+		EA65320B1D37CF9C0080895E /* UserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoViewController.xib; sourceTree = "<group>"; };
+		EA6532131D387E6A0080895E /* UserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewCell.h; sourceTree = "<group>"; };
+		EA6532141D387E6A0080895E /* UserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableViewCell.m; sourceTree = "<group>"; };
+		EA6532191D38B31F0080895E /* UserInfoConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoConfig.h; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -324,6 +333,12 @@
 				EA6531E81D35E86D0080895E /* LoginViewController.h */,
 				EA6531E91D35E86D0080895E /* LoginViewController.m */,
 				EA6531EA1D35E86D0080895E /* LoginViewController.xib */,
+				EA6532091D37CF9C0080895E /* UserInfoViewController.h */,
+				EA65320A1D37CF9C0080895E /* UserInfoViewController.m */,
+				EA65320B1D37CF9C0080895E /* UserInfoViewController.xib */,
+				EA6532131D387E6A0080895E /* UserInfoTableViewCell.h */,
+				EA6532141D387E6A0080895E /* UserInfoTableViewCell.m */,
+				EA6532191D38B31F0080895E /* UserInfoConfig.h */,
 			);
 			name = UserInfo;
 			sourceTree = "<group>";
@@ -496,6 +511,7 @@
 			files = (
 				EA6531BC1D339D960080895E /* Digital-7Mono.TTF in Resources */,
 				EA1AC19F1D2CE9F000698608 /* LaunchScreen.storyboard in Resources */,
+				EA65320D1D37CF9C0080895E /* UserInfoViewController.xib in Resources */,
 				EA6531EC1D35E86D0080895E /* LoginViewController.xib in Resources */,
 				EA1AC19C1D2CE9F000698608 /* Assets.xcassets in Resources */,
 				EA1AC19A1D2CE9F000698608 /* Main.storyboard in Resources */,
@@ -577,6 +593,7 @@
 				EA6531E41D34F3E90080895E /* CEEAlertView.m in Sources */,
 				EA1AC1971D2CE9F000698608 /* ViewController.m in Sources */,
 				EA6531D11D3499020080895E /* UIView+Extension.m in Sources */,
+				EA65320C1D37CF9C0080895E /* UserInfoViewController.m in Sources */,
 				EA1AC2141D2E369900698608 /* CountDownViewController.m in Sources */,
 				EA1AC1941D2CE9F000698608 /* AppDelegate.m in Sources */,
 				EA6531E71D34F8F70080895E /* UIBarButtonItem+Extension.m in Sources */,
@@ -587,6 +604,7 @@
 				EA6532041D3797C40080895E /* CEENetWork.m in Sources */,
 				EA6531C71D3498CA0080895E /* FDCalendarItem.m in Sources */,
 				EA6532081D37BC7B0080895E /* UserModel.m in Sources */,
+				EA6532151D387E6A0080895E /* UserInfoTableViewCell.m in Sources */,
 				EA6531AF1D333A990080895E /* CBAutoScrollLabel.m in Sources */,
 				EA6531F31D3622160080895E /* UserViewModel.m in Sources */,
 				EA6531FF1D3785700080895E /* CEEUtils.m in Sources */,

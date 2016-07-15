@@ -24,7 +24,10 @@
 #import <AFNetworking.h>
 #import <Reachability.h>
 #import <JSONKit.h>
-#import <Mantle.h>
+#import <YYModel.h>
+#import <SDWebImageManager.h>
+#import "UserInfoConfig.h"
+#import "CEEUtils.h"
 
 #define CEEUserDefaults [NSUserDefaults standardUserDefaults]
 #define CEEScreenBounds [UIScreen mainScreen].bounds

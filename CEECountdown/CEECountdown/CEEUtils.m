@@ -42,13 +42,24 @@
     return returnStr;
 }
 
-+(BOOL)NoNetFunc
++ (BOOL)NoNetFunc
 {
     if([[Reachability reachabilityWithHostName:@"www.baidu.com"] currentReachabilityStatus] == NotReachable)
     {
         return YES;
     }
     else return NO ;
+}
+
++ (void)saveUserInfoToLocal:(NSString *)jsonStr{
+    LOCAL_SET_USERINFO(jsonStr);
+    LOCAL_SYNCHRONIZE;
+}
+
++ (UserModel *)getUserInfoFromLocal{
+    NSString *userInfoStr = LOCAL_GET_USERINFO;
+    UserModel *userModel = [UserModel yy_modelWithJSON:userInfoStr];
+    return userModel;
 }
 
 @end
