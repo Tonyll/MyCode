@@ -46,6 +46,7 @@
     // Do any additional setup after loading the view.
     
     [self initData];
+    [self initTime];
     [self setupSubViews];
     [self calculateDays];
     
@@ -59,6 +60,13 @@
         WeakSelf;
         [weakSelf doCountDown];
     }];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+
+- (void) appDidBecomActive:(NSNotification *)aNotification {
+    [self doCountDown];
+    [self initTime];
 }
 
 - (void)initData{
@@ -67,7 +75,9 @@
     _hourColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
     _minColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
     _secColor = RGBAHEX([[colorArr objectAtIndex:(arc4random() % [colorArr count])] integerValue]);
-    
+}
+
+- (void)initTime{
     self.destinationTimeStr = @"2017/06/07 9:00:00";
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateFormat  = @"yyyy/MM/dd HH:mm:ss";
@@ -236,8 +246,8 @@
 - (void)doCountDown{
     WeakSelf;
     if (timeout < 0) {
-        dispatch_source_cancel(_timer);
-        _timer = nil;
+//        dispatch_source_cancel(_timer);
+//        _timer = nil;
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"倒计时结束");
         });

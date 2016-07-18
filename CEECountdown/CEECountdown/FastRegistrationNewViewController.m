@@ -155,7 +155,7 @@ NSString * const K_RESOURCE_INFO = @"http://www.jiemo.net/AppKuaiZhu/student_lis
 
 - (void)invokeToIM:(NSString *)teacherData{
     WeakSelf;
-    if ([[UIApplication sharedApplication]canOpenURL:[NSURL URLWithString:@"mqq://"]]) {
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"mqq://"]]) {
         [weakSelf openQQ];
     }else{
         dispatch_async(dispatch_get_main_queue(), ^{
