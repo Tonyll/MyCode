@@ -24,4 +24,14 @@
 
 #define LOCAL_SYNCHRONIZE  [[NSUserDefaults standardUserDefaults] synchronize]
 
+typedef enum{
+    CEEUserBirthday,
+    CEEUserSex,
+    CEEUserHometown,
+    CEEUserFavorite,
+    CEEUserQQ,
+    CEEUserHeadImgUrl,
+    CEEUserNickName,
+}CEEUserInfoType;
+
 #endif /* UserInfoConfig_h */

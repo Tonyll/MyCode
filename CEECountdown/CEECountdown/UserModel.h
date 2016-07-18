@@ -21,4 +21,6 @@
 
 @property (strong, nonatomic) NSString *userMobileNum;
 
+@property (strong, nonatomic) NSString *userId;
+
 @end

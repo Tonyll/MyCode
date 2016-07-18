@@ -33,7 +33,6 @@
 		EA6531D01D3499020080895E /* NSString+MoreExtentions.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531CC1D3499020080895E /* NSString+MoreExtentions.m */; };
 		EA6531D11D3499020080895E /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531CE1D3499020080895E /* UIView+Extension.m */; };
 		EA6531D81D34ED470080895E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531D71D34ED470080895E /* BaseViewController.m */; };
-		EA6531E01D34EEB80080895E /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531DF1D34EEB80080895E /* RegistViewController.m */; };
 		EA6531E41D34F3E90080895E /* CEEAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E31D34F3E90080895E /* CEEAlertView.m */; };
 		EA6531E71D34F8F70080895E /* UIBarButtonItem+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E61D34F8F70080895E /* UIBarButtonItem+Extension.m */; };
 		EA6531EB1D35E86D0080895E /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531E91D35E86D0080895E /* LoginViewController.m */; };
@@ -46,6 +45,13 @@
 		EA65320C1D37CF9C0080895E /* UserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA65320A1D37CF9C0080895E /* UserInfoViewController.m */; };
 		EA65320D1D37CF9C0080895E /* UserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA65320B1D37CF9C0080895E /* UserInfoViewController.xib */; };
 		EA6532151D387E6A0080895E /* UserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6532141D387E6A0080895E /* UserInfoTableViewCell.m */; };
+		EA65321D1D38CE8D0080895E /* UserInfoUpdateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA65321B1D38CE8D0080895E /* UserInfoUpdateViewController.m */; };
+		EA65321E1D38CE8D0080895E /* UserInfoUpdateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA65321C1D38CE8D0080895E /* UserInfoUpdateViewController.xib */; };
+		EAA9C4C91D3C2C270001A386 /* FastRegistrationNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9C4C71D3C2C270001A386 /* FastRegistrationNewViewController.m */; };
+		EAA9C4CA1D3C2C270001A386 /* FastRegistrationNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA9C4C81D3C2C270001A386 /* FastRegistrationNewViewController.xib */; };
+		EAA9C4CC1D3C2CF20001A386 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA9C4CB1D3C2CF20001A386 /* JavaScriptCore.framework */; };
+		EAA9C4D01D3C319F0001A386 /* RegistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9C4CE1D3C319F0001A386 /* RegistViewController.m */; };
+		EAA9C4D11D3C319F0001A386 /* RegistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA9C4CF1D3C319F0001A386 /* RegistViewController.xib */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -115,8 +121,6 @@
 		EA6531CE1D3499020080895E /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		EA6531D61D34ED470080895E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		EA6531D71D34ED470080895E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		EA6531DE1D34EEB80080895E /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
-		EA6531DF1D34EEB80080895E /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
 		EA6531E21D34F3E90080895E /* CEEAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEEAlertView.h; sourceTree = "<group>"; };
 		EA6531E31D34F3E90080895E /* CEEAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEEAlertView.m; sourceTree = "<group>"; };
 		EA6531E51D34F8F70080895E /* UIBarButtonItem+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Extension.h"; sourceTree = "<group>"; };
@@ -142,6 +146,16 @@
 		EA6532131D387E6A0080895E /* UserInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoTableViewCell.h; sourceTree = "<group>"; };
 		EA6532141D387E6A0080895E /* UserInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoTableViewCell.m; sourceTree = "<group>"; };
 		EA6532191D38B31F0080895E /* UserInfoConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfoConfig.h; sourceTree = "<group>"; };
+		EA65321A1D38CE8D0080895E /* UserInfoUpdateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoUpdateViewController.h; sourceTree = "<group>"; };
+		EA65321B1D38CE8D0080895E /* UserInfoUpdateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoUpdateViewController.m; sourceTree = "<group>"; };
+		EA65321C1D38CE8D0080895E /* UserInfoUpdateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserInfoUpdateViewController.xib; sourceTree = "<group>"; };
+		EAA9C4C61D3C2C270001A386 /* FastRegistrationNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastRegistrationNewViewController.h; sourceTree = "<group>"; };
+		EAA9C4C71D3C2C270001A386 /* FastRegistrationNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastRegistrationNewViewController.m; sourceTree = "<group>"; };
+		EAA9C4C81D3C2C270001A386 /* FastRegistrationNewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FastRegistrationNewViewController.xib; sourceTree = "<group>"; };
+		EAA9C4CB1D3C2CF20001A386 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		EAA9C4CD1D3C319F0001A386 /* RegistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistViewController.h; sourceTree = "<group>"; };
+		EAA9C4CE1D3C319F0001A386 /* RegistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistViewController.m; sourceTree = "<group>"; };
+		EAA9C4CF1D3C319F0001A386 /* RegistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RegistViewController.xib; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -150,6 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA9C4CC1D3C2CF20001A386 /* JavaScriptCore.framework in Frameworks */,
 				EA1AC1C91D2CFD7F00698608 /* CoreGraphics.framework in Frameworks */,
 				EA1AC1C71D2CFD7000698608 /* Foundation.framework in Frameworks */,
 				EA1AC1C51D2CFD6600698608 /* QuartzCore.framework in Frameworks */,
@@ -211,6 +226,7 @@
 		EA1AC18E1D2CE9F000698608 /* CEECountdown */ = {
 			isa = PBXGroup;
 			children = (
+				EAA9C4C51D3C2C090001A386 /* FastRegistration */,
 				EA6532011D3794F50080895E /* NetWork */,
 				EA6532001D3794E30080895E /* Utils */,
 				EA6531FB1D37408F0080895E /* Config */,
@@ -328,8 +344,6 @@
 		EA6531DA1D34EE520080895E /* UserInfo */ = {
 			isa = PBXGroup;
 			children = (
-				EA6531DE1D34EEB80080895E /* RegistViewController.h */,
-				EA6531DF1D34EEB80080895E /* RegistViewController.m */,
 				EA6531E81D35E86D0080895E /* LoginViewController.h */,
 				EA6531E91D35E86D0080895E /* LoginViewController.m */,
 				EA6531EA1D35E86D0080895E /* LoginViewController.xib */,
@@ -338,7 +352,13 @@
 				EA65320B1D37CF9C0080895E /* UserInfoViewController.xib */,
 				EA6532131D387E6A0080895E /* UserInfoTableViewCell.h */,
 				EA6532141D387E6A0080895E /* UserInfoTableViewCell.m */,
+				EA65321A1D38CE8D0080895E /* UserInfoUpdateViewController.h */,
+				EA65321B1D38CE8D0080895E /* UserInfoUpdateViewController.m */,
+				EA65321C1D38CE8D0080895E /* UserInfoUpdateViewController.xib */,
 				EA6532191D38B31F0080895E /* UserInfoConfig.h */,
+				EAA9C4CD1D3C319F0001A386 /* RegistViewController.h */,
+				EAA9C4CE1D3C319F0001A386 /* RegistViewController.m */,
+				EAA9C4CF1D3C319F0001A386 /* RegistViewController.xib */,
 			);
 			name = UserInfo;
 			sourceTree = "<group>";
@@ -391,9 +411,20 @@
 			name = NetWork;
 			sourceTree = "<group>";
 		};
+		EAA9C4C51D3C2C090001A386 /* FastRegistration */ = {
+			isa = PBXGroup;
+			children = (
+				EAA9C4C61D3C2C270001A386 /* FastRegistrationNewViewController.h */,
+				EAA9C4C71D3C2C270001A386 /* FastRegistrationNewViewController.m */,
+				EAA9C4C81D3C2C270001A386 /* FastRegistrationNewViewController.xib */,
+			);
+			name = FastRegistration;
+			sourceTree = "<group>";
+		};
 		ED24C642A8E8D8D358662559 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAA9C4CB1D3C2CF20001A386 /* JavaScriptCore.framework */,
 				EA1AC1C81D2CFD7F00698608 /* CoreGraphics.framework */,
 				EA1AC1C61D2CFD7000698608 /* Foundation.framework */,
 				EA1AC1C41D2CFD6600698608 /* QuartzCore.framework */,
@@ -511,8 +542,11 @@
 			files = (
 				EA6531BC1D339D960080895E /* Digital-7Mono.TTF in Resources */,
 				EA1AC19F1D2CE9F000698608 /* LaunchScreen.storyboard in Resources */,
+				EAA9C4D11D3C319F0001A386 /* RegistViewController.xib in Resources */,
 				EA65320D1D37CF9C0080895E /* UserInfoViewController.xib in Resources */,
 				EA6531EC1D35E86D0080895E /* LoginViewController.xib in Resources */,
+				EA65321E1D38CE8D0080895E /* UserInfoUpdateViewController.xib in Resources */,
+				EAA9C4CA1D3C2C270001A386 /* FastRegistrationNewViewController.xib in Resources */,
 				EA1AC19C1D2CE9F000698608 /* Assets.xcassets in Resources */,
 				EA1AC19A1D2CE9F000698608 /* Main.storyboard in Resources */,
 				EA6531BD1D339D960080895E /* Heavitas.ttf in Resources */,
@@ -593,15 +627,18 @@
 				EA6531E41D34F3E90080895E /* CEEAlertView.m in Sources */,
 				EA1AC1971D2CE9F000698608 /* ViewController.m in Sources */,
 				EA6531D11D3499020080895E /* UIView+Extension.m in Sources */,
+				EAA9C4D01D3C319F0001A386 /* RegistViewController.m in Sources */,
 				EA65320C1D37CF9C0080895E /* UserInfoViewController.m in Sources */,
 				EA1AC2141D2E369900698608 /* CountDownViewController.m in Sources */,
 				EA1AC1941D2CE9F000698608 /* AppDelegate.m in Sources */,
 				EA6531E71D34F8F70080895E /* UIBarButtonItem+Extension.m in Sources */,
 				EA6531D81D34ED470080895E /* BaseViewController.m in Sources */,
+				EA65321D1D38CE8D0080895E /* UserInfoUpdateViewController.m in Sources */,
 				EA1AC1911D2CE9F000698608 /* main.m in Sources */,
 				EA6531CF1D3499020080895E /* NSString+DateTransform.m in Sources */,
 				EA6531C11D3498AA0080895E /* CalendarViewController.m in Sources */,
 				EA6532041D3797C40080895E /* CEENetWork.m in Sources */,
+				EAA9C4C91D3C2C270001A386 /* FastRegistrationNewViewController.m in Sources */,
 				EA6531C71D3498CA0080895E /* FDCalendarItem.m in Sources */,
 				EA6532081D37BC7B0080895E /* UserModel.m in Sources */,
 				EA6532151D387E6A0080895E /* UserInfoTableViewCell.m in Sources */,
@@ -612,7 +649,6 @@
 				EA6531EB1D35E86D0080895E /* LoginViewController.m in Sources */,
 				EA1AC21E1D2E47D900698608 /* CEENavigationViewController.m in Sources */,
 				EA6531D01D3499020080895E /* NSString+MoreExtentions.m in Sources */,
-				EA6531E01D34EEB80080895E /* RegistViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

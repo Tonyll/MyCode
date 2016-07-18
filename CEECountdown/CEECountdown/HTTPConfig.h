@@ -32,4 +32,6 @@ typedef enum {
 #define URL_USER_FINDPASS     URL_USER@"/findPass"      // 找回密码
 #define URL_UTILS_CAPCHA      URL_USER@"/getCaptcha"    // 获取验证码
 
+#define URL_USER_UPDATE       URL_USER@"/updateUser"    // 修改用户信息
+
 #endif /* HTTPMethod_h */

@@ -57,6 +57,8 @@
         case POST:{
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:params];
             [dic setValue:[self getGParam] forKey:@"G"];
+            [dic setValue:[self getOpenUDID] forKey:@"deviceId"];
+            NSLog(@"请求参数: %@",dic);
             [self POST:path parameters:@{@"jsonParams":[dic JSONString]} progress:nil success:^(NSURLSessionTask *task, NSDictionary * responseObject) {
                 NSLog(@"JSON: %@", responseObject);
                 success(responseObject);
@@ -75,7 +77,7 @@
 
 -(NSDictionary*)getGParam
 {
-    NSString* openUDID = [OpenUDID value];
+    
     NSString *strBuild = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     NSArray *versions = [strBuild componentsSeparatedByString:@"."];
     __block NSInteger versionInt = 0;
@@ -102,7 +104,7 @@
     NSDictionary *dic =
     @{
       @"dt":@"2",
-      @"deviceId":openUDID,
+      @"deviceId":[self getOpenUDID],
       @"at":@"3",
       @"av":@(versionInt),
       @"sv":@"103",
@@ -110,6 +112,11 @@
     
     
     return dic;
+}
+
+- (NSString *)getOpenUDID{
+    NSString *openUDID = [OpenUDID value];
+    return openUDID;
 }
 
 @end

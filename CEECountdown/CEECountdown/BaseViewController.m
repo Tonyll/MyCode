@@ -9,6 +9,7 @@
 #import "BaseViewController.h"
 #import "LoginViewController.h"
 #import "UserInfoViewController.h"
+#import "FastRegistrationNewViewController.h"
 
 @interface BaseViewController ()<UIAlertViewDelegate>
 
@@ -80,7 +81,15 @@
 }
 
 - (void)jumpRoad{
-    
+    if (LOCAL_GET_ISLOGIN) {
+        UserModel *model = [CEEUtils getUserInfoFromLocal];
+        
+        FastRegistrationNewViewController *fastRegistVC = [[FastRegistrationNewViewController alloc] init];
+        fastRegistVC.userInfo = model;
+        [self.navigationController pushViewController:fastRegistVC animated:YES];
+    } else {
+        [self loginAlertShow];
+    }
 }
 
 

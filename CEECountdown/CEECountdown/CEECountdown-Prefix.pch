@@ -28,6 +28,7 @@
 #import <SDWebImageManager.h>
 #import "UserInfoConfig.h"
 #import "CEEUtils.h"
+#import <OpenUDID.h>
 
 #define CEEUserDefaults [NSUserDefaults standardUserDefaults]
 #define CEEScreenBounds [UIScreen mainScreen].bounds
@@ -64,6 +65,8 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 #define NavTitle @"2017高考倒计时"
 
 #define MB_NONETCONECTING [MBProgressHUD showMessage:@"请检查网络连接状态!" toView:[[[UIApplication sharedApplication] delegate] window]]//断网情况提示
+
+#define MB_HIDEALL  [MBProgressHUD hideHUDForView:[[[UIApplication sharedApplication] delegate] window] animated:YES]
 
 
 #endif /* CEECountdown_Prefix_pch */

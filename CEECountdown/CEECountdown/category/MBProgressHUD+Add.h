@@ -14,4 +14,5 @@
 
 + (MBProgressHUD *)showMessag:(NSString *)message toView:(UIView *)view AfterDelay:(CGFloat)delay;
 
++ (void)show:(NSString *)text toView:(UIView *)view;
 @end

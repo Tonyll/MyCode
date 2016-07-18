@@ -10,6 +10,7 @@
 #import "CEENetWork.h"
 #import "UserModel.h"
 #import "UserInfoViewController.h"
+#import "RegistViewController.h"
 
 @interface LoginViewController ()
 {
@@ -43,6 +44,8 @@
     
     self.usernameText.text = @"13322260852";
     self.passwordText.text = @"111111";
+    self.navigationItem.rightBarButtonItem.tintColor = CEECountDownFontColor;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registAction)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +60,7 @@
         _passwordText.secureTextEntry = NO;
         [_passwordText becomeFirstResponder];
     }else{
-        [aButton setImage:[UIImage imageNamed:@"login_sys_hide"] forState:UIControlStateNormal];
+        [aButton setImage:[UIImage imageNamed:@"login_eye_hide"] forState:UIControlStateNormal];
         _passwordText.secureTextEntry = YES;
         [_passwordText becomeFirstResponder];
     }
@@ -68,17 +71,17 @@
         return;
     }
     if (![self isMobileNumber:_usernameText.text]) {
-        [MBProgressHUD showMessage:@"请输入正确的手机号!" toView:self.view];
+        [MBProgressHUD show:@"请输入正确的手机号!" toView:self.view];
         return;
     } else if(_passwordText.text.length < 6){
-        [MBProgressHUD showMessage:@"密码长度不能小于6位!" toView:self.view];
+        [MBProgressHUD show:@"密码长度不能小于6位!" toView:self.view];
         return;
     } else if(_passwordText.text.length > 16){
-        [MBProgressHUD showMessage:@"密码长度不能大于16位!" toView:self.view];
+        [MBProgressHUD show:@"密码长度不能大于16位!" toView:self.view];
         return;
     }
     
-    self.navigationItem.rightBarButtonItem.enabled =NO;
+    self.navigationItem.rightBarButtonItem.enabled = NO;
     [self.view endEditing:YES];
 
     NSDictionary * dic = @{
@@ -91,7 +94,8 @@
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             
             NSString *errMsg  = [CEEUtils errorCodeHandle:[[dic objectForKey:@"errorcode"] integerValue]];
-            [MBProgressHUD showMessage:errMsg toView:self.view];
+            [MBProgressHUD show:errMsg toView:self.view];
+            self.navigationItem.rightBarButtonItem.enabled = YES;
             return;
         }
         NSDictionary * data = [dic objectForKey:@"data"];
@@ -104,7 +108,19 @@
         [self.navigationController popViewControllerAnimated:YES];
     } WithFailurBlock:^(NSError *error) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        self.navigationItem.rightBarButtonItem.enabled = YES;
     }];
+}
+
+- (void)registAction{
+    RegistViewController *registVC = [[RegistViewController alloc] init];
+    registVC.vcType = 1;
+    [self.navigationController pushViewController:registVC animated:YES];
+}
+- (IBAction)findPwd:(id)sender {
+    RegistViewController *registVC = [[RegistViewController alloc] init];
+    registVC.vcType = 2;
+    [self.navigationController pushViewController:registVC animated:YES];
 }
 
 - (void)doRac{
@@ -161,15 +177,5 @@
         return NO;
     }
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

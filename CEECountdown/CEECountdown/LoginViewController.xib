@@ -48,7 +48,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CQ-rJ-h79">
                             <rect key="frame" x="560" y="49" width="27" height="24"/>
-                            <state key="normal" title="Button" image="login_sys_hide"/>
+                            <state key="normal" title="Button" image="login_eye_hide"/>
                             <connections>
                                 <action selector="showPwd:" destination="-1" eventType="touchUpInside" id="o00-ZE-982"/>
                             </connections>
@@ -95,6 +95,9 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal" title="忘记密码"/>
+                    <connections>
+                        <action selector="findPwd:" destination="-1" eventType="touchUpInside" id="Pev-z2-weY"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -112,6 +115,6 @@
         </view>
     </objects>
     <resources>
-        <image name="login_sys_hide" width="17" height="10"/>
+        <image name="login_eye_hide" width="17" height="10"/>
     </resources>
 </document>

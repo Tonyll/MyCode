@@ -28,6 +28,9 @@
         case CEEErrorVerificationCode:
             returnStr = @"验证码错误";
             break;
+        case CEEErrorMobileIsNull:
+            returnStr = @"手机号为空";
+            break;
         case CEEErrorPwdOrMobile:
             returnStr = @"手机号或密码错误";
             break;

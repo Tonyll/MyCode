@@ -10,6 +10,8 @@
 #import "UserInfoTableViewCell.h"
 #import <UIImageView+WebCache.h>
 #import "LoginViewController.h"
+#import "UserInfoUpdateViewController.h"
+#import "FastRegistrationNewViewController.h"
 
 @interface UserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>{
     NSArray *infoArr;
@@ -44,12 +46,23 @@
     self.infoTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.infoTableView.delegate = self;
     self.infoTableView.dataSource = self;
+    self.infoTableView.scrollEnabled = NO;
     
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2;
     
     [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.userInfo.imageUrl] placeholderImage:[UIImage imageNamed:@"userInfo_headDefault"] options:SDWebImageRetryFailed|SDWebImageRefreshCached];
     self.userNickName.text = self.userInfo.nickName;
+    
+    UIButton *navRoad = [[UIButton alloc] init];
+    navRoad.frame = CGRectMake(0, 0, 34, 34);
+    [navRoad setBackgroundImage:[UIImage imageNamed:@"nav_road"] forState:UIControlStateNormal];
+    [navRoad setBackgroundImage:[UIImage imageNamed:@"nav_road_select"] forState:UIControlStateHighlighted];
+    [navRoad addTarget:self action:@selector(jumpRoad) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem * rightBtn = [[UIBarButtonItem alloc] initWithCustomView:navRoad];
+    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userInfoChange) name:KNOTIFICATION_USERINFO_CHANGE object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,9 +70,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)jumpRoad {
+//    UserModel *model = [CEEUtils getUserInfoFromLocal];
+    
+    FastRegistrationNewViewController *fastRegistVC = [[FastRegistrationNewViewController alloc] init];
+    fastRegistVC.userInfo = self.userInfo;
+    [self.navigationController pushViewController:fastRegistVC animated:YES];
+}
+
 - (IBAction)logOut:(id)sender {
-    LOCAL_SET_ISLOGIN
-    (NO);
+    LOCAL_SET_ISLOGIN(NO);
     LOCAL_SYNCHRONIZE;
     LoginViewController *loginVC = [[LoginViewController alloc] init];
     [self.navigationController pushViewController:loginVC animated:YES];
@@ -99,6 +119,25 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row < 5) {
+        UserInfoUpdateViewController *infoUpdateVC = [[UserInfoUpdateViewController alloc] init];
+        infoUpdateVC.infoType = indexPath.row;
+        infoUpdateVC.userInfo = self.userInfo;
+        [self.navigationController pushViewController:infoUpdateVC animated:YES];
+    } else{
+        [MBProgressHUD show:@"不能修改" toView:self.view];
+    }
+}
+
+- (void)userInfoChange{
+    self.userInfo = [CEEUtils getUserInfoFromLocal];
+    
+    [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.userInfo.imageUrl] placeholderImage:[UIImage imageNamed:@"userInfo_headDefault"] options:SDWebImageRetryFailed|SDWebImageRefreshCached];
+    self.userNickName.text = self.userInfo.nickName;
+    [self.infoTableView reloadData];
 }
 
 #pragma private func

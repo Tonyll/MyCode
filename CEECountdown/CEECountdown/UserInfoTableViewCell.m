@@ -42,7 +42,7 @@
         [self.contentView addSubview:self.contentLabel];
         [self.contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);
-            make.right.mas_equalTo(self.contentView).mas_offset(@-40);
+            make.right.mas_equalTo(self.contentView).mas_offset(@-35);
             make.width.mas_equalTo(@200);
         }];
         
@@ -51,8 +51,8 @@
         [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.mas_equalTo(self.contentView);
             make.right.mas_equalTo(self.contentView).mas_offset(@-15);
-            make.width.mas_equalTo(@10);
-            make.height.mas_equalTo(@15);
+            make.width.mas_equalTo(@5);
+            make.height.mas_equalTo(@10);
         }];
     }
     
