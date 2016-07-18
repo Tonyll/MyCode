@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="infoTableView" destination="RXF-2v-GPd" id="7WM-ij-SNv"/>
                 <outlet property="logoutBtn" destination="eV2-dH-3AZ" id="xIs-ng-d39"/>
+                <outlet property="topHeaderBg" destination="WlA-Lr-cia" id="xeP-ub-2Cz"/>
                 <outlet property="userImage" destination="iuq-mm-4yN" id="agl-p1-vTj"/>
                 <outlet property="userNickName" destination="ZA9-nF-JH3" id="WBu-qr-xYT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

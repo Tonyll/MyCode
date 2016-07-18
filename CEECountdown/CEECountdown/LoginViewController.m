@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton *forgetPwd;
 
+@property (nonatomic, strong) UIBarButtonItem *itemRight;
+
 @end
 
 @implementation LoginViewController
@@ -42,10 +44,13 @@
     [self.loginBtn.layer setCornerRadius:(self.loginBtn.frame.size.height / 2)];
     [self.loginBtn.layer setMasksToBounds:YES];
     
-    self.usernameText.text = @"13322260852";
-    self.passwordText.text = @"111111";
-    self.navigationItem.rightBarButtonItem.tintColor = CEECountDownFontColor;
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registAction)];
+//    self.usernameText.text = @"13322260852";
+//    self.passwordText.text = @"111111";
+    
+    _itemRight = [[UIBarButtonItem alloc] initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registAction)];
+    _itemRight.tintColor = CEECountDownFontColor;
+    
+    self.navigationItem.rightBarButtonItem = _itemRight;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -131,9 +136,6 @@
         if ([weakSelf isMobileNumber:usernameText]) {
             return @(YES);
         }
-//        if (usernameText.length > 0) {
-//            return @(YES);
-//        }
         return @(NO);
     }];
     
@@ -144,10 +146,19 @@
         if (length >= 6 && length <= 16) {
             return @(YES);
         }
-//        if (length > 0) {
-//            return @(YES);
-//        }
         return @(NO);
+    }];
+    
+    [self.usernameText.rac_textSignal subscribeNext:^(NSString *number) {
+        if (number.length >= 11) {
+            self.usernameText.text = [number substringToIndex:11];
+        }
+    }];
+    
+    [self.passwordText.rac_textSignal subscribeNext:^(NSString *number) {
+        if (number.length >= 16) {
+            self.passwordText.text = [number substringToIndex:16];
+        }
     }];
     
     RAC(self.loginBtn, enabled) = [RACSignal combineLatest:@[usernameSignal, passwordSignal] reduce:^id(NSNumber *isUsernameCorrect, NSNumber *isPasswordCorrect){

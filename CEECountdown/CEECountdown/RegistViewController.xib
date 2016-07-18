@@ -75,7 +75,7 @@
                             <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9M-xX-M8a">
-                            <rect key="frame" x="530" y="89" width="55" height="25"/>
+                            <rect key="frame" x="535" y="89" width="55" height="25"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="55" id="A6y-f2-TGs"/>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="55" id="TNd-Pk-sUB"/>
@@ -102,7 +102,7 @@
                     <constraints>
                         <constraint firstItem="Q9M-xX-M8a" firstAttribute="centerY" secondItem="QEF-Jp-mfR" secondAttribute="centerY" id="1Z3-0U-0rS"/>
                         <constraint firstItem="HlN-DL-EX0" firstAttribute="top" secondItem="dgN-ey-4mP" secondAttribute="bottom" constant="1" id="4AM-Is-bbd"/>
-                        <constraint firstAttribute="trailing" secondItem="Q9M-xX-M8a" secondAttribute="trailing" constant="15" id="6Wl-e6-bRk"/>
+                        <constraint firstAttribute="trailing" secondItem="Q9M-xX-M8a" secondAttribute="trailing" constant="10" id="6Wl-e6-bRk"/>
                         <constraint firstItem="jWN-iz-qcN" firstAttribute="leading" secondItem="HDz-Ga-IOb" secondAttribute="trailing" constant="10" id="7Bm-Ht-FT8"/>
                         <constraint firstItem="HlN-DL-EX0" firstAttribute="leading" secondItem="tz9-GY-QUN" secondAttribute="leading" constant="13" id="7QD-oN-PyH"/>
                         <constraint firstItem="QEF-Jp-mfR" firstAttribute="top" secondItem="5hC-yc-J0S" secondAttribute="bottom" id="EXc-QR-YcW"/>
@@ -110,7 +110,7 @@
                         <constraint firstItem="HDz-Ga-IOb" firstAttribute="top" secondItem="HlN-DL-EX0" secondAttribute="bottom" id="NCU-qz-81B"/>
                         <constraint firstAttribute="trailing" secondItem="HlN-DL-EX0" secondAttribute="trailing" constant="10" id="OBN-yi-T4Q"/>
                         <constraint firstItem="jWN-iz-qcN" firstAttribute="leading" secondItem="HDz-Ga-IOb" secondAttribute="trailing" constant="10" id="RY6-2o-t49"/>
-                        <constraint firstItem="Q9M-xX-M8a" firstAttribute="leading" secondItem="QEF-Jp-mfR" secondAttribute="trailing" constant="20" id="TD6-LM-IkE"/>
+                        <constraint firstItem="Q9M-xX-M8a" firstAttribute="leading" secondItem="QEF-Jp-mfR" secondAttribute="trailing" constant="25" id="TD6-LM-IkE"/>
                         <constraint firstAttribute="trailing" secondItem="5hC-yc-J0S" secondAttribute="trailing" constant="10" id="Yix-cj-EdK"/>
                         <constraint firstAttribute="trailing" secondItem="dgN-ey-4mP" secondAttribute="trailing" constant="20" id="ZwE-1G-CBh"/>
                         <constraint firstAttribute="height" constant="120" id="a8P-y0-Ekc"/>
@@ -121,7 +121,7 @@
                         <constraint firstItem="5hC-yc-J0S" firstAttribute="top" secondItem="HDz-Ga-IOb" secondAttribute="bottom" id="hWX-Wi-zIO"/>
                         <constraint firstItem="dgN-ey-4mP" firstAttribute="top" secondItem="tz9-GY-QUN" secondAttribute="top" id="k4h-P9-uwm"/>
                         <constraint firstItem="jWN-iz-qcN" firstAttribute="centerY" secondItem="HDz-Ga-IOb" secondAttribute="centerY" id="mtT-c6-LoV"/>
-                        <constraint firstItem="Q9M-xX-M8a" firstAttribute="leading" secondItem="QEF-Jp-mfR" secondAttribute="trailing" constant="20" id="tht-Pk-c6J"/>
+                        <constraint firstItem="Q9M-xX-M8a" firstAttribute="leading" secondItem="QEF-Jp-mfR" secondAttribute="trailing" constant="25" id="tht-Pk-c6J"/>
                         <constraint firstAttribute="trailing" secondItem="jWN-iz-qcN" secondAttribute="trailing" constant="15" id="ujv-SP-c8n"/>
                         <constraint firstItem="5hC-yc-J0S" firstAttribute="leading" secondItem="tz9-GY-QUN" secondAttribute="leading" constant="13" id="vof-d3-p4N"/>
                         <constraint firstItem="dgN-ey-4mP" firstAttribute="leading" secondItem="tz9-GY-QUN" secondAttribute="leading" constant="8" id="ygV-SA-jcI"/>

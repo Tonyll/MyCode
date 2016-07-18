@@ -12,8 +12,9 @@
 #import "LoginViewController.h"
 #import "UserInfoUpdateViewController.h"
 #import "FastRegistrationNewViewController.h"
+#import "UserConfigViewController.h"
 
-@interface UserInfoViewController ()<UITableViewDelegate, UITableViewDataSource>{
+@interface UserInfoViewController ()<UITableViewDelegate, UITableViewDataSource,UIGestureRecognizerDelegate>{
     NSArray *infoArr;
 }
 
@@ -23,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *infoTableView;
 @property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *topHeaderBg;
 
 - (IBAction)logOut:(id)sender;
 
@@ -63,11 +65,26 @@
     self.navigationItem.rightBarButtonItem = rightBtn;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userInfoChange) name:KNOTIFICATION_USERINFO_CHANGE object:nil];
+    
+    self.topHeaderBg.userInteractionEnabled = YES;
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(topViewTap:)];
+    tapGesture.delegate = self;
+    tapGesture.numberOfTapsRequired = 1; // 单击
+    [self.topHeaderBg addGestureRecognizer:tapGesture];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark --- UITapGestureRecognizer 轻拍手势事件 ---
+
+- (void)topViewTap:(UIGestureRecognizer *)sender{
+    UIStoryboard * storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UserConfigViewController *userConfigVC = [storyBoard instantiateViewControllerWithIdentifier:@"UserConfigViewController"];
+    userConfigVC.userModel = self.userInfo;
+    [self.navigationController pushViewController:userConfigVC animated:YES];
 }
 
 - (void)jumpRoad {

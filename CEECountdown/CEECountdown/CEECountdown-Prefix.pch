@@ -29,6 +29,8 @@
 #import "UserInfoConfig.h"
 #import "CEEUtils.h"
 #import <OpenUDID.h>
+#import <FSMediaPicker.h>
+#import <SDImageCache.h>
 
 #define CEEUserDefaults [NSUserDefaults standardUserDefaults]
 #define CEEScreenBounds [UIScreen mainScreen].bounds

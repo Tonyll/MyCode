@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - FSMediaPicker (0.0.2)
   - IQKeyboardManager (4.0.4)
   - JSONKit-NoWarning (1.2)
   - Masonry (1.0.1)
@@ -36,6 +37,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
+  - FSMediaPicker (~> 0.0.2)
   - IQKeyboardManager (~> 4.0.4)
   - JSONKit-NoWarning (~> 1.1)
   - JSONKit-NoWarning (~> 1.2)
@@ -51,6 +53,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FSMediaPicker: 89c5fe9894a288db7c87c255bdb7856e33dc4073
   IQKeyboardManager: 4a6f83b540283c2645aaeba2bd8dc0f09b5c77f8
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
   Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df

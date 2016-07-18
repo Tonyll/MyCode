@@ -219,9 +219,6 @@
         if ([weakSelf isMobileNumber:usernameText]) {
             return @(YES);
         }
-        //        if (usernameText.length > 0) {
-        //            return @(YES);
-        //        }
         return @(NO);
     }];
     
@@ -232,9 +229,6 @@
         if (length >= 6 && length <= 16) {
             return @(YES);
         }
-        //        if (length > 0) {
-        //            return @(YES);
-        //        }
         return @(NO);
     }];
     
@@ -248,7 +242,23 @@
         return @(NO);
     }];
     
+    [self.telNumberTextField.rac_textSignal subscribeNext:^(NSString *number) {
+        if (number.length >= 11) {
+            self.telNumberTextField.text = [number substringToIndex:11];
+        }
+    }];
     
+    [self.captchaTextField.rac_textSignal subscribeNext:^(NSString *number) {
+        if (number.length >= 4) {
+            self.captchaTextField.text = [number substringToIndex:4];
+        }
+    }];
+    
+    [self.pwdTextField.rac_textSignal subscribeNext:^(NSString *number) {
+        if (number.length >= 4) {
+            self.pwdTextField.text = [number substringToIndex:4];
+        }
+    }];
     
     RAC(self.registButton, enabled) = [RACSignal combineLatest:@[usernameSignal, passwordSignal,captchaSignal] reduce:^id(NSNumber *isUsernameCorrect, NSNumber *isPasswordCorrect, NSNumber *iscaptchaCorrect){
         

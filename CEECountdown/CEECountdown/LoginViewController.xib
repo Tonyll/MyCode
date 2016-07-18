@@ -47,7 +47,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CQ-rJ-h79">
-                            <rect key="frame" x="560" y="49" width="27" height="24"/>
+                            <rect key="frame" x="558" y="49" width="27" height="24"/>
                             <state key="normal" title="Button" image="login_eye_hide"/>
                             <connections>
                                 <action selector="showPwd:" destination="-1" eventType="touchUpInside" id="o00-ZE-982"/>
@@ -61,9 +61,9 @@
                         <constraint firstAttribute="trailing" secondItem="heH-wH-AGr" secondAttribute="trailing" constant="20" id="2o1-WK-ULd"/>
                         <constraint firstItem="syB-k0-5BA" firstAttribute="top" secondItem="aco-Gr-NHa" secondAttribute="top" id="EPn-3c-EqR"/>
                         <constraint firstItem="bf1-OK-fLN" firstAttribute="top" secondItem="heH-wH-AGr" secondAttribute="bottom" id="FMd-WX-Cos"/>
-                        <constraint firstAttribute="trailing" secondItem="5CQ-rJ-h79" secondAttribute="trailing" constant="13" id="HW8-OZ-Ymt"/>
+                        <constraint firstAttribute="trailing" secondItem="5CQ-rJ-h79" secondAttribute="trailing" constant="15" id="HW8-OZ-Ymt"/>
                         <constraint firstItem="syB-k0-5BA" firstAttribute="leading" secondItem="aco-Gr-NHa" secondAttribute="leading" constant="20" id="KK0-hU-yLc"/>
-                        <constraint firstItem="5CQ-rJ-h79" firstAttribute="leading" secondItem="bf1-OK-fLN" secondAttribute="trailing" constant="8" symbolic="YES" id="MIa-Vn-Q95"/>
+                        <constraint firstItem="5CQ-rJ-h79" firstAttribute="leading" secondItem="bf1-OK-fLN" secondAttribute="trailing" constant="6" id="MIa-Vn-Q95"/>
                         <constraint firstAttribute="trailing" secondItem="bf1-OK-fLN" secondAttribute="trailing" constant="48" id="O7E-bF-q2k"/>
                         <constraint firstItem="heH-wH-AGr" firstAttribute="leading" secondItem="aco-Gr-NHa" secondAttribute="leading" constant="20" id="OSD-Oq-Aef"/>
                         <constraint firstAttribute="bottom" secondItem="bf1-OK-fLN" secondAttribute="bottom" id="VQf-BP-Pk3"/>
