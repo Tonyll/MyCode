@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "CEETabBarController.h"
+#import "CEENetWork.h"
 
 @interface AppDelegate ()
 
@@ -20,12 +21,27 @@
     // Override point for customization after application launch.
     
     CEETabBarController *tabbar = [[CEETabBarController alloc] init];
-//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:tabbar];
     
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
     self.window.rootViewController = tabbar;
     [self.window makeKeyAndVisible];
+    
+    if (!LOCAL_GET_USERCONFIG) {
+        [[CEENetWork sharedManager] requestWithMethod:POST WithPath:URL_LOGIN_GETCONFIG WithParams:nil WithSuccessBlock:^(NSDictionary *dic) {
+            if ([[dic objectForKey:@"errorcode"] integerValue] != 0) {
+                
+                return;
+            }
+            LOCAL_SET_USERCONFIG(YES);
+            LOCAL_SYNCHRONIZE;
+            
+        } WithFailurBlock:^(NSError *error) {
+            
+        }];
+    }
+    
+    
     
     return YES;
 }

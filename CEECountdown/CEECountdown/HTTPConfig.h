@@ -34,4 +34,6 @@ typedef enum {
 
 #define URL_USER_UPDATE       URL_USER@"/updateUser"    // 修改用户信息
 
+#define URL_LOGIN_GETCONFIG   URL_USER@"/getConfig"
+
 #endif /* HTTPMethod_h */

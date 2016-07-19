@@ -15,6 +15,9 @@
 #define LOCAL_SET_ISLOGIN(x)       [[NSUserDefaults standardUserDefaults] setBool:x forKey:@"CEE_IsLogin"]
 #define LOCAL_GET_ISLOGIN          [[NSUserDefaults standardUserDefaults] boolForKey:@"CEE_IsLogin"]
 
+#define LOCAL_SET_USERCONFIG(x)       [[NSUserDefaults standardUserDefaults] setBool:x forKey:@"CEE_GetUserConfig"]
+#define LOCAL_GET_USERCONFIG          [[NSUserDefaults standardUserDefaults] boolForKey:@"CEE_GetUserConfig"]
+
 /**
  *  是否弹出时间及身份选择页面
  *
