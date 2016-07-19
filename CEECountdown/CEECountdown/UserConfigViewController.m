@@ -34,8 +34,20 @@
     _myTableView.dataSource = self;
     _myTableView.delegate = self;
     _myTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero];
-    UIBarButtonItem *barBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(doBack:)];
-    self.navigationItem.leftBarButtonItem = barBtn;
+    
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(3, 0, 44, 44)];
+    [backButton setImage:[[UIImage imageNamed:@"nav_back"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    backButton.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
+    [backButton setTitle:@"返回" forState:UIControlStateNormal];
+    [backButton setTitleColor:CEECountDownFontColor forState:UIControlStateNormal];
+    backButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [backButton setTintColor:CEECountDownFontColor];
+    [backButton addTarget:self action:@selector(doBack:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    
+    self.navigationItem.leftBarButtonItem = backItem;
     _imgCanShowBig = YES;
 }
 -(void)doBack:(id)sender
@@ -116,7 +128,7 @@
         UserConfigCell * cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
         [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
         cell.headLabel.text = @"头像";
-        [cell.headImage sd_setImageWithURL:[NSURL URLWithString:_userModel.imageUrl] placeholderImage:[UIImage imageNamed:@"ico_headDefault"] options:SDWebImageRetryFailed|SDWebImageRefreshCached];
+        [cell.headImage sd_setImageWithURL:[NSURL URLWithString:_userModel.imageUrl] placeholderImage:[UIImage imageNamed:@"ico_headDefault"]];
         //点击头像更改上传头像
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showBigImage:)];
         cell.headImage.userInteractionEnabled = YES;

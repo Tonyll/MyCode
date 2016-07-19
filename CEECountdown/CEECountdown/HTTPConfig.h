@@ -18,7 +18,7 @@ typedef enum {
 } HTTPMethodType;
 
 #ifdef DEBUG
-#define BASE_URL @"innerapi.jiemodou.net"
+#define BASE_URL @"innerapi1.jiemodou.net"
 #else
 #define BASE_URL @"innerapi.jiemo.net"
 #endif
