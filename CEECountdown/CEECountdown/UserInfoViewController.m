@@ -48,7 +48,11 @@
     self.infoTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.infoTableView.delegate = self;
     self.infoTableView.dataSource = self;
-    self.infoTableView.scrollEnabled = NO;
+    if (self.infoTableView.frame.size.height == 300) {
+        self.infoTableView.scrollEnabled = NO;
+    } else {
+        self.infoTableView.scrollEnabled = YES;
+    }
     
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2;

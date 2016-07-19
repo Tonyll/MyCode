@@ -17,7 +17,7 @@ typedef enum {
     HEAD
 } HTTPMethodType;
 
-#ifdef DEBUG
+#ifdef TESTAPI
 #define BASE_URL @"innerapi1.jiemodou.net"
 #else
 #define BASE_URL @"innerapi.jiemo.net"

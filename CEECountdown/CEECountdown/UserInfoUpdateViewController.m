@@ -8,6 +8,7 @@
 
 #import "UserInfoUpdateViewController.h"
 #import "CEENetWork.h"
+#import <IQUIView+IQKeyboardToolbar.h>
 
 #define kLETTERNUM @"0123456789\n"
 
@@ -38,12 +39,26 @@
     [self initDatePicker];
     [self initActionSheet];
     [self setUpSubViews];
+    
+//    [self.infoTextfield addDoneOnKeyboardWithTarget:self action:@selector(doneAction:)];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//- (void)doneAction:(id)sender{
+//    if (self.infoType == CEEUserBirthday) {
+//        if (self.infoTextfield.text.length == 0) {
+//            NSDate *currentTime = [NSDate date];
+//            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//            //设定时间格式,这里可以设置成自己需要的格式
+//            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//            self.infoTextfield.text = [dateFormatter stringFromDate:currentTime];
+//        }
+//    }
+//}
 
 - (void) setUpSubViews{
     switch (self.infoType) {
@@ -66,7 +81,7 @@
             self.navigationItem.title = @"生日";
             self.infoTextfield.inputView = [[UIView alloc] init];
             self.infoTextfield.inputView = self.datePicker;
-            paramsKey = @"brithday";
+            paramsKey = @"birthday";
             break;
         case CEEUserSex:
             self.infoTextfield.placeholder = @"请选择性别";
@@ -152,6 +167,8 @@
         } else if([self.infoTextfield.text isEqualToString:@"女"]){
             [dic setObject:@"2" forKey:paramsKey];
         }
+    } else{
+        [dic setObject:self.infoTextfield.text forKey:paramsKey];
     }
     [dic setObject:self.userInfo.userId forKey:@"userId"];
 
@@ -215,10 +232,11 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     //设定时间格式,这里可以设置成自己需要的格式
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
     [self.datePicker setMinimumDate:[dateFormatter dateFromString:@"1900-01-01"]];
     self.datePicker.maximumDate = currentTime;
     
-    [self.datePicker addTarget:self action:@selector(selectDate:) forControlEvents:      UIControlEventValueChanged];
+    [self.datePicker addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)initActionSheet{

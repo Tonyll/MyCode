@@ -105,7 +105,7 @@
     [self.view addSubview:_bottomView];
     
     [self.centerView mas_makeConstraints:^(MASConstraintMaker *make) {
-        UIEdgeInsets padding = UIEdgeInsetsMake(55, 17.5, 211, 17.5);
+        UIEdgeInsets padding = UIEdgeInsetsMake(55, 17.5, 200, 17.5);
         make.top.mas_equalTo(self.mas_topLayoutGuide).offset(padding.top);
         make.left.mas_equalTo(self.view).mas_offset(padding.left);
         make.bottom.mas_equalTo(self.view).mas_offset(-padding.bottom);
@@ -145,17 +145,22 @@
         
         _dayView = [[UIView alloc] init];
         [_centerView addSubview:_dayView];
-        [_dayView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.center.mas_equalTo(_centerView).mas_offset(CGPointMake(0, -10));
-            make.height.mas_equalTo(0.4 * (CEEScreenHeight - 55 - 211));
-            make.left.right.mas_equalTo(_centerView);
-        }];
         
         _countdownView = [[UIView alloc] init];
         [_centerView addSubview:_countdownView];
+        
+        [_dayView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(timeLabel.mas_bottom);
+            make.bottom.mas_greaterThanOrEqualTo(_centerView).mas_offset(@-40);
+            make.height.mas_lessThanOrEqualTo(0.4 * (CEEScreenHeight - 55 - 211));
+            make.left.right.mas_equalTo(_centerView);
+        }];
+        
+        
         [_countdownView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.mas_equalTo(_centerView);
             make.top.mas_equalTo(_dayView.mas_bottom);
+            make.bottom.mas_equalTo(_centerView.mas_bottom).mas_offset(@-20);
         }];
         
         _dayLabel = [[UILabel alloc] init];
@@ -175,7 +180,7 @@
         [_countdownLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(30);
             make.left.right.mas_equalTo(_countdownView);
-            make.top.mas_equalTo(_countdownView).offset(20);
+            make.bottom.mas_equalTo(_countdownView);
         }];
     }
     

@@ -24,8 +24,14 @@
                     <rect key="frame" x="0.0" y="201" width="600" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="300" id="9ks-xR-zZu"/>
                         <constraint firstAttribute="height" constant="300" id="Kyf-hm-fsR"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Kyf-hm-fsR"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <outlet property="dataSource" destination="i5M-Pr-FkT" id="hnN-NT-jzJ"/>
                         <outlet property="delegate" destination="i5M-Pr-FkT" id="vdQ-BQ-zIf"/>
@@ -88,6 +94,7 @@
                 <constraint firstAttribute="trailing" secondItem="eV2-dH-3AZ" secondAttribute="trailing" constant="40" id="arJ-Aa-rhB"/>
                 <constraint firstAttribute="trailing" secondItem="WlA-Lr-cia" secondAttribute="trailing" id="cmw-qb-SeM"/>
                 <constraint firstItem="WlA-Lr-cia" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="d5e-dH-fKr"/>
+                <constraint firstItem="eV2-dH-3AZ" firstAttribute="top" secondItem="RXF-2v-GPd" secondAttribute="bottom" constant="23" id="o4X-VH-2yC"/>
                 <constraint firstItem="ZA9-nF-JH3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="otY-kD-HCZ"/>
                 <constraint firstItem="iuq-mm-4yN" firstAttribute="centerX" secondItem="WlA-Lr-cia" secondAttribute="centerX" id="scX-if-UQH"/>
                 <constraint firstItem="ZA9-nF-JH3" firstAttribute="top" secondItem="iuq-mm-4yN" secondAttribute="bottom" constant="26" id="tRX-iu-flF"/>

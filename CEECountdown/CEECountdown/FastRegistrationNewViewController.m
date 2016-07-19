@@ -10,9 +10,9 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
-#if TESTAPI || ONLINETEST
-NSString * const K_PEOPLE_NEW_URL = @"http://jiemo.jiemo.net/proc/AppKuaiZhu/second";
-NSString * const K_RESOURCE_INFO =  @"http://jiemo.jiemo.net/AppKuaiZhu/student_list";
+#if TESTAPI
+NSString * const K_PEOPLE_NEW_URL = @"http://www.jiemodou.net/appKuaiZhu/second";
+NSString * const K_RESOURCE_INFO =  @"http://www.jiemodou.net/AppKuaiZhu/student_list";
 #else
 NSString * const K_PEOPLE_NEW_URL = @"http://www.jiemo.net/appKuaiZhu/second";
 NSString * const K_RESOURCE_INFO = @"http://www.jiemo.net/AppKuaiZhu/student_list";

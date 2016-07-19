@@ -255,8 +255,8 @@
     }];
     
     [self.pwdTextField.rac_textSignal subscribeNext:^(NSString *number) {
-        if (number.length >= 4) {
-            self.pwdTextField.text = [number substringToIndex:4];
+        if (number.length >= 11) {
+            self.pwdTextField.text = [number substringToIndex:11];
         }
     }];
     
