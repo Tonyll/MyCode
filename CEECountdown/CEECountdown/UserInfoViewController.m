@@ -53,7 +53,7 @@
     self.userImage.layer.masksToBounds = YES;
     self.userImage.layer.cornerRadius = self.userImage.frame.size.width / 2;
     
-    [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.userInfo.imageUrl] placeholderImage:[UIImage imageNamed:@"userInfo_headDefault"] options:SDWebImageRetryFailed|SDWebImageRefreshCached];
+    [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.userInfo.imageUrl] placeholderImage:[UIImage imageNamed:@"userInfo_headDefault"]];
     self.userNickName.text = self.userInfo.nickName;
     
     UIButton *navRoad = [[UIButton alloc] init];
@@ -88,14 +88,24 @@
 }
 
 - (void)jumpRoad {
-//    UserModel *model = [CEEUtils getUserInfoFromLocal];
-    
     FastRegistrationNewViewController *fastRegistVC = [[FastRegistrationNewViewController alloc] init];
     fastRegistVC.userInfo = self.userInfo;
     [self.navigationController pushViewController:fastRegistVC animated:YES];
 }
 
 - (IBAction)logOut:(id)sender {
+    WeakSelf;
+    [CEEAlertView showAlertWithTitle:@"提示"
+                             message:@"是否确定退出?"
+                     completionBlock:^(NSUInteger buttonIndex, CEEAlertView *alertView) {
+                         if (buttonIndex == 1) {
+                             [weakSelf logOutFunc];
+                         }
+                     } cancelButtonTitle:@"取消"
+                   otherButtonTitles:@"确定", nil];
+}
+
+- (void)logOutFunc{
     LOCAL_SET_ISLOGIN(NO);
     LOCAL_SYNCHRONIZE;
     LoginViewController *loginVC = [[LoginViewController alloc] init];
@@ -151,8 +161,8 @@
 
 - (void)userInfoChange{
     self.userInfo = [CEEUtils getUserInfoFromLocal];
-    
-    [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.userInfo.imageUrl] placeholderImage:[UIImage imageNamed:@"userInfo_headDefault"] options:SDWebImageRetryFailed|SDWebImageRefreshCached];
+    NSLog(@"[NSURL URLWithString:self.userModel.imageUrl] : %@",[NSURL URLWithString:self.userInfo.imageUrl]);
+    [self.userImage sd_setImageWithURL:[NSURL URLWithString:self.userInfo.imageUrl] placeholderImage:[UIImage imageNamed:@"userInfo_headDefault"]];
     self.userNickName.text = self.userInfo.nickName;
     [self.infoTableView reloadData];
 }
@@ -165,7 +175,11 @@
             str = self.userInfo.birthday;
             break;
         case 1:
-            str = [self.userInfo.sex isEqualToString:@"0"] ? @"男" : @"女";
+            if ([self.userInfo.sex isEqualToString:@"1"]) {
+                str = @"男";
+            } else if([self.userInfo.sex isEqualToString:@"2"]){
+                str = @"女";
+            }
             break;
         case 2:
             str = self.userInfo.hometown;

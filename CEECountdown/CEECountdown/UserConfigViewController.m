@@ -11,6 +11,7 @@
 #import "UserConfigCell1.h"
 #import <UIImageView+WebCache.h>
 #import "HTTPConfig.h"
+#import "UserInfoUpdateViewController.h"
 
 @interface UserConfigViewController ()<UIGestureRecognizerDelegate>{
     CGRect frame_first;
@@ -151,8 +152,10 @@
         [picker showFromView:self.myTableView];
     }
     if (indexPath.row == 1) {
-//        asd
-//        [Common jumpToVcWithClassName:JMVCS[kVcNickModifyViewController] From:self.navigationController Param:nil];
+        UserInfoUpdateViewController *infoUpdateVC = [[UserInfoUpdateViewController alloc] init];
+        infoUpdateVC.infoType = CEEUserNickName;
+        infoUpdateVC.userInfo = self.userModel;
+        [self.navigationController pushViewController:infoUpdateVC animated:YES];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -238,8 +241,11 @@
             [MBProgressHUD show:@"头像修改成功!" toView:self.view];
             UserConfigCell * cell = ((UserConfigCell *)[self.myTableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]]);
             
-            [cell.headImage sd_setImageWithURL:[NSURL URLWithString:self.userModel.imageUrl] placeholderImage:[UIImage imageNamed:@"ico_headDefault"] options:SDWebImageRetryFailed|SDWebImageRefreshCached|SDWebImageDelayPlaceholder];
-            [self.myTableView reloadData];
+            [cell.headImage sd_setImageWithURL:[NSURL URLWithString:self.userModel.imageUrl] placeholderImage:[UIImage imageNamed:@"ico_headDefault"]];
+            NSLog(@"[NSURL URLWithString:self.userModel.imageUrl] : %@",[NSURL URLWithString:self.userModel.imageUrl]);
+            [[NSNotificationCenter defaultCenter] postNotificationName:KNOTIFICATION_USERINFO_CHANGE object:nil];
+            NSIndexPath *changeIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.myTableView reloadRowsAtIndexPaths:@[changeIndexPath] withRowAnimation:UITableViewRowAnimationFade];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"错误信息是: %@", error);
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CEENoPasteTextField.h"
 
 @interface UserInfoUpdateViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UITextField *infoTextfield;
+@property (weak, nonatomic) IBOutlet CEENoPasteTextField *infoTextfield;
 
 @property (assign, nonatomic) NSInteger infoType;
 

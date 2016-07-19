@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1fV-9m-M5c">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1fV-9m-M5c" customClass="CEENoPasteTextField">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="nQh-lA-H6C"/>
@@ -26,6 +26,7 @@
                 </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="tintColor" red="0.33725490196078434" green="0.16862745098039217" blue="0.031372549019607843" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="1fV-9m-M5c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="G8t-PA-BVg"/>
                 <constraint firstItem="1fV-9m-M5c" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="M7m-H2-AuY"/>

@@ -23,6 +23,7 @@
 		EA1AC2181D2E457300698608 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1AC2171D2E457300698608 /* Reveal.framework */; };
 		EA1AC21B1D2E46A400698608 /* CEETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC21A1D2E46A400698608 /* CEETabBarController.m */; };
 		EA1AC21E1D2E47D900698608 /* CEENavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC21D1D2E47D900698608 /* CEENavigationViewController.m */; };
+		EA1BDE571D3D8F1B004ABCA3 /* CEENoPasteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BDE561D3D8F1B004ABCA3 /* CEENoPasteTextField.m */; };
 		EA6531AF1D333A990080895E /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */; };
 		EA6531BC1D339D960080895E /* Digital-7Mono.TTF in Resources */ = {isa = PBXBuildFile; fileRef = EA6531BA1D339D960080895E /* Digital-7Mono.TTF */; };
 		EA6531BD1D339D960080895E /* Heavitas.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA6531BB1D339D960080895E /* Heavitas.ttf */; };
@@ -107,6 +108,8 @@
 		EA1AC21A1D2E46A400698608 /* CEETabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEETabBarController.m; sourceTree = "<group>"; };
 		EA1AC21C1D2E47D900698608 /* CEENavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEENavigationViewController.h; sourceTree = "<group>"; };
 		EA1AC21D1D2E47D900698608 /* CEENavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEENavigationViewController.m; sourceTree = "<group>"; };
+		EA1BDE551D3D8F1B004ABCA3 /* CEENoPasteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEENoPasteTextField.h; sourceTree = "<group>"; };
+		EA1BDE561D3D8F1B004ABCA3 /* CEENoPasteTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEENoPasteTextField.m; sourceTree = "<group>"; };
 		EA6531AD1D333A990080895E /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
 		EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
 		EA6531BA1D339D960080895E /* Digital-7Mono.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Digital-7Mono.TTF"; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				EA6531AE1D333A990080895E /* CBAutoScrollLabel.m */,
 				EA6531E21D34F3E90080895E /* CEEAlertView.h */,
 				EA6531E31D34F3E90080895E /* CEEAlertView.m */,
+				EA1BDE551D3D8F1B004ABCA3 /* CEENoPasteTextField.h */,
+				EA1BDE561D3D8F1B004ABCA3 /* CEENoPasteTextField.m */,
 			);
 			name = 3rdparty;
 			sourceTree = "<group>";
@@ -650,6 +655,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1BDE571D3D8F1B004ABCA3 /* CEENoPasteTextField.m in Sources */,
 				EA6531C61D3498CA0080895E /* FDCalendar.m in Sources */,
 				EAA9C4E01D3C86670001A386 /* UserConfigCell2.m in Sources */,
 				EA6531F91D373D670080895E /* MBProgressHUD+Add.m in Sources */,
