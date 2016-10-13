@@ -36,11 +36,13 @@
     
     self.navigationItem.rightBarButtonItem = _itemRight;
     self.infoTextfield.delegate = self;
-    [self initDatePicker];
+    
+    if (self.infoType == CEEUserBirthday) {
+        [self initDatePicker];
+    }
     [self initActionSheet];
     [self setUpSubViews];
-    
-//    [self.infoTextfield addDoneOnKeyboardWithTarget:self action:@selector(doneAction:)];
+    [self.infoTextfield addDoneOnKeyboardWithTarget:self action:@selector(doneAction:)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,17 +50,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-//- (void)doneAction:(id)sender{
-//    if (self.infoType == CEEUserBirthday) {
-//        if (self.infoTextfield.text.length == 0) {
-//            NSDate *currentTime = [NSDate date];
-//            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//            //设定时间格式,这里可以设置成自己需要的格式
-//            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-//            self.infoTextfield.text = [dateFormatter stringFromDate:currentTime];
-//        }
-//    }
-//}
+- (void)doneAction:(id)sender{
+    if (self.infoType == CEEUserBirthday) {
+        if (self.infoTextfield.text.length == 0) {
+            NSDate *currentTime = [NSDate date];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            //设定时间格式,这里可以设置成自己需要的格式
+            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            self.infoTextfield.text = [dateFormatter stringFromDate:currentTime];
+        }
+    }
+    [self.infoTextfield resignFirstResponder];
+}
 
 - (void) setUpSubViews{
     switch (self.infoType) {
@@ -236,11 +239,15 @@
     [self.datePicker setMinimumDate:[dateFormatter dateFromString:@"1900-01-01"]];
     self.datePicker.maximumDate = currentTime;
     
+    if (self.userInfo.birthday.length > 0) {
+        self.datePicker.date = [dateFormatter dateFromString:self.userInfo.birthday];
+    }
+    
     [self.datePicker addTarget:self action:@selector(selectDate:) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)initActionSheet{
-    self.sheet = [[UIActionSheet alloc] initWithTitle:@"性别" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"男" otherButtonTitles:@"女", nil];
+    self.sheet = [[UIActionSheet alloc] initWithTitle:@"性别" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"男",@"女", nil];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

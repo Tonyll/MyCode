@@ -202,6 +202,13 @@
         _bottomScrollLabel.text = @"2016年高考成绩放榜和分数段公布时间为6月22日晚，考生对成绩有疑问需在6月25日12:00前申请成绩复核登记。6月24日17:00点前，填报本科提前批志愿。";
         _bottomScrollLabel.textColor = CEECountDownFontColor;
         _bottomScrollLabel.font= [UIFont fontWithName:@"Helvetica-Bold" size:16];
+        self.bottomScrollLabel.labelSpacing = 30; // distance between start and end labels
+        self.bottomScrollLabel.pauseInterval = 0.1; // seconds of pause before scrolling starts again
+        self.bottomScrollLabel.scrollSpeed = 30; // pixels per second
+        self.bottomScrollLabel.textAlignment = NSTextAlignmentCenter; // centers text when no auto-scrolling is applied
+        self.bottomScrollLabel.fadeLength = 12.f;
+        self.bottomScrollLabel.scrollDirection = CBAutoScrollDirectionLeft;
+        [self.bottomScrollLabel observeApplicationNotifications];
         [_bottomView addSubview:_bottomScrollLabel];
         [_bottomScrollLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.mas_equalTo(_bottomView).mas_offset(CGPointMake(0, 15));

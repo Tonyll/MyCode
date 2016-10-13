@@ -11,6 +11,8 @@
 #import "UserInfoViewController.h"
 #import "FastRegistrationNewViewController.h"
 
+#import "LiveTelecastToastView.h"
+
 @interface BaseViewController ()<UIAlertViewDelegate>
 
 @end
@@ -64,6 +66,12 @@
 
 
 - (void)loginAlertShow{
+    
+    [LiveTelecastToastView showWithOverlay:@"123" andCallBack:^(NSString *confirmCode) {
+        NSLog(@"call back");
+    }];
+    return;
+    
     WeakSelf;
     [CEEAlertView showAlertWithTitle:@"登录提示"
                             message:@"您还没有登录,是否登录?"

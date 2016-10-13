@@ -32,6 +32,8 @@
 #import <FSMediaPicker.h>
 #import <SDImageCache.h>
 
+#define UMengAppKey @"57184a12e0f55a2f020022a7"
+
 #define CEEUserDefaults [NSUserDefaults standardUserDefaults]
 #define CEEScreenBounds [UIScreen mainScreen].bounds
 #define CEEScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -59,8 +61,6 @@ blue:((float)(rgbValue & 0xFF)) / 255.0 alpha:1.0]
 #else
 #define CEELog(...)
 #endif
-
-#define TESTAPI 0
 
 #define CEELogFunc XCFLog(@"%s", __func__)
 

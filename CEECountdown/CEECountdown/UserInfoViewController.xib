@@ -23,15 +23,6 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RXF-2v-GPd">
                     <rect key="frame" x="0.0" y="201" width="600" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="300" id="9ks-xR-zZu"/>
-                        <constraint firstAttribute="height" constant="300" id="Kyf-hm-fsR"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="Kyf-hm-fsR"/>
-                        </mask>
-                    </variation>
                     <connections>
                         <outlet property="dataSource" destination="i5M-Pr-FkT" id="hnN-NT-jzJ"/>
                         <outlet property="delegate" destination="i5M-Pr-FkT" id="vdQ-BQ-zIf"/>

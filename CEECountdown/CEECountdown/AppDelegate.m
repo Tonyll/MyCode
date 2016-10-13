@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "CEETabBarController.h"
 #import "CEENetWork.h"
+#import <MobClick.h>
 
 @interface AppDelegate ()
 
@@ -19,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [self umengRegist];
     CEETabBarController *tabbar = [[CEETabBarController alloc] init];
     
     self.window = [[UIWindow alloc] init];
@@ -40,10 +41,16 @@
             
         }];
     }
-    
-    
-    
     return YES;
+}
+
+-(void)umengRegist
+{
+    [MobClick startWithAppkey:UMengAppKey reportPolicy:BATCH channelId:@""];
+    [MobClick setEncryptEnabled:YES];
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    [MobClick updateOnlineConfig];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

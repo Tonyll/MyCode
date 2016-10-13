@@ -32,7 +32,7 @@ PODS:
   - SDWebImage (3.8.1):
     - SDWebImage/Core (= 3.8.1)
   - SDWebImage/Core (3.8.1)
-  - UMengAnalytics (4.0.4)
+  - UMengAnalytics-NO-IDFA (3.5.17)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -48,7 +48,7 @@ DEPENDENCIES:
   - Reachability (~> 3.2)
   - ReactiveCocoa (~> 2.5)
   - SDWebImage (~> 3.8.1)
-  - UMengAnalytics (~> 4.0.4)
+  - UMengAnalytics-NO-IDFA (~> 3.5.9)
   - YYModel (~> 1.0.4)
 
 SPEC CHECKSUMS:
@@ -63,7 +63,7 @@ SPEC CHECKSUMS:
   Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
-  UMengAnalytics: 4ed421fb3bca63b26fc13c947743cabf3831d199
+  UMengAnalytics-NO-IDFA: 601dab9ffe32f9de3fa0a6116768aed18a56f8a9
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
 COCOAPODS: 0.39.0

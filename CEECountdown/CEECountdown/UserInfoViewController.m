@@ -48,7 +48,7 @@
     self.infoTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.infoTableView.delegate = self;
     self.infoTableView.dataSource = self;
-    if (self.infoTableView.frame.size.height == 300) {
+    if (CEEScreenHeight > 568) {
         self.infoTableView.scrollEnabled = NO;
     } else {
         self.infoTableView.scrollEnabled = YES;

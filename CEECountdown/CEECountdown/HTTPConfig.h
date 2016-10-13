@@ -6,6 +6,8 @@
 //  Copyright © 2016 com.jiemo. All rights reserved.
 //
 
+#import "CEECountdown-Prefix.pch"
+
 #ifndef HTTPMethod_h
 #define HTTPMethod_h
 
@@ -17,11 +19,13 @@ typedef enum {
     HEAD
 } HTTPMethodType;
 
-#ifdef TESTAPI
-#define BASE_URL @"innerapi1.jiemodou.net"
-#else
-#define BASE_URL @"innerapi.jiemo.net"
-#endif
+//#define TESTAPI 0
+//
+//#ifdef TESTAPI
+//    #define BASE_URL @"innerapi1.jiemodou.net"
+//#else
+    #define BASE_URL @"innerapi.jiemo.net"
+//#endif
 
 #define URL_USER              @"http://"BASE_URL@"/User"
 #define URL_UPLOAD            @"http://"BASE_URL@"/Upload"

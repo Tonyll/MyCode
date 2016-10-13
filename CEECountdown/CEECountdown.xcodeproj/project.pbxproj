@@ -20,7 +20,6 @@
 		EA1AC1C71D2CFD7000698608 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1AC1C61D2CFD7000698608 /* Foundation.framework */; };
 		EA1AC1C91D2CFD7F00698608 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1AC1C81D2CFD7F00698608 /* CoreGraphics.framework */; };
 		EA1AC2141D2E369900698608 /* CountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC2131D2E369900698608 /* CountDownViewController.m */; };
-		EA1AC2181D2E457300698608 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1AC2171D2E457300698608 /* Reveal.framework */; };
 		EA1AC21B1D2E46A400698608 /* CEETabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC21A1D2E46A400698608 /* CEETabBarController.m */; };
 		EA1AC21E1D2E47D900698608 /* CEENavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1AC21D1D2E47D900698608 /* CEENavigationViewController.m */; };
 		EA1BDE571D3D8F1B004ABCA3 /* CEENoPasteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1BDE561D3D8F1B004ABCA3 /* CEENoPasteTextField.m */; };
@@ -57,6 +56,7 @@
 		EAA9C4DE1D3C86670001A386 /* UserConfigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9C4D91D3C86670001A386 /* UserConfigCell.m */; };
 		EAA9C4DF1D3C86670001A386 /* UserConfigCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9C4DB1D3C86670001A386 /* UserConfigCell1.m */; };
 		EAA9C4E01D3C86670001A386 /* UserConfigCell2.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA9C4DD1D3C86670001A386 /* UserConfigCell2.m */; };
+		EABD64EC1D41B58600B4606E /* LiveTelecastToastView.m in Sources */ = {isa = PBXBuildFile; fileRef = EABD64EB1D41B58600B4606E /* LiveTelecastToastView.m */; };
 		EE569852883543F28CC4FD96 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3626BEC5C99EC4749B7938 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +103,6 @@
 		EA1AC2121D2E369900698608 /* CountDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountDownViewController.h; sourceTree = "<group>"; };
 		EA1AC2131D2E369900698608 /* CountDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountDownViewController.m; sourceTree = "<group>"; };
 		EA1AC2161D2E385D00698608 /* CEECountdown-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CEECountdown-Prefix.pch"; sourceTree = "<group>"; };
-		EA1AC2171D2E457300698608 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
 		EA1AC2191D2E46A400698608 /* CEETabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEETabBarController.h; sourceTree = "<group>"; };
 		EA1AC21A1D2E46A400698608 /* CEETabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEETabBarController.m; sourceTree = "<group>"; };
 		EA1AC21C1D2E47D900698608 /* CEENavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEENavigationViewController.h; sourceTree = "<group>"; };
@@ -171,6 +170,8 @@
 		EAA9C4DB1D3C86670001A386 /* UserConfigCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserConfigCell1.m; sourceTree = "<group>"; };
 		EAA9C4DC1D3C86670001A386 /* UserConfigCell2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserConfigCell2.h; sourceTree = "<group>"; };
 		EAA9C4DD1D3C86670001A386 /* UserConfigCell2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserConfigCell2.m; sourceTree = "<group>"; };
+		EABD64EA1D41B58600B4606E /* LiveTelecastToastView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveTelecastToastView.h; sourceTree = "<group>"; };
+		EABD64EB1D41B58600B4606E /* LiveTelecastToastView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveTelecastToastView.m; sourceTree = "<group>"; };
 		FE1809D2428AFD522EA6C17A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,7 +184,6 @@
 				EA1AC1C91D2CFD7F00698608 /* CoreGraphics.framework in Frameworks */,
 				EA1AC1C71D2CFD7000698608 /* Foundation.framework in Frameworks */,
 				EA1AC1C51D2CFD6600698608 /* QuartzCore.framework in Frameworks */,
-				EA1AC2181D2E457300698608 /* Reveal.framework in Frameworks */,
 				EA1AC1C31D2CFD5B00698608 /* UIKit.framework in Frameworks */,
 				EE569852883543F28CC4FD96 /* libPods.a in Frameworks */,
 			);
@@ -218,7 +218,6 @@
 		EA1AC1831D2CE9F000698608 = {
 			isa = PBXGroup;
 			children = (
-				EA1AC2171D2E457300698608 /* Reveal.framework */,
 				EA1AC18E1D2CE9F000698608 /* CEECountdown */,
 				EA1AC1A81D2CE9F000698608 /* CEECountdownTests */,
 				EA1AC1B31D2CE9F000698608 /* CEECountdownUITests */,
@@ -434,6 +433,8 @@
 		EAA9C4C51D3C2C090001A386 /* FastRegistration */ = {
 			isa = PBXGroup;
 			children = (
+				EABD64EA1D41B58600B4606E /* LiveTelecastToastView.h */,
+				EABD64EB1D41B58600B4606E /* LiveTelecastToastView.m */,
 				EAA9C4C61D3C2C270001A386 /* FastRegistrationNewViewController.h */,
 				EAA9C4C71D3C2C270001A386 /* FastRegistrationNewViewController.m */,
 				EAA9C4C81D3C2C270001A386 /* FastRegistrationNewViewController.xib */,
@@ -537,6 +538,7 @@
 				TargetAttributes = {
 					EA1AC18B1D2CE9F000698608 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = TMV4K6YDFA;
 					};
 					EA1AC1A41D2CE9F000698608 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -659,6 +661,7 @@
 				EA6531C61D3498CA0080895E /* FDCalendar.m in Sources */,
 				EAA9C4E01D3C86670001A386 /* UserConfigCell2.m in Sources */,
 				EA6531F91D373D670080895E /* MBProgressHUD+Add.m in Sources */,
+				EABD64EC1D41B58600B4606E /* LiveTelecastToastView.m in Sources */,
 				EA6531E41D34F3E90080895E /* CEEAlertView.m in Sources */,
 				EA1AC1971D2CE9F000698608 /* ViewController.m in Sources */,
 				EA6531D11D3499020080895E /* UIView+Extension.m in Sources */,
@@ -781,6 +784,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "689765d1-9a21-475c-8e71-bfdaf8729c01";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -818,6 +822,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "689765d1-9a21-475c-8e71-bfdaf8729c01";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -829,6 +834,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Tony Wang (X896WD867H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tony Wang (X896WD867H)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -871,11 +878,10 @@
 					"\"UMMobClick\"",
 					"-ObjC",
 					"-lz",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiemo.CEECountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "689765d1-9a21-475c-8e71-bfdaf8729c01";
 			};
 			name = Debug;
 		};
@@ -885,6 +891,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jiemo (Beijing) Education Technology Co., Ltd. (TMV4K6YDFA)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jiemo (Beijing) Education Technology Co., Ltd. (TMV4K6YDFA)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -927,11 +935,10 @@
 					"\"UMMobClick\"",
 					"-ObjC",
 					"-lz",
-					"-framework",
-					Reveal,
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jiemo.CEECountdown;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "689765d1-9a21-475c-8e71-bfdaf8729c01";
 			};
 			name = Release;
 		};

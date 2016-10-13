@@ -94,6 +94,7 @@
                            @"password":_passwordText.text,
                            };
     [MBProgressHUD showMessag:@"正在登录中..." toView:self.view AfterDelay:30.0f];
+    NSLog(@"URL_USER_LOGIN : %@",URL_USER_LOGIN);
     [[CEENetWork sharedManager] requestWithMethod:POST WithPath:URL_USER_LOGIN WithParams:dic WithSuccessBlock:^(NSDictionary *dic) {
         if ([[dic objectForKey:@"errorcode"] integerValue]) {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
